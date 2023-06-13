@@ -39,7 +39,6 @@
     feh
     nil
     imwheel
-    nix-output-monitor
     exa
     zoxide
 
@@ -52,8 +51,8 @@
     glow
     amberol
     fontpreview
-    # AW for vivaldi not working
-    #activitywatch
+    flameshot
+    activitywatch
     syncthing
     mullvad-vpn
      
@@ -62,6 +61,7 @@
     flatpak
     foliate
     anki
+    gnome-feeds
     obsidian
     cryptomator
     vscode-fhs

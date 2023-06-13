@@ -16,24 +16,18 @@
       };
 
       keys.normal = {
-        # (hjkl -> neui)
+        ";" = "insert_mode";
+        "u" = "move_line_up";
         "n" = "move_char_left";
         "e" = "move_line_down";
-        "u" = "move_line_up";
         "i" = "move_char_right";
+        "h" = "collapse_selection";
+        "A-h" = "flip_selections";
 
-        "h" = "search_next";
-        "H" = "search_prev";
-        "j" = "move_next_word_end";
-        "J" = "move_next_long_word_end";
-        "k" = "undo";
-        "K" = "redo";
-        "l" = "insert_mode";
-        "L" = "insert_at_line_start";
-
-        "C-left" = "move_prev_word_start";
-        "C-right" = "move_next_word_start";
-        "C-f" = "search";
+        "A-n"  = "select_prev_sibling";
+        "A-e"  = "shrink_selection";
+        "A-i"  = "expand_selection";
+        "A-o" = "select_next_sibling";
       };
 
       keys.normal.g = {
