@@ -78,6 +78,7 @@
     helix
     intel-gpu-tools
     polkit
+    uhk-agent
     gnomeExtensions.just-perfection # hide panel, overview tweakes
     gnomeExtensions.paperwm
     gnomeExtensions.another-window-session-manager
