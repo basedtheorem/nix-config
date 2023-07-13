@@ -18,42 +18,53 @@
       systems = [ "x86_64-linux" ];
 
       imports = [
-        ./parts/home_configs.nix 
+        ./hosts
+        ./home
+        ./pkgs
+        ./lib
       ];
-      
-      perSystem = { pkgs, ... }: {
-        formatter = pkgs.alejandra;
+
+      perSystem = { pkgs, system, ... }: {
+
+        legacyPackages = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
         devShells.default = pkgs.mkShell {
-          packages = [
-            pkgs.alejandra
+          name = "dotfiles";
+          formatter = pkgs.alejandra;
+
+          packages = with pkgs; [
             config.packages.repl
+            alejandra
+            nil # language server
           ];
 
-          name = "dotfiles";
           DIRENV_LOG_FORMAT = "";
         };
-      };
-
-      flake = {
-        
       };
   };
 
 
   nixConfig = {
-    extra-substituters = [
+    substituters = [
       "https://nix-community.cachix.org"
       "https://helix.cachix.org"
       "https://nix-gaming.cachix.org"
       "https://cache.privatevoid.net"
     ];
 
-    extra-trusted-public-keys = [
+    trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
     ];
+
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true; # cli: `nix-store --optimise`
+    cores = 0; # uses all cores
+    trusted-users = [ "root" ];
   };
 }
