@@ -20,6 +20,20 @@
       imports = [
         ./parts/home_configs.nix 
       ];
+      
+      perSystem = { pkgs, ... }: {
+        formatter = pkgs.alejandra;
+
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.alejandra
+            config.packages.repl
+          ];
+
+          name = "dotfiles";
+          DIRENV_LOG_FORMAT = "";
+        };
+      };
 
       flake = {
         
