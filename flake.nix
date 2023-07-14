@@ -17,6 +17,9 @@
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+
       imports = [
         ./hosts
         ./home
@@ -25,14 +28,13 @@
       ];
 
       perSystem = { pkgs, system, ... }: {
-
         legacyPackages = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
         devShells.default = pkgs.mkShell {
-          name = "dotfiles";
+          name = "l's dotfiles";
           formatter = pkgs.alejandra;
 
           packages = with pkgs; [
