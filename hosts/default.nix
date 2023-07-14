@@ -1,3 +1,5 @@
+{ inputs, ... }:
+
 {
   flake.nixosConfigurations = {
     xps = inputs.nixpkgs.lib.nixosSystem {
