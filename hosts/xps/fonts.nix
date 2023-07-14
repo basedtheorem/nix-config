@@ -13,7 +13,7 @@
     };
 
     defaultFonts = {
-      serif = [ "Roboto" "Symbols Nerd Font Mono" ];
+      serif = [ "Readex Pro" "Symbols Nerd Font Mono" ];
       sansSerif = [ "Readex Pro" "Symbols Nerd Font Mono" ];
       monospace = [ "M PLUS 1 Code" "Symbols Nerd Font Mono" ];
       emoji = [ "Noto Color Emoji" "Symbols Nerd Font Mono" ];
