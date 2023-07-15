@@ -9,6 +9,6 @@
     ];
   };
   
-  xdg.configFile."rofi".source = ../configsource/rofi;
+  xdg.configFile."rofi".source = ../sources/rofi;
   xdg.configFile."rofi".recursive = true;
 }
