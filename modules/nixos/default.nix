@@ -1,9 +1,12 @@
-{ lib, ... }:
+inputs:
 /*
 Imports every module in the current directory
 and assigns them to their file names.
 */
+
 let
+  lib = inputs.nixpkgs.lib;
+
   # Filter for `*.nix` files.
   modules = lib.filterAttrs (
     name: val:
@@ -12,9 +15,9 @@ let
       else false
   ) (builtins.readDir ./.);
 
-in {
-  lib.mapAttrs (name: val: lib.nameValuePair
-    (lib.removeSuffix ".nix" name) # "module.nix" => "module"
+in
+  # Turns `{ "module.nix" = "regular"; }` into `{ "module" = { ... }; }`
+  lib.mapAttrs' (name: val: lib.nameValuePair
+    (lib.removeSuffix ".nix" name)
     (import (./. + "/${name}"))
-  ) modules;
-}
+  ) modules

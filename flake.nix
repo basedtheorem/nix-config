@@ -1,4 +1,6 @@
 {
+  description = "?";
+
   inputs = {
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -12,18 +14,20 @@
     parts.url = "github:hercules-ci/flake-parts";
   };
 
-
   outputs = inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
+      debug = true;
 
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      flake = {
+        nixosModules = import ./modules/nixos inputs;
+        homeManagerModules = import ./modules/home-manager inputs;
+      };
 
       imports = [
         ./hosts
-        ./home
-        ./pkgs
+        ./profiles
+        ./packages
         ./lib
       ];
 
@@ -34,11 +38,10 @@
         };
 
         devShells.default = pkgs.mkShell {
-          name = "l's dotfiles";
+          name = "dotfiles devenv";
           formatter = pkgs.alejandra;
 
           packages = with pkgs; [
-            config.packages.repl
             alejandra
             nil # language server
           ];
@@ -48,8 +51,14 @@
       };
   };
 
-
+  # Replaces `nix.conf`.
   nixConfig = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true; # cli: `nix-store --optimise`
+    cores = 0; # uses all cores
+    trusted-users = [ "root" ];
+
+    # Binary cashes
     substituters = [
       "https://nix-community.cachix.org"
       "https://helix.cachix.org"
@@ -63,10 +72,5 @@
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
     ];
-
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true; # cli: `nix-store --optimise`
-    cores = 0; # uses all cores
-    trusted-users = [ "root" ];
   };
 }
