@@ -25,8 +25,8 @@ in {
       desktopManager.gnome.enable = true;
     };
 
-    environment.gnome.excludePackages = lib.mkIf cfg.minimal
-      (with pkgs; [
+    environment.gnome = lib.mkIf cfg.minimal {
+      excludePackages = (with pkgs; [
         gnome-photos
         gnome-tour
       ])
@@ -47,5 +47,6 @@ in {
         hitori # sudoku game
         atomix # puzzle game
       ]);
+    };
   };
 }
