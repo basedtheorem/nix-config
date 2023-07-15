@@ -3,10 +3,10 @@
 {
   _file = ./desktop.nix;
 
-  # gnome = {
-  #   enable = true;
-  #   minimal = true;
-  # };
+  gnome = {
+    enable = true;
+    minimal = true;
+  };
 
   programs.fish.enable = true;
   environment.shells = [ pkgs.fish ];
