@@ -1,4 +1,6 @@
 {
+  _file = ./services.nix;
+
   services = {
     mullvad-vpn.enable = true;
     fstrim.enable = true;

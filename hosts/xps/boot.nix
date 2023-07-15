@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  _file = ./boot.nix;
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;

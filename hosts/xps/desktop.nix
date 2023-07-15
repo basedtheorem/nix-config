@@ -1,10 +1,12 @@
 { pkgs, ... }:
 
 {
-  gnome = {
-    enable = true;
-    minimal = true;
-  };
+  _file = ./desktop.nix;
+
+  # gnome = {
+  #   enable = true;
+  #   minimal = true;
+  # };
 
   programs.fish.enable = true;
   environment.shells = [ pkgs.fish ];

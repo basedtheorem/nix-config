@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  _file = ./nix.nix;
+
   nix = {
     settings = {
       extra-trusted-users = [ "l" ];
