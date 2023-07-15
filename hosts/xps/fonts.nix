@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  _file = ./fonts.nix;
+
   fonts.fontconfig = {
     enable = true;
     antialias = true;

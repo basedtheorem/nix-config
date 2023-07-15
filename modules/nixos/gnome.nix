@@ -3,6 +3,8 @@
 let cfg = config.gnome;
 
 in {
+  _file = ./gnome.nix;
+
   options.gnome = {
     enable = lib.mkEnableOption "Gnome Desktop Environment";
 

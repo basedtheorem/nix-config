@@ -1,4 +1,5 @@
 {
+  _file = ./misc.nix;
   networking.hostName = "xps";
   networking.networkmanager.enable = true;
 

@@ -4,9 +4,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  _file = ./hardware-configuration.nix;
+
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];

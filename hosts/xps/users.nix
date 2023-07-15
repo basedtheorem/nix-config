@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  _file = ./users.nix;
   users.users = {
     l = {
       isNormalUser = true;

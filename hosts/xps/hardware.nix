@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  _file = ./hardware.nix;
+
   hardware = {
     pulseaudio.enable = false;
     bluetooth.enable = true;
