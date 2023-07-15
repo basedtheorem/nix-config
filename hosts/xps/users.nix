@@ -8,7 +8,6 @@
       description = "L";
       extraGroups = [ "networkmanager" "wheel" "video" ];
       shell = pkgs.fish;
-      packages = with pkgs; [];
     };
   };
 }
