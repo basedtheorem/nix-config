@@ -16,7 +16,7 @@ let
   ) (builtins.readDir ./.);
 
 in
-  # Turns `{ "module.nix" = "regular"; }` into `{ "module" = { ... }; }`
+  # Turns `{ "gnome.nix" = "regular"; }` into `{ "gnome" = { <module> }; }`
   lib.mapAttrs' (name: val: lib.nameValuePair
     (lib.removeSuffix ".nix" name)
     (import (./. + "/${name}"))
