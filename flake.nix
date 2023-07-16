@@ -54,8 +54,8 @@
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true; # cli: `nix-store --optimise`
-    cores = 0; # uses all cores
     trusted-users = [ "root" ];
+    #cores = 0; # 0 uses all cores
 
     # Binary cashes
     substituters = [
