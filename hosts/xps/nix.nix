@@ -1,15 +1,9 @@
 {
   _file = ./nix.nix;
 
-  nix = {
-    settings = {
-      extra-trusted-users = [ "l" ];
-    };
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1w";
-    };
-  };
+  # TODO should extend rather than overwrite
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    extra-trusted-users = "l"
+  '';
 }
