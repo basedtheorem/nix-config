@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   _file = ./nix.nix;
 
