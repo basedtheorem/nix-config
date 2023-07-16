@@ -26,7 +26,8 @@ in {
     };
 
     environment.gnome = lib.mkIf cfg.minimal {
-      excludePackages = (with pkgs; [
+    excludePackages =
+      (with pkgs; [
         gnome-photos
         gnome-tour
       ])
