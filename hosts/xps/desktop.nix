@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     helix # terminal editor
-    htop
+    btop
     intel-gpu-tools
     gtk4
     tela-circle-icon-theme
