@@ -16,6 +16,7 @@
 
   outputs = inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
+      debug = true;
       systems = [ "x86_64-linux" ];
 
       flake = {
@@ -48,28 +49,5 @@
           DIRENV_LOG_FORMAT = "";
         };
       };
-  };
-
-  # Replaces `nix.conf`.
-  nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true; # cli: `nix-store --optimise`
-    trusted-users = [ "root" ];
-    #cores = 0; # 0 uses all cores
-
-    # Binary cashes
-    substituters = [
-      "https://nix-community.cachix.org"
-      "https://helix.cachix.org"
-      "https://nix-gaming.cachix.org"
-      "https://cache.privatevoid.net"
-    ];
-
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
-    ];
   };
 }

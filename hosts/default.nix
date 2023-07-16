@@ -1,8 +1,7 @@
 { self, inputs, withSystem, ... }:
 
-let  
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-  inherit (self) nixosModules; # shared modules
+let inherit (inputs.nixpkgs.lib) nixosSystem;
+
 in {
   _file = ./default.nix;
 
@@ -11,9 +10,9 @@ in {
     xps = withSystem "x86_64-linux" ({ self', ... }: nixosSystem {
       modules = [
         { nixpkgs.pkgs = self'.legacyPackages; }
-        nixosModules.gnome
         ./xps
-      ];
+      ]
+      ++ builtins.attrValues self.nixosModules;
     });
 
     # TODO
