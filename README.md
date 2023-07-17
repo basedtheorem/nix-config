@@ -14,3 +14,14 @@ parts.lib.mkFlake { ... }: {
 # it will print the first arg then return the second.
 lib.trace (<expression>) (<expression>);
 ```
+
+# TODO
+
+```
+Name: leap-vscode-extensions
+Id: front-end-captain.leap-vscode-extensions
+Description: leap vscode extensions
+Version: 0.0.4
+Publisher: front-end-captain
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=front-end-captain.leap-vscode-extensions
+```

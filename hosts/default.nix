@@ -23,5 +23,19 @@ in {
     #   ];
     # });
     
+=======
+{ inputs, lib, ...}:
+
+{
+  _file = ./default.nix;
+
+  flake.nixosConfigurations = {
+
+    # Dell XPS-15 9570 (main laptop)
+    xps = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [ ./xps ];
+    };
+
   };
 }

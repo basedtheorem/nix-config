@@ -16,7 +16,8 @@
       };
 
       keys.normal = {
-        ";" = "insert_mode";
+        "l" = "insert_mode";
+        "k" = "undo";
         "u" = "move_line_up";
         "n" = "move_char_left";
         "e" = "move_line_down";
