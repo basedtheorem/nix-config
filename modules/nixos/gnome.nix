@@ -5,6 +5,9 @@ let cfg = config.gnome;
 in {
   _file = ./gnome.nix;
 
+  # TODO:
+  # https://determinate.systems/posts/declarative-gnome-configuration-with-nixos
+
   options.gnome = {
     enable = lib.mkEnableOption "Gnome Desktop Environment";
 
@@ -22,6 +25,7 @@ in {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
+      displayManager.gdm.wayland = true;
       desktopManager.gnome.enable = true;
     };
 

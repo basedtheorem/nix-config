@@ -3,7 +3,7 @@
 
   inputs = {
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     master.url = "github:nixos/nixpkgs/master";
 
     nixpkgs.follows = "unstable";
@@ -16,7 +16,6 @@
 
   outputs = inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
-      debug = true;
       systems = [ "x86_64-linux" ];
 
       flake = {
@@ -27,7 +26,6 @@
       imports = [
         ./hosts
         ./profiles
-        ./packages
         ./lib
       ];
 
@@ -37,9 +35,12 @@
           config.allowUnfree = true;
         };
 
+        packages = import ./packages pkgs;
+
         devShells.default = pkgs.mkShell {
           name = "dotfiles devenv";
           formatter = pkgs.alejandra;
+
 
           packages = with pkgs; [
             alejandra
