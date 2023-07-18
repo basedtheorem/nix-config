@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   _file = ./desktop.nix;
@@ -18,13 +18,15 @@
     gtk4
     tela-circle-icon-theme
     polkit
+    
 
     gnome.gnome-tweaks
+    gnomeExtensions.rounded-window-corners
     gnomeExtensions.just-perfection # hide panel, overview tweaks
     gnomeExtensions.paperwm # scrolling, tiling wm
     gnomeExtensions.unite # hide title bars
     gnomeExtensions.pano # clipboard manager
-    gnomeExtensions.application-volume-mixer
+    (callPackage ../../packages/v-shell.nix {}) # up-to-date version
 
     (graphite-gtk-theme.override {
       wallpapers = true;

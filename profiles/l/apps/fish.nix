@@ -7,7 +7,8 @@
       set -U fish_greeting
       starship init fish | source
       zoxide init fish | source
-      bind \b 'backward-kill-bigword'
+      xset r rate 200 65
+      bind \b 'backward-kill-word'
       bind \ea 'prevd-or-backward-word'
       bind \ed 'nextd-or-forward-word'
       list_dir

@@ -6,7 +6,6 @@
     ./apps/fish.nix
     ./apps/git.nix
     ./apps/vivaldi.nix
-    ./apps/rofi.nix
     ./apps/lazygit.nix
     
     ./services/picom.nix
@@ -20,11 +19,9 @@
   home.stateVersion = "22.11";
 
   home.packages = with pkgs; [
-  # Utils
-    htop
-    brightnessctl
+    # CLI
     ripgrep
-    skim # fzf alt.
+    skim # fzf alt
     file
     fd
     tealdeer
@@ -36,49 +33,39 @@
     neofetch
     kitty
     starship
-    feh
-    nil
-    imwheel
-    exa
-    zoxide
-
-  # Desktop
+    exa # ls alt.
+    zoxide # cd alt.
     ranger
-    xwallpaper
-    xorg.xset
-    xdotool
-    xbanish
-    glow
-    amberol
+    glow # .md viewer
     fontpreview
-    flameshot
-    activitywatch
+    flameshot # screenshot tool
+
+    # Desktop
+    xwallpaper
+    xorg.xset # key repeat delay
+    xdotool # retrieve window info
+    xbanish # hide mouse cursor on type
+    # activitywatch # time tracking (broken on vivaldi)
     syncthing
-    mullvad-vpn
-     
-  # Apps
+    uhk-agent # programmable keyboard
+   
+    # Apps
     vivaldi-ffmpeg-codecs
-    flatpak
-    foliate
-    anki
-    gnome-feeds
-    obsidian
+    anki # spaced repetition
+    obsidian # notes
     cryptomator
-    vscode-fhs
-    gtkcord4
-    
-  # Media
+    vscode-fhs # TODO: make this declarative
+  
+    # Media
     ffmpeg
     yt-dlp
-    widevine-cdm
+    feh # photo viewer
     alsa-utils
 
-  # Dev
-    rustup
+    # Dev
     direnv
-    nodejs_20
 
-  # Misc
+    # Misc
           
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -87,11 +74,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+  programs.google-chrome.enable = true;
+  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".icons/default".source = "${pkgs.nordzy-cursor-theme}/share/icons/Nordzy-cursors";
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -110,10 +98,6 @@
     EDITOR = "hx";
     NIXPKGS_ALLOW_UNFREE = 1;
   };
-
  
   programs.home-manager.enable = true;
-  programs.emacs = {
-    enable = true;
-  };
 }

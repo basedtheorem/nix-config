@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   programs.rofi = {
-    enable = true;
+    enable = false;
 
     plugins = [
     pkgs.rofi-calc
