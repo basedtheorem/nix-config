@@ -1,0 +1,13 @@
+{
+  "name": "Centre Mouse on Focus",
+  "description": "Made for PaperWM.",
+  "shell-version": [
+    "41",
+    "42",
+    "43",
+    "44"
+  ],
+  "url": "https://github.com/basedtheorem/centre-mouse-on-focus",
+  "uuid": "centre_mouse_on_focus@based.theorem",
+  "version": 1
+}
