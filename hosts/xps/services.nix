@@ -6,7 +6,6 @@
     fstrim.enable = true;
     thermald.enable = true;
     blueman.enable = true;
-    tlp.enable = false;
 
     pipewire = {
       enable = true;
