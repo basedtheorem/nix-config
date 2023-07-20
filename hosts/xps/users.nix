@@ -6,7 +6,7 @@
     l = {
       isNormalUser = true;
       description = "L";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
       shell = pkgs.fish;
     };
   };

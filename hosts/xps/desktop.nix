@@ -8,7 +8,10 @@
     minimal = true;
   };
 
-  programs.fish.enable = true;
+  programs = {
+    fish.enable = true;
+  };
+  
   environment.shells = [ pkgs.fish ];
 
   environment.systemPackages = with pkgs; [
@@ -17,9 +20,9 @@
     intel-gpu-tools
     gtk4
     tela-circle-icon-theme
+    nvtop
     polkit
     
-
     gnome.gnome-tweaks
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.just-perfection # hide panel, overview tweaks

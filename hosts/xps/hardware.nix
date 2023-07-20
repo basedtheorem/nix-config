@@ -9,22 +9,28 @@
     keyboard.uhk.enable = true;
     cpu.intel.updateMicrocode = true;
 
-    bumblebee.enable = true;
-    bumblebee.pmMethod = "none";
-    # nvidia = {
-    #   modesetting.enable = true;
-    #   prime = {
-    #     sync.enable = true;
-    #     intelBusId = "0@0:2:0";
-    #     nvidiaBusId = "1@0:0:0";
-    #   };
-    # };
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
 
     opengl = {
       enable = true;
+      #driSupport = true;
+      #driSupport32Bit = true;
       extraPackages = with pkgs; [
         intel-media-driver
-        intel-vaapi-driver
+        vaapiIntel
+        vaapiVdpau
+        nvidia-vaapi-driver
         libvdpau-va-gl
       ];
     };
@@ -32,8 +38,10 @@
   };
 
   environment.variables = {
-    VDPAU_DRIVER = "va_gl";
+    LIBVA_DRIVER_NAME = "iHD";
   };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   powerManagement.cpuFreqGovernor = "performance";
   system.stateVersion = "20.09";
