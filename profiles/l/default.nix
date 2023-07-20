@@ -46,7 +46,6 @@
     xbanish # hide mouse cursor on type
     # activitywatch # time tracking (broken on vivaldi)
     syncthing
-    emote
     uhk-agent # programmable keyboard
    
     # Apps
