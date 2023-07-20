@@ -33,6 +33,7 @@
         legacyPackages = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          config.joypixels.acceptLicense = true;
         };
 
         packages = import ./packages pkgs;

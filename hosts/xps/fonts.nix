@@ -1,14 +1,13 @@
 { pkgs, ... }:
 
 {
-  _file = ./fonts.nix;
-
   fonts = {
     fontconfig = {
       enable = true;
       antialias = true;
       subpixel.lcdfilter = "default";
       subpixel.rgba = "rgb";
+
       hinting = {
         enable = true;
         autohint = true;
@@ -19,7 +18,7 @@
         serif = [ "Readex Pro" "Symbols Nerd Font Mono" ];
         sansSerif = [ "Readex Pro" "Symbols Nerd Font Mono" ];
         monospace = [ "M PLUS 1 Code" "Symbols Nerd Font Mono" ];
-        emoji = [ "Noto Color Emoji" "Symbols Nerd Font Mono" ];
+        emoji = [ "JoyPixels" "OpenMoji Black" "EmojiOne Color" "Twitter Color Emoji" ];
       };
     };
 
@@ -35,18 +34,17 @@
         ];
       })
 
-      pkgs.corefonts
-      google-fonts
+      joypixels
       ankacoder
+      twitter-color-emoji
+      emojione
+      openmoji-black
       material-design-icons
       roboto
       iosevka-comfy.comfy
       noto-fonts
-      noto-fonts-emoji
-      noto-fonts-cjk
-      twitter-color-emoji
-      liberation_ttf
       mplus-outline-fonts.githubRelease
     ];
   };
+  
 }
