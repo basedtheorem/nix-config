@@ -41,12 +41,12 @@
     flameshot # screenshot tool
 
     # Desktop
-    xwallpaper
     xorg.xset # key repeat delay
-    xdotool # retrieve window info
+    wtype # retrieve window info
     xbanish # hide mouse cursor on type
     # activitywatch # time tracking (broken on vivaldi)
     syncthing
+    emote
     uhk-agent # programmable keyboard
    
     # Apps
@@ -54,10 +54,12 @@
     anki # spaced repetition
     obsidian # notes
     cryptomator
-    vscode-fhs # TODO: make this declarative
-  
+
+    # TODO: make this declarative
+    vscode-fhs
+        
     # Media
-    ffmpeg
+    ffmpeg-full
     yt-dlp
     feh # photo viewer
     alsa-utils
@@ -74,7 +76,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-  programs.google-chrome.enable = true;
+
   home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
