@@ -36,6 +36,7 @@
 
       joypixels
       ankacoder
+      google-fonts
       twitter-color-emoji
       emojione
       openmoji-black

@@ -53,6 +53,8 @@
     anki # spaced repetition
     obsidian # notes
     cryptomator
+    geogebra6
+    qalculate-gtk
 
     # TODO: make this declarative
     vscode-fhs
