@@ -6,7 +6,6 @@
     fstrim.enable = true;
     thermald.enable = true;
     blueman.enable = true;
-    switcherooControl.enable = true; # nvidia/intel gpu switching
 
     pipewire = {
       enable = true;
@@ -21,7 +20,6 @@
         enable = true;
         mouse.accelProfile = "flat";
       };
-      videoDrivers = [ "nvidia" ];
     };
   };
 }

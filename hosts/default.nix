@@ -12,6 +12,7 @@ in {
       modules = [
         { nixpkgs.pkgs = self'.legacyPackages; }
         ./xps
+        inputs.nixos-hardware.nixosModules.dell-xps-15-9560
       ]
       ++ builtins.attrValues self.nixosModules;
     });

@@ -12,6 +12,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     parts.url = "github:hercules-ci/flake-parts";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs:
