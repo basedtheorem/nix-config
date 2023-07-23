@@ -31,7 +31,7 @@
         ./lib
       ];
 
-      perSystem = { pkgs, system, ... }: {
+      perSystem = { pkgs, system, lib, ... }: {
         legacyPackages = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
@@ -40,16 +40,23 @@
 
         packages = import ./packages pkgs;
 
-        devShells.default = pkgs.mkShell {
+        devShells.default = pkgs.mkShell rec {
           name = "dotfiles devenv";
           formatter = pkgs.alejandra;
-
-
+          
           packages = with pkgs; [
             alejandra
             nil # language server
+            dconf2nix # dconf files to home config
           ];
-
+          
+          shellHook = ''
+            echo
+            echo Entering NixOS config environment...
+            echo 
+            echo Packages: ${builtins.concatStringsSep ", " (lib.forEach packages lib.getName)}
+          '';
+          
           DIRENV_LOG_FORMAT = "";
         };
       };

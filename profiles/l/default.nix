@@ -7,6 +7,9 @@
     ./apps/git.nix
     ./apps/vivaldi.nix
     ./apps/lazygit.nix
+    ./apps/mpv.nix
+
+    ./desktop/gnome.nix
     
     ./services/picom.nix
     ./services/espanso.nix

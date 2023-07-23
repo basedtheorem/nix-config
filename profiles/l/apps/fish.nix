@@ -12,6 +12,8 @@
       bind \ea 'prevd-or-backward-word'
       bind \ed 'nextd-or-forward-word'
       list_dir
+      set -x DIRENV_LOG_FORMAT ""
+      set -x GTK_IM_MODULE ""
       direnv hook fish | source
     '';
 
@@ -37,7 +39,7 @@
       fzf = "sk";
       jt = "jot '";
       jot = "jot '";
-      unset = "set -e "
+      unset = "set -e ";
     };
 
     functions = {
