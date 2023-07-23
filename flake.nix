@@ -14,6 +14,8 @@
     parts.url = "github:hercules-ci/flake-parts";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    home-manager-wsl.url = "github:viperML/home-manager-wsl";
   };
 
   outputs = inputs:
@@ -47,7 +49,6 @@
           packages = with pkgs; [
             alejandra
             nil # language server
-            dconf2nix # dconf files to home config
           ];
           
           shellHook = ''
