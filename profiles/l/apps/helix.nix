@@ -2,9 +2,10 @@
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
  
     settings = {
-      theme = "flatwhite";
+      theme = "amberwood";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
@@ -24,6 +25,7 @@
         "i" = "move_char_right";
         "h" = "collapse_selection";
         "A-h" = "flip_selections";
+        "j" = "search_next";
 
         "A-n"  = "select_prev_sibling";
         "A-e"  = "shrink_selection";
@@ -54,7 +56,7 @@
         "I" = "keep_selections";
         "A-I" = "remove_selections";
       };
-      # on the go me here
+      
       keys.insert = {
         "C-backspace" = "delete_word_backward";
         "A-x" = "normal_mode";

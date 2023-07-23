@@ -10,6 +10,7 @@
     ./users.nix # user groups, default shells
     ./desktop.nix # gnome, system-wide packages
     ./misc.nix # networking, timezone, locales
+    ./vm.nix # windows 11 vm
     ./fonts.nix
   ];
 }

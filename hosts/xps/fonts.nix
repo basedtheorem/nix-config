@@ -33,7 +33,7 @@
           "NerdFontsSymbolsOnly"
         ];
       })
-
+  
       joypixels
       ankacoder
       google-fonts
@@ -42,7 +42,10 @@
       openmoji-black
       material-design-icons
       roboto
+      iosevka
       iosevka-comfy.comfy
+      office-code-pro
+      victor-mono
       noto-fonts
       mplus-outline-fonts.githubRelease
     ];

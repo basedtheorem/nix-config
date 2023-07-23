@@ -14,9 +14,16 @@
     ./services/xbanish.nix
   ];
   
-  home.username = "l";
-  home.homeDirectory = "/home/l";
-  home.stateVersion = "22.11";
+  home = {
+    username = "l";
+    homeDirectory = "/home/l";
+    stateVersion = "22.11";
+
+    # Disable annoying hardcoded gtk keybinds
+    file.".profile".text = ''
+      GTK_IM_MODULE="xim"
+    '';
+  };
 
   home.packages = with pkgs; [
     # CLI
@@ -38,6 +45,7 @@
     ranger
     glow # .md viewer
     fontpreview
+    xdotool
     flameshot # screenshot tool
 
     # Desktop
@@ -54,6 +62,7 @@
     obsidian # notes
     cryptomator
     geogebra6
+    okular
     qalculate-gtk
 
     # TODO: make this declarative
@@ -65,8 +74,6 @@
     feh # photo viewer
     alsa-utils
 
-    # Dev
-    direnv
 
     # Misc
           
@@ -94,6 +101,9 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   xsession.enable = true;
   systemd.user.startServices = true; # fixes warning: 'systemd user session is degraded'

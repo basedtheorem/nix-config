@@ -16,24 +16,26 @@
 
   environment.systemPackages = with pkgs; [
     helix # terminal editor
-    btop
+    btop # htop but for hipsters
     intel-gpu-tools
-    gtk4
     tela-circle-icon-theme
     nvtop
     polkit
-    
-    gnome.gnome-tweaks
-    gnomeExtensions.rounded-window-corners
-    gnomeExtensions.just-perfection # hide panel, overview tweaks
-    gnomeExtensions.paperwm # scrolling, tiling wm
-    gnomeExtensions.unite # hide title bars
-    gnomeExtensions.pano # clipboard manager
-    (callPackage ../../packages/v-shell.nix {}) # up-to-date version
 
+    # Gnome
+    gnome.gnome-tweaks    
     (graphite-gtk-theme.override {
       wallpapers = true;
       themeVariants = [ "all" ];
     })
-  ];
+  ]
+  ++ (with pkgs.gnomeExtensions; [
+    paperwm # scrolling, tiling wm
+    rounded-window-corners
+    another-window-session-manager
+    just-perfection # overview tweaks + hide panel
+    unite # hide title bars
+    pano # clipboard manager
+    (callPackage ../../packages/v-shell.nix {}) # vertical shell (update)
+  ]);
 }
