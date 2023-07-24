@@ -16,13 +16,5 @@ in {
       ]
       ++ builtins.attrValues self.nixosModules;
     });
-
-    # TODO
-    # pavillion = withSystem "x86_64-linux" ({ self', ... }: nixosSystem {
-    #   modules = [
-    #     ./pavillion
-    #     { nixpkgs.pkgs = self'.legacyPackages; }
-    #   ];
-    # });  
   };
 }
