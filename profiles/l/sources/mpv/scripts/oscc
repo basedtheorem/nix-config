@@ -7,7 +7,7 @@ local utils = require 'mp.utils'
 -- Parameters
 --
 -- default user option values
--- do not touch, change them in osc.conf
+-- do not touch; change them in osc.conf
 local user_opts = {
     showwindowed = true,        -- show OSC when windowed?
     showfullscreen = true,      -- show OSC when fullscreen?

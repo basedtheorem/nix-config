@@ -8,23 +8,25 @@
 
     config = {
 
-      # Behaviour
+      # -- Behaviour --
       pause = true;
       border = "no";
-      #input-ipc-server=~~/socket
+      input-ipc-server="~~/socket"; # for kb cmds that playerctl cant handle
       save-position-on-quit = true;
+      resume-playback = false;
       no-keepaspect-window = ""; # breaks paperwm otherwise
 
-      # Hardware
+      # -- Hardware --
       hwdec = "auto-safe";
       vo = "gpu";
-      profile = "gpu-hq";
+      #profile = "gpu-hq";
+      hdr-compute-peak = false;
 
-      # yt-dlp
+      # -- yt-dlp --
       ytdl-raw-options = "sub-lang='en',write-subs=,write-auto-sub=,write-subs=";
       ytdl-format = "bestvideo[height<=1440]+bestaudio/best[height<=1440]";
 
-      # Subtitles
+      # -- Subtitles --
       slang = "en";
       alang = "en";
       blend-subtitles = true;
@@ -43,7 +45,7 @@
       sub-ass = "";
       sub-scale-by-window = "no";
 
-      # On-screen display
+      # -- On-screen display --
       osc = "no";
       osd-bar = "no";
       cursor-autohide = 1500;
@@ -74,7 +76,9 @@
   };
 
   # Additional scripts that aren't in nixpkgs.
-  xdg.configFile."mpv/scripts/oscc.lua".source = ../sources/mpv/scripts/oscc;
-  xdg.configFile."mpv/scripts/seek-show.js".source = ../sources/mpv/scripts/seek-show-position;
-  xdg.configFile."mpv/fonts/".source = ../sources/mpv/fonts;
+  xdg.configFile = {
+    "mpv/scripts/oscc.lua".source = ../sources/mpv/scripts/oscc;
+    "mpv/scripts/seek-show.js".source = ../sources/mpv/scripts/seek-show-position;
+    "mpv/fonts/".source =  ../sources/mpv/fonts;
+  };
 }
