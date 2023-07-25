@@ -10,6 +10,7 @@
     ./apps/mpv.nix
 
     ./desktop/gnome.nix
+    ./desktop/cursors.nix
 
     ./services/picom.nix
     ./services/espanso.nix
@@ -22,11 +23,6 @@
     username = "l";
     homeDirectory = "/home/l";
     stateVersion = "22.11";
-
-    # Disable (VERY) annoying hardcoded gtk keybinds
-    file.".profile".text = ''
-      GTK_IM_MODULE="xim"
-    '';
   };
 
   home.packages = with pkgs; [
@@ -50,6 +46,7 @@
     ranger
     glow
     fontpreview
+    imagemagick_light
     xdotool
     flameshot
 
@@ -59,6 +56,7 @@
     xbanish
     # activitywatch # time tracking (broken on vivaldi)
     syncthing
+    sxhkd
     uhk-agent
 
     # Apps
@@ -81,6 +79,7 @@
 
     # Misc
     dconf2nix
+    nix-index
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -89,8 +88,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -105,15 +102,20 @@
     # '';
   };
 
+  home.sessionVariables = {
+    EDITOR = "hx"; # this var only works here for some reason
+  };
+
+  systemd.user.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = 1;
+    GTK_IM_MODULE="xim"; # Disable (VERY) annoying hardcoded gtk keybinds
+  };
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
   xsession.enable = true;
   systemd.user.startServices = true; # fixes warning: 'systemd user session is degraded'
-  home.sessionVariables = {
-    EDITOR = "hx";
-    NIXPKGS_ALLOW_UNFREE = 1;
-  };
 
   programs.home-manager.enable = true;
 }
