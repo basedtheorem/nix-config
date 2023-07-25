@@ -29,6 +29,10 @@ in {
       desktopManager.gnome.enable = true;
     };
 
+    environment.systemPackages = with pkgs; [
+      gnome-firmware
+    ];
+
     environment.gnome = lib.mkIf cfg.minimal {
     excludePackages =
       (with pkgs; [
@@ -44,6 +48,8 @@ in {
         gedit # text editor
         epiphany # web browser
         geary # email reader
+        gnome-software
+        geary
         evince # document viewer
         gnome-characters
         totem # video player
