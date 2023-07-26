@@ -47,6 +47,10 @@
     glow
     fontpreview
     imagemagick_light
+    
+    kakoune
+    ne
+    
     xdotool
     flameshot
 

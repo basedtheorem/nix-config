@@ -1,11 +1,10 @@
 { pkgs, ... }:
 
 {
-  gtk.enable = true;
-
-  gtk.cursorTheme = {
+  home.pointerCursor = {
     package = pkgs.graphite-cursors;
-    name = "Graphite dark Cursors";
-    size = 16;
+    name = "Graphite-Cursors";
+    size = 32;
+    x11.enable = true;
   };
 }

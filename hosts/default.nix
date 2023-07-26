@@ -5,8 +5,7 @@ let inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
   _file = ./default.nix;
 
-  flake.nixosConfigurations = {
-  
+  flake.nixosConfigurations = {  
     # Dell XPS-15 9570 (main laptop)
     xps = withSystem "x86_64-linux" ({ self', ... }: nixosSystem {
       modules = [
@@ -16,5 +15,6 @@ in {
       ]
       ++ builtins.attrValues self.nixosModules;
     });
+    
   };
 }
