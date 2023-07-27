@@ -14,6 +14,7 @@
 
     ./services/picom.nix
     ./services/espanso.nix
+    ./services/syncthing.nix
     ./services/flameshot.nix
     ./services/xbanish.nix
     ./services/sxhkd.nix
@@ -58,8 +59,6 @@
     xorg.xset
     wtype
     xbanish
-    # activitywatch # time tracking (broken on vivaldi)
-    syncthing
     sxhkd
     uhk-agent
 
