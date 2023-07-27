@@ -11,6 +11,9 @@ let
     };
     patches = [];
 
+    # The following fixes `error: cycle detected in build of..`.
+    # Source: https://discourse.nixos.org/t/using-overlays-cause-cycle-detected-error-if-modified-mpv-package-is-present-what-could-cause-this/28300
+    outputInclude = [ "out" ];
   });
 in 
 
