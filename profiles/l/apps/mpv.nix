@@ -1,10 +1,32 @@
 { pkgs, ... }:
 
+let
+  mpv-unwrapped-updated = pkgs.mpv-unwrapped.overrideAttrs (final: prev: {
+    version = "0.36.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "mpv-player";
+      repo = "mpv";
+      rev = "v${final.version}";
+      sha256 = "sha256-82moFbWvfc1awXih0d0D+dHqYbIoGNZ77RmafQ80IOY=";
+    };
+    patches = [];
+
+  });
+in 
+
 {
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {
     enable = true;
+
+    package = pkgs.wrapMpv mpv-unwrapped-updated {
+      scripts = with pkgs.mpvScripts; [
+        autoload
+        mpris # use w/ playerctl
+        thumbfast
+      ];
+    };
 
     config = {
 
@@ -56,11 +78,6 @@
       osd-border-size = 1.5;
     };
 
-    scripts = with pkgs.mpvScripts; [
-      autoload
-      mpris # use w/ playerctl
-      thumbfast
-    ];
 
     scriptOpts = {
       osc = {
