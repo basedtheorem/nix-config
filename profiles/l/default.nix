@@ -60,6 +60,7 @@
     wtype
     xbanish
     sxhkd
+    chromium
     uhk-agent
 
     # Apps
@@ -70,6 +71,7 @@
     geogebra6
     okular
     qalculate-gtk
+    syncthing
     vscode-fhs # TODO: make this declarative
 
     # Media
