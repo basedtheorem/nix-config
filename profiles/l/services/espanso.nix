@@ -1,5 +1,4 @@
 {
-  # TODO
   services.espanso = {
     enable = true;
 
