@@ -39,6 +39,9 @@
       jt = "jot '";
       jot = "jot '";
       unset = "set -e ";
+      hx = "micro";
+      mc = "micro";
+      ic = "micro";
     };
 
     functions = {

@@ -15,8 +15,8 @@
   environment.shells = [ pkgs.fish ];
 
   environment.systemPackages = with pkgs; [
-    helix # terminal editor
-    btop # htop but for hipsters
+    micro
+    btop
     intel-gpu-tools
     tela-circle-icon-theme
     nvtop
@@ -25,7 +25,6 @@
     # Gnome
     gnome.gnome-tweaks    
     (graphite-gtk-theme.override {
-      wallpapers = true;
       themeVariants = [ "all" ];
     })
   ]

@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./apps/helix.nix
     ./apps/fish.nix
     ./apps/git.nix
     ./apps/lazygit.nix
@@ -36,6 +35,7 @@
     tealdeer
     delta
     bat
+    micro
     pciutils
     jq
     wget
@@ -49,15 +49,10 @@
     fontpreview
     imagemagick_light
     
-    kakoune
-    ne
-    
-    xdotool
-    flameshot
-
     # Desktop
     xorg.xset
-    wtype
+    xclip
+    flameshot
     xbanish
     sxhkd
     chromium
@@ -108,7 +103,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "hx"; # this var only works here for some reason
+    EDITOR = "micro"; # this var only works here for some reason
   };
 
   systemd.user.sessionVariables = {
