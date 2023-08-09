@@ -15,7 +15,13 @@ parts.lib.mkFlake { ... }: {
 lib.trace (<expression>) (<expression>);
 ```
 
-# TODO
+#### References
+
+[noogle.dev](https://noogle.dev)
+[NixOS Search](https://search.nixos.org/packages?channel=unstable)
+[Zero to Nix](https://zero-to-nix.com)
+
+#### TODO
 
 ```
 Name: leap-vscode-extensions
