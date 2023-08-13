@@ -53,6 +53,7 @@
     xorg.xset
     xclip
     flameshot
+    qbittorrent
     xbanish
     sxhkd
     chromium
