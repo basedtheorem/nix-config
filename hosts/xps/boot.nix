@@ -14,12 +14,12 @@
 
     initrd.kernelModules = [ "i915" ];
 
-    kernelParams = [ "acpi_rev_override" "nvidia-drm.modeset=1" "mem_sleep_default=deep" ];
+    kernelParams = [ "mem_sleep_default=deep" "nvidia-drm.modeset=1" "acpi_rev_override" ];
 
     # extraModprobeConfig = ''
     #   options bbswitch load_state=-1 unload_state=1 nvidia-drm
     # '';
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_latest;
   };
 }

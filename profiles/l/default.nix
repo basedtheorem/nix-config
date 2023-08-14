@@ -64,7 +64,6 @@
     anki
     obsidian # TODO: put config in HM
     cryptomator
-    geogebra6
     okular
     qalculate-gtk
     syncthing
