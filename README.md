@@ -19,14 +19,12 @@ sudo nix-collect-garbage -d
 home-manager expire-generations '-1 second'
 
 # Update everything
-git add . && git commit -m "chore: update lock" && \
+cd ~/dots; git add . && git commit -m "chore: update lock" && \
   sudo nix-channel --update && nix flake update ~/dots/. && \
   sudo nixos-rebuild boot --flake ~/dots#xps && \
   home-manager switch --flake ~/dots#l &&  \
   git push origin dev && sudo nix-collect-garbage && \
-  reboot
-
-
+reboot
 ```
 
 #### References
