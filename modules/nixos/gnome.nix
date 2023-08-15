@@ -31,6 +31,11 @@ in {
 
     environment.systemPackages = with pkgs; [
       gnome-firmware
+      gnome.nautilus
+      gnome.gvfs
+      gnome.sushi
+      gnome.file-roller
+      nautilus-open-any-terminal
     ];
 
     environment.gnome = lib.mkIf cfg.minimal {
@@ -44,7 +49,7 @@ in {
         gnome-music
         gnome-terminal
         simple-scan
-        eog # image viewer
+        #eog # image viewer
         gedit # text editor
         epiphany # web browser
         geary # email reader

@@ -18,7 +18,6 @@
     micro
     btop
     intel-gpu-tools
-    tela-circle-icon-theme
     nvtop
     polkit
 
