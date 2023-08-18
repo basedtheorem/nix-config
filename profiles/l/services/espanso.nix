@@ -4,18 +4,24 @@
 
     matches = {
       base = {
-        matches = [
-          {
+        matches = [{
             trigger = ":now";
             replace = "It's {{currentdate}} {{currenttime}}";
-          }
-          {
+          } {
             trigger = ":hello";
             replace = "line1\nline2";
-          }
-          {
+          } {
             regex = ":hi(?P<person>.*)\\.";
             replace = "Hi {{person}}!";
+          } {
+          	trigger = "st:r";
+          	replace = "site:reddit.com";
+          } {
+          	trigger = "st:stat";
+          	replace = "site:stats.stackexchange.com";
+          } {
+          	trigger = "st:gh";
+          	replace = "site:github.com";
           }
         ];
       };

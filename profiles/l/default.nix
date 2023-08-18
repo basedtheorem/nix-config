@@ -7,6 +7,7 @@
     ./apps/lazygit.nix
     ./apps/vivaldi.nix
     ./apps/mpv.nix
+    ./apps/nnn.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
@@ -26,6 +27,9 @@
   };
 
   home.packages = with pkgs; [
+    # Demo
+    tere
+  
     # CLI
     ripgrep
     skim
