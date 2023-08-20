@@ -8,6 +8,8 @@
     minimal = true;
   };
 
+  xdg.portal.enable = true;
+
   programs = {
     fish.enable = true;
   };
