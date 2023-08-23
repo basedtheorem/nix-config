@@ -21,7 +21,7 @@
       l = "exa";
       la = "exa -la";
       ll = "exa -l";
-      ls = "nnn -de";
+      ls = "exa";
       cat = "bat";
       dots = "cd ~/dots/";
       hm = "cd ~/dots/home-manager";
