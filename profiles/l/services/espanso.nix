@@ -17,11 +17,33 @@
           	trigger = "st:r";
           	replace = "site:reddit.com";
           } {
-          	trigger = "st:stat";
+          	trigger = "st:sestat";
           	replace = "site:stats.stackexchange.com";
+          } {
+          	trigger = "st:se";
+          	replace = "site:stackexchange.com";
           } {
           	trigger = "st:gh";
           	replace = "site:github.com";
+          } {
+          	trigger = "st:lw";
+          	replace = "site:lesswrong.com";
+          } {
+          	trigger = "ob:ac";
+			replace =
+''
+```anki
+deck: general
+tags:
+  - knowledge-base
+
+
+---
+$|$
+===
+
+```
+'';
           }
         ];
       };
