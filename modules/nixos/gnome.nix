@@ -25,7 +25,7 @@ in {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = false;
+      displayManager.gdm.wayland = true;
       desktopManager.gnome.enable = true;
     };
 
@@ -53,7 +53,6 @@ in {
         gedit # text editor
         epiphany # web browser
         geary # email reader
-        gnome-software
         geary
         evince # document viewer
         gnome-characters

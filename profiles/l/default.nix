@@ -112,7 +112,6 @@
 
   systemd.user.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = 1;
-    GTK_IM_MODULE="xim"; # Disable (VERY) annoying hardcoded gtk keybinds
   };
 
   programs.direnv.enable = true;
