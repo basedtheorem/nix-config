@@ -46,8 +46,8 @@
     neofetch
     kitty
     starship
-    exa
     zoxide
+    exa
     ranger
     glow
     fontpreview
@@ -76,7 +76,6 @@
     # Media
     ffmpeg-full
     yt-dlp
-    feh
     alsa-utils
     playerctl
 

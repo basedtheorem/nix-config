@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs.fish = {
     enable = true;
@@ -6,7 +8,6 @@
       set NIXPKGS_ALLOW_UNFREE 1
       set -U fish_greeting
       set NNN_FIFO '/tmp/nnn.fifo'
-      starship init fish | source
       zoxide init fish | source
       xset r rate 200 65
       bind \b 'backward-kill-word'
@@ -44,6 +45,18 @@
       mc = "micro";
       ic = "micro";
     };
+
+    plugins = [       
+      {
+        name = "tide";
+        src = pkgs.fetchFromGitHub {
+          owner = "IlanCosman";
+          repo = "tide";
+          rev = "a3426e157f94b8a9cb5bcf96946b1e55625a1948";
+          sha256 = "sha256-BePYSnjj8WgJm9pb7xE281a5lDDDGfnyMe4u07KumLs=";
+	    };
+      }
+    ];
 
     functions = {
       jot = "echo $argv >> ~/Sync/notes/Jot.md";

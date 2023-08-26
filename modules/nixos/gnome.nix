@@ -25,13 +25,12 @@ in {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = true;
+      displayManager.gdm.wayland = false;
       desktopManager.gnome.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
       gnome-firmware
-      gnome.nautilus
       gnome.gvfs
       gnome.sushi
       gnome.file-roller
@@ -49,7 +48,6 @@ in {
         gnome-music
         gnome-terminal
         simple-scan
-        #eog # image viewer
         gedit # text editor
         epiphany # web browser
         geary # email reader

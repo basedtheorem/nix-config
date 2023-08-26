@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+# TODO: move to profiles
 {
   fonts = {
     fontconfig = {
@@ -33,7 +33,8 @@
           "NerdFontsSymbolsOnly"
         ];
       })
-  
+
+      mononoki
       joypixels
       ankacoder
       google-fonts
