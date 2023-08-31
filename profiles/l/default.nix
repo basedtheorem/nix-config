@@ -8,6 +8,8 @@
     ./apps/vivaldi.nix
     ./apps/mpv.nix
     ./apps/nnn.nix
+    ./apps/micro.nix
+    ./apps/discord.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
@@ -39,7 +41,6 @@
     tealdeer
     delta
     bat
-    micro
     pciutils
     jq
     wget

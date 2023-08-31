@@ -4,6 +4,7 @@
 
     matches = {
       base = {
+        backend = "Clipboard";
         matches = [{
             trigger = ":now";
             replace = "It's {{currentdate}} {{currenttime}}";
@@ -29,6 +30,10 @@
           	trigger = "st:lw";
           	replace = "site:lesswrong.com";
           } {
+          	trigger = "ob:p";
+          	replace = "`\\begin{proof}`\n$|$\n`\\end{proof}`";
+          } {
+            # it wont work unless formatted like this...
           	trigger = "ob:ac";
 			replace =
 ''

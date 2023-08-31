@@ -1,0 +1,5 @@
+{
+  "CtrlDelete": "DeleteWordRight",
+  "OldBackspace": "DeleteWordLeft",
+  "Ctrl-l": "SelectLine"
+}

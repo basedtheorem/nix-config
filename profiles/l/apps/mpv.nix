@@ -52,7 +52,7 @@ in
       ytdl-format = "bestvideo[height<=1440]+bestaudio/best[height<=1440]";
 
       # -- Subtitles --
-      slang = "en";
+      slang = "en,eng";
       alang = "en";
       blend-subtitles = true;
       sub-color = "#eeeeee";
@@ -66,7 +66,7 @@ in
       sub-spacing = 0.5;
       sub-justify = "left";
       sub-pos = 100; # sub pos 0% above bottom of screen
-      sub-auto = "all";
+      sid = 1;
       sub-ass = "";
       sub-scale-by-window = "no";
 

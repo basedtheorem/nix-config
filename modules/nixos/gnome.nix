@@ -53,7 +53,6 @@ in {
         geary # email reader
         geary
         evince # document viewer
-        gnome-characters
         totem # video player
         tali # poker game
         iagno # go game
