@@ -38,8 +38,8 @@
       cd = "z";
       lg = "lazygit";
       fzf = "sk";
-      jt = "jot '";
-      jot = "jot '";
+      jt = "jot ' -";
+      jot = "jot ' -";
       unset = "set -e ";
       hx = "micro";
       mc = "micro";

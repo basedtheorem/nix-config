@@ -33,6 +33,12 @@
           	trigger = "ob:p";
           	replace = "`\\begin{proof}`\n$|$\n`\\end{proof}`";
           } {
+            trigger = "st:hn";
+            replace = "site:news.ycombinator.com";
+          } {
+            trigger = "w/o";
+            replace = "without ";
+          } {
             # it wont work unless formatted like this...
           	trigger = "ob:ac";
 			replace =
