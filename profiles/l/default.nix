@@ -10,6 +10,7 @@
     ./apps/nnn.nix
     ./apps/micro.nix
     ./apps/discord.nix
+    ./apps/firefox.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
