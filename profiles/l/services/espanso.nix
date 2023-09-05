@@ -18,7 +18,7 @@
           	trigger = "st:r";
           	replace = "site:reddit.com";
           } {
-          	trigger = "st:sestat";
+          	trigger = "st:cv"; # cross-validated
           	replace = "site:stats.stackexchange.com";
           } {
           	trigger = "st:se";
@@ -35,6 +35,9 @@
           } {
             trigger = "st:hn";
             replace = "site:news.ycombinator.com";
+          } {
+            trigger = "st:gr";
+            replace = "site:goodreads.com";
           } {
             trigger = "w/o";
             replace = "without ";
