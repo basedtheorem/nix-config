@@ -9,6 +9,9 @@
             trigger = ":now";
             replace = "It's {{currentdate}} {{currenttime}}";
           } {
+            trigger = ":eg";
+            replace = "e.g., ";
+          } {
             trigger = ":hello";
             replace = "line1\nline2";
           } {

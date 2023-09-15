@@ -9,7 +9,6 @@
     ./apps/mpv.nix
     ./apps/nnn.nix
     ./apps/micro.nix
-    ./apps/discord.nix
     ./apps/firefox.nix
 
     ./desktop/gnome.nix
@@ -49,13 +48,15 @@
     kitty
     starship
     zoxide
-    exa
+    eza
     ranger
     glow
     fontpreview
     imagemagick_light
+    discord
     
     # Desktop
+    gifski
     xorg.xset
     xclip
     flameshot
