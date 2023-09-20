@@ -54,7 +54,8 @@ in
       # -- Subtitles --
       slang = "en,eng";
       alang = "en";
-      blend-subtitles = true;
+      ass-use-margins = "";
+      blend-subtitles = false; # required false for 'ass-use-margins'
       sub-color = "#ffffffff";
       sub-shadow-color = "#ff000000";
       sub-back-color = "#aa000000";
