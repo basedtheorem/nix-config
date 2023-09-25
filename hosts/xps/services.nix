@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   _file = ./services.nix;
 
@@ -8,6 +10,11 @@
     blueman.enable = true;
     fwupd.enable = true;
     gnome.sushi.enable = true;
+
+    udev.packages = with pkgs; [
+      platformio
+      openocd
+    ];
 
     pipewire = {
       enable = true;

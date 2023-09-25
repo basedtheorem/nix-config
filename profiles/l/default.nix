@@ -10,6 +10,7 @@
     ./apps/nnn.nix
     ./apps/micro.nix
     ./apps/firefox.nix
+    ./apps/kakoune.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
@@ -57,6 +58,7 @@
     
     # Desktop
     gifski
+    freetube
     xorg.xset
     xclip
     flameshot
@@ -83,9 +85,10 @@
     playerctl
 
 
-    # Misc
+    # Dev
     dconf2nix
     nix-index
+    
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
