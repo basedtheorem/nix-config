@@ -36,7 +36,7 @@ in
       # -- Behaviour --
       pause = true;
       border = "no";
-      input-ipc-server="~~/socket"; # for kb cmds that playerctl cant handle
+      input-ipc-server="/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
       save-position-on-quit = true;
       resume-playback = false;
       no-keepaspect-window = ""; # breaks paperwm otherwise
