@@ -11,6 +11,7 @@
     ./apps/micro.nix
     ./apps/firefox.nix
     ./apps/kakoune.nix
+    ./apps/yazi.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
