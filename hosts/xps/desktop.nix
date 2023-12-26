@@ -20,6 +20,9 @@
     intel-gpu-tools
     nvtop
     polkit
+    ntfs3g
+    p7zip
+    fuse-7z-ng
 
     # Gnome
     gnome.gnome-tweaks

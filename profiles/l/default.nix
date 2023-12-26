@@ -79,6 +79,7 @@
     syncthing
     vscode-fhs # TODO: make this declarative
     libreoffice
+    woeusb-ng
 
     # Media
     ffmpeg-full
