@@ -26,6 +26,7 @@ in {
       enable = true;
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false;
+      # displayManager.defaultSession = "gnome";
       desktopManager.gnome.enable = true;
     };
 

@@ -78,6 +78,7 @@
     qalculate-gtk
     syncthing
     vscode-fhs # TODO: make this declarative
+    libreoffice
 
     # Media
     ffmpeg-full

@@ -22,16 +22,17 @@
     polkit
 
     # Gnome
-    gnome.gnome-tweaks    
+    gnome.gnome-tweaks
     (graphite-gtk-theme.override {
       themeVariants = [ "all" ];
     })
   ]
   ++ (with pkgs.gnomeExtensions; [
     paperwm # scrolling, tiling wm
-    rounded-window-corners
+    # rounded-window-corners
     another-window-session-manager
     just-perfection # overview tweaks + hide panel
+    emoji-copy
     unite # hide title bars
     pano # clipboard manager
     (callPackage ../../packages/v-shell.nix {}) # vertical shell (update)

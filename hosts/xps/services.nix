@@ -8,7 +8,6 @@
     thermald.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
-    gnome.sushi.enable = true;
 
     pipewire = {
       enable = true;
