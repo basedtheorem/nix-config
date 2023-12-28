@@ -43,3 +43,23 @@ Version: 0.0.4
 Publisher: front-end-captain
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=front-end-captain.leap-vscode-extensions
 ```
+
+#### Inherit
+
+```
+# the line:
+inherit (a) x y;
+# is equivalent to:
+x = a.x; y = a.y;
+```
+
+```
+the snippet:
+let
+  inherit ({ x = 1; y = 2; }) x y;
+in [ x y ]
+# is equivalent to:
+let
+  x = { x = 1; y = 2; }.x;
+  y = { x = 1; y = 2; }.y;
+in [ x y ]
