@@ -1,19 +1,22 @@
-{ self, inputs, withSystem, ... }:
-
-let inherit (inputs.nixpkgs.lib) nixosSystem;
-
+{
+  self,
+  inputs,
+  withSystem,
+  ...
+}: let
+  inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
   _file = ./default.nix;
 
-  flake.nixosConfigurations = {  
-    # Dell XPS-15 9570 (main laptop)
-    xps = withSystem "x86_64-linux" ({ self', ... }: nixosSystem {
-      modules = [
-        { nixpkgs.pkgs = self'.legacyPackages; }
-        ./xps
-        inputs.nixos-hardware.nixosModules.dell-xps-15-9560
-      ]
-      ++ builtins.attrValues self.nixosModules;
-    });    
+  flake.nixosConfigurations = {
+    quartz = withSystem "x86_64-linux" ({self', ...}:
+      nixosSystem {
+        modules =
+          [
+            {nixpkgs.pkgs = self'.legacyPackages;}
+            ./quartz
+          ]
+          ++ builtins.attrValues self.nixosModules;
+      });
   };
 }
