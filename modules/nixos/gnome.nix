@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-let cfg = config.gnome;
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.gnome;
 in {
   _file = ./gnome.nix;
 
@@ -23,10 +26,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.xserver = {
-      enable = true;
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false;
-      # displayManager.defaultSession = "gnome";
       desktopManager.gnome.enable = true;
     };
 
@@ -39,27 +40,27 @@ in {
     ];
 
     environment.gnome = lib.mkIf cfg.minimal {
-    excludePackages =
-      (with pkgs; [
-        gnome-photos
-        gnome-tour
-      ])
-      ++ (with pkgs.gnome; [
-        cheese # webcam tool
-        gnome-music
-        gnome-terminal
-        simple-scan
-        gedit # text editor
-        epiphany # web browser
-        geary # email reader
-        geary
-        evince # document viewer
-        totem # video player
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
-      ]);
+      excludePackages =
+        (with pkgs; [
+          gnome-photos
+          gnome-tour
+          gedit
+        ])
+        ++ (with pkgs.gnome; [
+          cheese # webcam tool
+          gnome-music
+          gnome-terminal
+          simple-scan
+          epiphany # web browser
+          geary # email reader
+          geary
+          evince # document viewer
+          totem # video player
+          tali # poker game
+          iagno # go game
+          hitori # sudoku game
+          atomix # puzzle game
+        ]);
     };
   };
 }

@@ -1,5 +1,16 @@
-pkgs:
+{inputs, ...}: {
+  _file = ./default.nix;
 
-{
-  v-shell = pkgs.callPackage ./v-shell.nix {};
+  perSystem = {
+    system,
+    pkgs,
+    lib,
+    inputs',
+    ...
+  }: {
+    packages = {
+      v-shell = pkgs.callPackage ./v-shell.nix {};
+      swhkd = pkgs.callPackage ./swhkd.nix {};
+    };
+  };
 }
