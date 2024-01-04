@@ -8,60 +8,66 @@
 
     nixpkgs.follows = "unstable";
 
+    parts.url = "github:hercules-ci/flake-parts";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    parts.url = "github:hercules-ci/flake-parts";
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
     home-manager-wsl.url = "github:viperML/home-manager-wsl";
+
+    micro-autofmt = {
+      type = "github";
+      owner = "a11ce";
+      repo = "micro-autofmt";
+      flake = false;
+    };
   };
 
   outputs = inputs:
-    inputs.parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+    inputs.parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
       debug = true;
 
       flake = {
         nixosModules = import ./modules/nixos inputs;
         homeManagerModules = import ./modules/home-manager inputs;
+        lib = import ./lib inputs;
       };
 
-      imports = [
-        ./hosts
-        ./profiles
-        ./lib
-      ];
+      imports = [./hosts ./profiles ./packages];
 
-      perSystem = { pkgs, system, lib, ... }: {
+      perSystem = {
+        pkgs,
+        system,
+        lib,
+        ...
+      }: {
         legacyPackages = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          config.nvidia.acceptLicense = true;
           config.joypixels.acceptLicense = true;
         };
-
-        packages = import ./packages pkgs;
 
         devShells.default = pkgs.mkShell rec {
           name = "dotfiles devenv";
           formatter = pkgs.alejandra;
-          
+
           packages = with pkgs; [
-            alejandra
+            alejandra # formatter
             nil # language server
           ];
-          
+
           shellHook = ''
             echo
             echo Entering NixOS config environment...
-            echo 
-            echo Packages: ${builtins.concatStringsSep ", " (lib.forEach packages lib.getName)}
+            echo
+            echo Packages: ${
+              builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
+            }
           '';
-          
+
           DIRENV_LOG_FORMAT = "";
         };
       };
-  };
+    };
 }
