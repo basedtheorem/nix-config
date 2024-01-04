@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   mpv-unwrapped-updated = pkgs.mpv-unwrapped.overrideAttrs (final: prev: {
     version = "0.36.0";
     src = pkgs.fetchFromGitHub {
@@ -13,11 +11,9 @@ let
 
     # The following fixes `error: cycle detected in build of..`.
     # Source: https://discourse.nixos.org/t/using-overlays-cause-cycle-detected-error-if-modified-mpv-package-is-present-what-could-cause-this/28300
-    outputInclude = [ "out" ];
+    outputInclude = ["out"];
   });
-in 
-
-{
+in {
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {
@@ -32,11 +28,10 @@ in
     };
 
     config = {
-
       # -- Behaviour --
       pause = true;
       border = "no";
-      input-ipc-server="/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
+      input-ipc-server = "/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
       save-position-on-quit = true;
       resume-playback = false;
       no-keepaspect-window = ""; # breaks paperwm otherwise
@@ -79,7 +74,7 @@ in
       # -- On-screen display --
       osc = "no";
       osd-bar = "no";
-      osd-bar-align-y=0.92;
+      osd-bar-align-y = 0.92;
       cursor-autohide = 1500;
       osd-on-seek = "msg";
       osd-duration = 800;
@@ -88,7 +83,6 @@ in
       osd-border-size = 1.5;
       background = "#181818";
     };
-
 
     scriptOpts = {
       osc = {
@@ -107,6 +101,6 @@ in
   xdg.configFile = {
     "mpv/scripts/oscc.lua".source = ../sources/mpv/scripts/oscc;
     "mpv/scripts/seek-show.js".source = ../sources/mpv/scripts/seek-show-position;
-    "mpv/fonts/".source =  ../sources/mpv/fonts;
+    "mpv/fonts/".source = ../sources/mpv/fonts;
   };
 }

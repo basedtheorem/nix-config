@@ -5,10 +5,22 @@
 
     keymap = {
       input.keymap = [
-        { exec = "close"; on = [ "<C-q>" ]; }
-        { exec = "close --submit"; on = [ "<Enter>" ]; }
-        { exec = "escape"; on = [ "<Esc>" ]; }
-        { exec = "backspace"; on = [ "<Backspace>" ]; }
+        {
+          exec = "close";
+          on = ["<C-q>"];
+        }
+        {
+          exec = "close --submit";
+          on = ["<Enter>"];
+        }
+        {
+          exec = "escape";
+          on = ["<Esc>"];
+        }
+        {
+          exec = "backspace";
+          on = ["<Backspace>"];
+        }
       ];
       # manager.keymap = [
       #   { exec = "escape"; on = [ "<Esc>" ]; }

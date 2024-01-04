@@ -13,4 +13,5 @@ in {
       extraSpecialArgs = {inherit inputs;};
       modules = [./l];
     };
+  };
 }
