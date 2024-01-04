@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.pointerCursor = {
     package = pkgs.graphite-cursors;
     name = "Graphite-Cursors";
