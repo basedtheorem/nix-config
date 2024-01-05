@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, lib, ...}: {
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
@@ -8,10 +6,12 @@
     ./apps/vivaldi.nix
     ./apps/mpv.nix
     ./apps/nnn.nix
+    # ./apps/helix.nix
     ./apps/micro.nix
     ./apps/firefox.nix
     ./apps/kakoune.nix
     ./apps/yazi.nix
+    ./apps/kitty.nix
 
     ./desktop/gnome.nix
     ./desktop/cursors.nix
@@ -33,7 +33,7 @@
   home.packages = with pkgs; [
     # Demo
     tere
-  
+
     # CLI
     ripgrep
     skim
@@ -47,7 +47,6 @@
     jq
     wget
     neofetch
-    kitty
     starship
     zoxide
     eza
@@ -56,7 +55,7 @@
     fontpreview
     imagemagick_light
     discord
-    
+
     # Desktop
     gifski
     freetube
@@ -67,12 +66,14 @@
     xbanish
     sxhkd
     chromium
+    lite-xl
     uhk-agent
+    cpu-x
 
     # Apps
     vivaldi-ffmpeg-codecs
     anki
-    obsidian # TODO: put config in HM
+    #obsidian # TODO: put config in HM
     cryptomator
     okular
     qalculate-gtk
@@ -87,11 +88,9 @@
     alsa-utils
     playerctl
 
-
     # Dev
     dconf2nix
     nix-index
-    
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -100,6 +99,11 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  news.display = "silent";
+  news.json = lib.mkForce { };
+  news.entries = lib.mkForce [ ];
+  # disabledModules = [ "misc/news.nix" ];
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -116,6 +120,7 @@
 
   home.sessionVariables = {
     EDITOR = "micro"; # this var only works here for some reason
+    NIXOS_OZONE_WL = "1"; # enable if on wayland
   };
 
   systemd.user.sessionVariables = {
