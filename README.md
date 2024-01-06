@@ -47,14 +47,14 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=front-e
 #### Inherit
 
 ```
-# the line:
+# This line:
 inherit (a) x y;
 # is equivalent to:
 x = a.x; y = a.y;
 ```
 
 ```
-the snippet:
+This snippet:
 let
   inherit ({ x = 1; y = 2; }) x y;
 in [ x y ]
@@ -63,3 +63,8 @@ let
   x = { x = 1; y = 2; }.x;
   y = { x = 1; y = 2; }.y;
 in [ x y ]
+
+```bash
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+# github.com:22 SSH-2.0-babeld-8e18a363
+```
