@@ -4,6 +4,7 @@
     diff-so-fancy.enable = true;
     userEmail = "lrns@proton.me";
     userName = "1rns";
+
     extraConfig = {
       gpg.format = "ssh";
       init.defaultBranch = "dev";

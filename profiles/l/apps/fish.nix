@@ -43,6 +43,11 @@
       unset = "set -e ";
       ed = "micro";
       cpcb = "| xclip -selection clipboard";
+      gitc = "git commit -S ";
+      gitcm = {
+        setCursor = true;
+        expansion = "git commit -S -m '%'";
+      };
     };
 
     plugins = [
