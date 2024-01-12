@@ -22,12 +22,10 @@
       git
       btop
       firefox
-      polkit
-      ntfs3g
-      p7zip
-      fuse-7z-ng
       openrgb-with-all-plugins
       nvtop-amd
+      woeusb-ng # create bootable USB disks from windows ISO images
+      ntfs3g # needed for mkntfs command (woeusb)
 
       # Gnome
       gnome.gnome-tweaks

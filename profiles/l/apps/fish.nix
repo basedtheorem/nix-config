@@ -12,6 +12,7 @@
       bind \b 'backward-kill-word'
       bind \ea 'prevd-or-backward-word'
       bind \ed 'nextd-or-forward-word'
+      bind \e\[1\;5C 'forward-word' 'forward-single-char'
       bind \e\[1\;3C 'forward-word' 'forward-single-char'
       set -x DIRENV_LOG_FORMAT ""
       direnv hook fish | source
