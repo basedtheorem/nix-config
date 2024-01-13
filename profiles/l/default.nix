@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
@@ -62,6 +66,7 @@
     xorg.xset
     xclip
     flameshot
+    gimp
     qbittorrent
     xbanish
     sxhkd
@@ -101,8 +106,8 @@
   ];
 
   news.display = "silent";
-  news.json = lib.mkForce { };
-  news.entries = lib.mkForce [ ];
+  news.json = lib.mkForce {};
+  news.entries = lib.mkForce [];
   # disabledModules = [ "misc/news.nix" ];
 
   home.file = {

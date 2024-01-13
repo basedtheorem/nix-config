@@ -63,7 +63,6 @@
     '';
   };
 }
-
 # # mark/unmark current line (Ctrl-F2)
 # > toggleBookmark
 #
@@ -75,3 +74,4 @@
 #
 # # jump to previous bookmark (Shift-F2)
 # > prevBookmark
+

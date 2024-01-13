@@ -11,16 +11,8 @@
     parts.url = "github:hercules-ci/flake-parts";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager-wsl.url = "github:viperML/home-manager-wsl";
-
-    micro-autofmt = {
-      type = "github";
-      owner = "a11ce";
-      repo = "micro-autofmt";
-      flake = false;
-    };
+    nur.url = github:nix-community/NUR;
   };
 
   outputs = inputs:
