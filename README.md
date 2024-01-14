@@ -35,14 +35,8 @@ reboot
 
 #### TODO
 
-```
-Name: leap-vscode-extensions
-Id: front-end-captain.leap-vscode-extensions
-Description: leap vscode extensions
-Version: 0.0.4
-Publisher: front-end-captain
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=front-end-captain.leap-vscode-extensions
-```
+- [ ] Set SDDM theme resolution to 1440p (by repackaging it).
+  - [ ] Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
 
 #### Inherit
 
@@ -68,3 +62,4 @@ in [ x y ]
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 # github.com:22 SSH-2.0-babeld-8e18a363
 ```
+

@@ -11,6 +11,7 @@
     packages = {
       v-shell = pkgs.callPackage ./v-shell.nix {};
       swhkd = pkgs.callPackage ./swhkd.nix {};
+      lentenrose = pkgs.callPackage ./lentenrose.nix {};
     };
   };
 }

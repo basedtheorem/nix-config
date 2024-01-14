@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+in {
   _file = ./services.nix;
 
   services = {
@@ -20,6 +22,12 @@
     xserver = {
       enable = true;
 
+      displayManager = {
+        sddm.enable = true;
+        sddm.theme = "LentenRose";
+        gdm.enable = false;
+      };
+
       videoDrivers = ["amdgpu"];
 
       layout = "us";
@@ -30,4 +38,9 @@
       };
     };
   };
+  environment.systemPackages = with pkgs; [
+    (callPackage ../../packages/lentenrose.nix {})
+    libsForQt5.qt5.qtgraphicaleffects
+  ];
+
 }
