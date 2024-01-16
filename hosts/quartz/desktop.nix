@@ -12,6 +12,7 @@
 
   programs = {
     fish.enable = true;
+    kdeconnect.enable = true;
   };
 
   environment.shells = [pkgs.fish];
@@ -34,6 +35,7 @@
       })
     ]
     ++ (with pkgs.gnomeExtensions; [
+      gsconnect # KDE connect for gnome
       paperwm # scrolling, tiling wm
       rounded-window-corners
       another-window-session-manager

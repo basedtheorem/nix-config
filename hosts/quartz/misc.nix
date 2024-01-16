@@ -1,7 +1,25 @@
 {pkgs, ...}: {
   _file = ./misc.nix;
-  networking.hostName = "quartz";
-  networking.networkmanager.enable = true;
+
+  networking = {
+    networkmanager.enable = true;
+    hostName = "quartz";
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        } # KDE Connect
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        } # KDE Connect
+      ];
+    };
+  };
 
   #console.font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
   #console.earlySetup = true;
