@@ -42,5 +42,4 @@ in {
     (callPackage ../../packages/lentenrose.nix {})
     libsForQt5.qt5.qtgraphicaleffects
   ];
-
 }

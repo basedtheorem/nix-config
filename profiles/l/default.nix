@@ -66,6 +66,7 @@
     xorg.xset
     xclip
     flameshot
+    freetube
     gimp
     qbittorrent
     xbanish

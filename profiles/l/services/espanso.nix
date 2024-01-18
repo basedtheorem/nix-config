@@ -41,6 +41,10 @@
             replace = "site:stackexchange.com";
           }
           {
+            trigger = "st:so";
+            replace = "site:stackoverflow.com";
+          }
+          {
             trigger = "st:gh";
             replace = "site:github.com";
           }
