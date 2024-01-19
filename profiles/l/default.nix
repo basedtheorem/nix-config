@@ -79,12 +79,11 @@
     # Apps
     vivaldi-ffmpeg-codecs
     anki
-    #obsidian # TODO: put config in HM
+    obsidian # TODO: put config in HM
     cryptomator
     okular
     qalculate-gtk
     syncthing
-    vscode-fhs # TODO: make this declarative
     libreoffice
     woeusb-ng
 

@@ -11,8 +11,10 @@
     parts.url = "github:hercules-ci/flake-parts";
 
     home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
+    nur.follows = "nixpkgs";
   };
 
   outputs = inputs:
@@ -38,6 +40,9 @@
           inherit system;
           config.allowUnfree = true;
           config.joypixels.acceptLicense = true;
+          config.permittedInsecurePackages = [
+            "electron-25.9.0"
+          ];
         };
 
         devShells.default = pkgs.mkShell rec {
