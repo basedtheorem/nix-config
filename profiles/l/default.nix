@@ -11,6 +11,7 @@
     ./apps/mpv.nix
     ./apps/nnn.nix
     # ./apps/helix.nix
+    ./apps/vscodium.nix
     ./apps/micro.nix
     ./apps/firefox.nix
     ./apps/kakoune.nix
