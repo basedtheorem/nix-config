@@ -71,7 +71,6 @@
     gimp
     qbittorrent
     xbanish
-    sxhkd
     chromium
     lite-xl
     uhk-agent
@@ -81,6 +80,7 @@
     vivaldi-ffmpeg-codecs
     anki
     obsidian # TODO: put config in HM
+    logseq # testing
     cryptomator
     okular
     qalculate-gtk

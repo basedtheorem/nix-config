@@ -41,6 +41,7 @@
       another-window-session-manager
       just-perfection # overview tweaks + hide panel
       emoji-copy
+      desktop-clock
       unite # hide title bars
       pano # clipboard manager
       (callPackage ../../packages/v-shell.nix {}) # vertical shell (update)

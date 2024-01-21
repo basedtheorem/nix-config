@@ -11,7 +11,7 @@
   "Ctrl-Alt-R": "ToggleRuler",
   "\u001bctrlshiftz": "Redo",
   "\u001bctrlenter": "EndOfLine,InsertNewline",
-  "\u001bctrlshiftenter": "EndOfLine,InsertNewline,CursorUp,CursorUp",
+  "\u001bctrlshiftenter": "CursorUp,EndOfLine,InsertNewline,CursorDown,EndOfLine",
   "\u001bctrlshifthome": "SelectToStart",
   "\u001bctrlshiftend": "SelectToEnd",
   "Ctrl-Up":    "ScrollUp",

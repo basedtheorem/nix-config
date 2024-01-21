@@ -8,10 +8,8 @@
   hardware = {
     pulseaudio.enable = false;
     keyboard.uhk.enable = true;
+    opengl.enable = true;
   };
-
-  # Enable sound with pipewire.
-  sound.enable = true;
 
   security.rtkit.enable = true;
 

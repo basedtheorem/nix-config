@@ -4,9 +4,7 @@
 
     # tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Dotted --prompt_spacing=Sparse --icons='Few icons' --transient=Yes
     shellInit = ''
-      set NIXPKGS_ALLOW_UNFREE 1
       set -U fish_greeting
-      set NNN_FIFO '/tmp/nnn.fifo'
       zoxide init fish | source
       xset r rate 200 65
       bind \b 'backward-kill-word'
@@ -15,6 +13,7 @@
       bind \e\[1\;5C 'forward-word' 'forward-single-char'
       bind \e\[1\;3C 'forward-word' 'forward-single-char'
       set -x DIRENV_LOG_FORMAT ""
+      export LD_LIBRARY_PATH=$(nix build --print-out-paths --no-link nixpkgs#libGL)/lib
       direnv hook fish | source
       list_dir
     '';
