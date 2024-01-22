@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{...} @ all: {
   _file = ./default.nix;
 
   perSystem = {

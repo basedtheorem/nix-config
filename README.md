@@ -46,6 +46,18 @@ nix-repl> :p output
 /home/l
 ```
 
+##### `self`
+
+```nix
+{
+  outputs = { self }: {
+    a = 1;
+    b = self.a + 1;
+  };
+}
+
+```
+
 ##### Inherit
 
 ```
@@ -68,6 +80,37 @@ let
 in [ x y ]
 ```
 
+#### Module args
+
+```
+// mkFlake args:
+[ "config"
+"flake-parts-lib"
+"inputs"
+"lib"
+"moduleLocation"
+"options"
+"self"
+"specialArgs" ]
+
+
+// mkflake imports args:
+[ "config"
+"flake-parts-lib"
+"inputs"
+"lib"
+"moduleLocation"
+"nixpkgs"
+"options"
+"self"
+"specialArgs" ]
+```
+
+##### .desktop files
+
+> When packages are included in environment.systemPackages, a nixos module for creating the system will look for <pkg>/share/applications/*.desktop paths, and add them to this directory.
+
+Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d4732d36d305d515f20c5caf7fe1961df80/nixos/modules/config/xdg/menus.nix)
 
 #### Style
 

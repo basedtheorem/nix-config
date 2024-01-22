@@ -2,6 +2,7 @@
   self,
   inputs,
   withSystem,
+  lib,
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;

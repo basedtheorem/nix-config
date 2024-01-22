@@ -11,6 +11,8 @@
     ./apps/mpv.nix
     ./apps/nnn.nix
     # ./apps/helix.nix
+    ./apps/spicetify.nix
+    ./apps/discord.nix
     ./apps/vscodium.nix
     ./apps/micro.nix
     ./apps/firefox.nix
@@ -63,6 +65,7 @@
 
     # Desktop
     gifski
+    appeditor
     freetube
     xorg.xset
     xclip
@@ -76,7 +79,6 @@
     uhk-agent
     cpu-x
 
-    # Apps
     vivaldi-ffmpeg-codecs
     anki
     obsidian # TODO: put config in HM

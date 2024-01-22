@@ -15,6 +15,11 @@
 
     nur.url = "github:nix-community/NUR";
     nur.follows = "nixpkgs";
+
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+    darkmatter-discord-theme.url = "github:DiscordStyles/DarkMatter";
+    darkmatter-discord-theme.flake = false;
   };
 
   outputs = inputs:

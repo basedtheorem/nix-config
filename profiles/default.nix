@@ -1,5 +1,6 @@
 {
   self,
+  nixpkgs,
   inputs,
   ...
 }: let
@@ -10,7 +11,9 @@ in {
     l = homeManagerConfiguration {
       pkgs = self.legacyPackages."x86_64-linux";
       extraSpecialArgs = {inherit inputs;};
-      modules = [./l];
+      modules = [
+        ./l
+      ];
     };
   };
 }
