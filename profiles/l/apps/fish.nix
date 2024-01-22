@@ -13,7 +13,6 @@
       bind \e\[1\;5C 'forward-word' 'forward-single-char'
       bind \e\[1\;3C 'forward-word' 'forward-single-char'
       set -x DIRENV_LOG_FORMAT ""
-      export LD_LIBRARY_PATH=$(nix build --print-out-paths --no-link nixpkgs#libGL)/lib
       direnv hook fish | source
       list_dir
     '';

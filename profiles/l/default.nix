@@ -11,6 +11,7 @@
     ./apps/mpv.nix
     ./apps/nnn.nix
     # ./apps/helix.nix
+    ./apps/obsidian.nix
     ./apps/spicetify.nix
     ./apps/discord.nix
     ./apps/vscodium.nix
@@ -65,7 +66,6 @@
 
     # Desktop
     gifski
-    appeditor
     freetube
     xorg.xset
     xclip
@@ -81,7 +81,6 @@
 
     vivaldi-ffmpeg-codecs
     anki
-    obsidian # TODO: put config in HM
     logseq # testing
     cryptomator
     okular
