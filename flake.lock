@@ -1,18 +1,50 @@
 {
   "nodes": {
-    "darkmatter-discord-theme": {
+    "chillax-discord-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1691051787,
-        "narHash": "sha256-4crLhVnpDN2theH9ypTpSM/5XWUc8fcNlbpsfluGdn0=",
-        "owner": "DiscordStyles",
-        "repo": "DarkMatter",
-        "rev": "3fe701e79d89954980c626685943180579337506",
+        "lastModified": 1702789107,
+        "narHash": "sha256-+lRvt6x4fHTnJ7nL9vBAcqL0uG9l7fq83vH1uC7XbpQ=",
+        "owner": "warrayquipsome",
+        "repo": "Chillax",
+        "rev": "24e5078d6620ddfaf40e83cfcc039bdd16e57909",
         "type": "github"
       },
       "original": {
-        "owner": "DiscordStyles",
-        "repo": "DarkMatter",
+        "owner": "warrayquipsome",
+        "repo": "Chillax",
+        "type": "github"
+      }
+    },
+    "fish-peco-todoist": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1584924053,
+        "narHash": "sha256-7rMkpUsgYpryummNMq3YTw2VMWtitL5RMMtUzN1eLA4=",
+        "owner": "ka2n",
+        "repo": "fish-peco_todoist",
+        "rev": "2c321add931f111acae42964dd8ec7224fb28e34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ka2n",
+        "repo": "fish-peco_todoist",
+        "type": "github"
+      }
+    },
+    "fish-tide": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705431753,
+        "narHash": "sha256-xqbG996HFjLHLVkLAqA8sBuhjofVSCbgmnYKK7fKw1o=",
+        "owner": "IlanCosman",
+        "repo": "tide",
+        "rev": "fbca9587ae110b56242944aa9dcdfcca2c47c3e3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "IlanCosman",
+        "repo": "tide",
         "type": "github"
       }
     },
@@ -56,11 +88,11 @@
     },
     "master": {
       "locked": {
-        "lastModified": 1705914704,
-        "narHash": "sha256-NZLxYNqM8NmYa03J5A99gIPaEQf+ZIl2Z+/8F/QGfy4=",
+        "lastModified": 1705954364,
+        "narHash": "sha256-EzqdZNcWjaVaO27E4CJhLg3c1nnxHOEfMmD8D2OCrmI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "18e517662107874602de67a10d2265a021d2e693",
+        "rev": "33d6d8f04f761a99f2b067d84d1eceab75299220",
         "type": "github"
       },
       "original": {
@@ -124,7 +156,9 @@
     },
     "root": {
       "inputs": {
-        "darkmatter-discord-theme": "darkmatter-discord-theme",
+        "chillax-discord-theme": "chillax-discord-theme",
+        "fish-peco-todoist": "fish-peco-todoist",
+        "fish-tide": "fish-tide",
         "home-manager": "home-manager",
         "master": "master",
         "nixpkgs": [

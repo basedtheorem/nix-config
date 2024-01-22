@@ -19,7 +19,7 @@ in {
     ];
 
     xdg.configFile = {
-      "BetterDiscord/themes/DarkMatter.theme.css".source = inputs.darkmatter-discord-theme + "/DarkMatter.theme.css";
+      "BetterDiscord/themes/chillax.theme.css".source = inputs.chillax-discord-theme + "/chillax.theme.css";
     };
   };
 }

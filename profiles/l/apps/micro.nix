@@ -10,8 +10,8 @@
       infobar = false;
       tabstospaces = true;
       tabsize = 2;
-      colorscheme = "solarized-tc-edit";
-      colorcolumn = 80;
+      colorscheme = "simple";
+      # colorcolumn = 80;
       statusformatl = "$(filename) $(modified)| $(col) $(status.paste)";
       statusformatr = "";
       scrollmargin = 6;

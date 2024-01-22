@@ -18,8 +18,13 @@
 
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
-    darkmatter-discord-theme.url = "github:DiscordStyles/DarkMatter";
-    darkmatter-discord-theme.flake = false;
+    chillax-discord-theme.url = "github:warrayquipsome/Chillax";
+    chillax-discord-theme.flake = false;
+
+    fish-peco-todoist.url = "github:ka2n/fish-peco_todoist";
+    fish-peco-todoist.flake = false;
+    fish-tide.url = "github:IlanCosman/tide";
+    fish-tide.flake = false;
   };
 
   outputs = inputs:

@@ -37,13 +37,13 @@
     ++ (with pkgs.gnomeExtensions; [
       gsconnect # KDE connect for gnome
       paperwm # scrolling, tiling wm
+      blur-my-shell
       rounded-window-corners
       another-window-session-manager
       just-perfection # overview tweaks + hide panel
       emoji-copy
-      desktop-clock
       unite # hide title bars
       pano # clipboard manager
-      (callPackage ../../packages/v-shell.nix {}) # vertical shell (update)
+      vertical-workspaces
     ]);
 }

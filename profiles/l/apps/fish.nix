@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   programs.fish = {
     enable = true;
 
@@ -51,18 +51,17 @@
 
     plugins = [
       {
+        name = "fish-peco_todoist";
+        src = inputs.fish-peco-todoist;
+      }
+      {
         name = "tide";
-        src = pkgs.fetchFromGitHub {
-          owner = "IlanCosman";
-          repo = "tide";
-          rev = "f798c2a1eb3147d50957d4dceae76f06a7a57bd0";
-          sha256 = "sha256-PMpFK8KQkS/BL18jktnkVT5otgmOeWC4HHA57xjn/WI=";
-        };
+        src = inputs.fish-tide;
       }
     ];
 
     functions = {
-      jot = "echo $argv >> ~/Sync/notes/Jot.md";
+      jot = "echo $argv >> ~/nome/Jot.md";
 
       list_dir = {
         body = "if status --is-interactive; echo ''; eza -F; end;";

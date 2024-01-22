@@ -61,11 +61,13 @@
     ranger
     glow
     fontpreview
+    peco
     imagemagick_light
     discord
 
     # Desktop
     gifski
+    planify
     freetube
     xorg.xset
     xclip
