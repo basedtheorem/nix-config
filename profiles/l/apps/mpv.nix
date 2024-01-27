@@ -81,7 +81,7 @@ in {
       osd-status-msg = "\${playback-time} | \${percent-pos}%";
       osd-font-size = 28;
       osd-border-size = 1.5;
-      background = "#181818";
+      background = "#000000";
     };
 
     scriptOpts = {

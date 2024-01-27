@@ -129,4 +129,14 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 
 - [ ] Set SDDM theme resolution to 1440p (by repackaging it).
   - [ ] Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
-
+- [ ] Keybinds
+  - [x] ctrl down moves view down
+  - [x] ctrl shift down dupes cursor
+  - [x] alt shift down dupes lines
+  - [x] ctrl shift left selects word
+  - [x] alt n dupe matches
+  - [ ] ctrl shift pgdown null in micro, selects eof obs vsc
+  - [ ] shift pgdown null in micro, selects pgdown obs vscode
+  - [ ] navigate cursor history obs mc vsc
+  - [ ] ctrl alt down null in all
+  - [ ] sort uhk delete key

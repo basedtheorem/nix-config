@@ -24,7 +24,7 @@
     "terminal.integrated.fontFamily": "monospace",
     "workbench.colorTheme": "functional-purple-darker",
     "workbench.colorCustomizations": {
-        "editorIndentGuide.activeBackground": "#eb345c",
+        "editorIndentGuide.activeBackground1": "#eb345c",
         "statusBar.noFolderBackground" : "#212121",
         "statusBar.debuggingBackground": "#263238"
     },

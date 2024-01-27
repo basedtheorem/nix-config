@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+p",
@@ -53,10 +52,6 @@
     {
         "key": "ctrl+pageup",
         "command": "-workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+pagedown",
-        "command": "-workbench.action.nextEditor"
     },
     {
         "key": "ctrl+e",
@@ -115,16 +110,8 @@
         "command": "-workbench.action.showAllSymbols"
     },
     {
-        "key": "ctrl+tab",
-        "command": "workbench.action.nextEditorInGroup"
-    },
-    {
         "key": "ctrl+k ctrl+pagedown",
         "command": "-workbench.action.nextEditorInGroup"
-    },
-    {
-        "key": "ctrl+shift+tab",
-        "command": "workbench.action.previousEditorInGroup"
     },
     {
         "key": "ctrl+k ctrl+pageup",
@@ -155,17 +142,12 @@
         "command": "workbench.action.toggleActivityBarVisibility"
     },
     {
-        "key": "browserback",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
         "key": "ctrl+alt+-",
         "command": "-workbench.action.navigateBack",
         "when": "canNavigateBack"
     },
     {
-        "key": "browserforward",
+        "key": "alt+right",
         "command": "workbench.action.navigateForward",
         "when": "canNavigateForward"
     },
@@ -294,19 +276,19 @@
         "command": "-workbench.action.moveEditorToPreviousGroup"
     },
     {
-        "key": "ctrl+alt+left",
+        "key": "shift+alt+meta+2",
         "command": "workbench.action.moveEditorToLeftGroup"
     },
     {
-        "key": "ctrl+alt+up",
+        "key": "shift+alt+meta+1",
         "command": "workbench.action.moveEditorToAboveGroup"
     },
     {
-        "key": "ctrl+alt+down",
+        "key": "shift+alt+meta+3",
         "command": "workbench.action.moveEditorToBelowGroup"
     },
     {
-        "key": "ctrl+alt+right",
+        "key": "shift+alt+meta+4",
         "command": "workbench.action.moveEditorToRightGroup"
     },
     {
@@ -314,19 +296,19 @@
         "command": "-workbench.action.focusAboveGroup"
     },
     {
-        "key": "ctrl+shift+up",
+        "key": "alt+meta+1",
         "command": "workbench.action.focusAboveGroup"
     },
     {
-        "key": "ctrl+shift+down",
+        "key": "alt+meta+3",
         "command": "workbench.action.focusBelowGroup"
     },
     {
-        "key": "ctrl+shift+left",
+        "key": "alt+meta+2",
         "command": "workbench.action.focusLeftGroup"
     },
     {
-        "key": "ctrl+shift+right",
+        "key": "alt+meta+4",
         "command": "workbench.action.focusRightGroup"
     },
     {
@@ -361,5 +343,85 @@
     {
         "key": "shift+alt+pageup",
         "command": "editor.action.addCursorsToTop"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditorInGroup"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "workbench.action.lastEditorInGroup"
+    },
+    {
+        "key": "ctrl+9",
+        "command": "-workbench.action.lastEditorInGroup"
+    },
+    {
+        "key": "alt+left",
+        "command": "-workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "alt+right",
+        "command": "-workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "workbench.action.quickOpenLeastRecentlyUsedEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
+    },
+    {
+        "key": "ctrl+alt+meta+3",
+        "command": "workbench.action.moveActiveEditorGroupDown"
+    },
+    {
+        "key": "ctrl+k down",
+        "command": "-workbench.action.moveActiveEditorGroupDown"
+    },
+    {
+        "key": "ctrl+alt+meta+2",
+        "command": "workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+k left",
+        "command": "-workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+alt+meta+4",
+        "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+k right",
+        "command": "-workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+alt+meta+1",
+        "command": "workbench.action.moveActiveEditorGroupUp"
+    },
+    {
+        "key": "ctrl+k up",
+        "command": "-workbench.action.moveActiveEditorGroupUp"
     }
 ]

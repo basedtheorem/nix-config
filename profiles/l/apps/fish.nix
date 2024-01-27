@@ -38,6 +38,7 @@
       lg = "lazygit";
       fzf = "sk";
       jt = "jot ' -";
+      code = "codium";
       jot = "jot ' -";
       unset = "set -e ";
       ed = "micro";
@@ -61,7 +62,7 @@
     ];
 
     functions = {
-      jot = "echo $argv >> ~/nome/Jot.md";
+      jot = "echo $argv >> ~/nome/Scratchpad.md";
 
       list_dir = {
         body = "if status --is-interactive; echo ''; eza -F; end;";

@@ -47,6 +47,7 @@
     skim
     file
     fd
+    git-filter-repo
     socat # pass cmds to mpv socket
     tealdeer
     delta
@@ -83,7 +84,6 @@
 
     vivaldi-ffmpeg-codecs
     anki
-    logseq # testing
     cryptomator
     okular
     qalculate-gtk
