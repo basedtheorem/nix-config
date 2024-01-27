@@ -65,7 +65,6 @@
     fontpreview
     peco
     imagemagick_light
-    discord
 
     # Desktop
     gifski
