@@ -14,7 +14,6 @@
       bind \e\[1\;3C 'forward-word' 'forward-single-char'
       set -x DIRENV_LOG_FORMAT ""
       direnv hook fish | source
-      list_dir
     '';
 
     shellAbbrs = {
@@ -37,13 +36,19 @@
       cd = "z";
       lg = "lazygit";
       fzf = "sk";
-      jt = "jot ' -";
       code = "codium";
-      jot = "jot ' -";
       unset = "set -e ";
       ed = "micro";
       cpcb = "| xclip -selection clipboard";
       gitc = "git commit -S ";
+      jt = {
+        setCursor = true;
+        expansion = "jot ' - [ ] %'";
+      };
+      jot = {
+        setCursor = true;
+        expansion = "jot ' - [ ] %'";
+      };
       gitcm = {
         setCursor = true;
         expansion = "git commit -S -m '%'";
@@ -62,8 +67,9 @@
     ];
 
     functions = {
-      jot = "echo $argv >> ~/nome/Scratchpad.md";
+      jot = "echo $argv >> ~/notes/Scratch.md";
 
+      # List files in CWD when changing dirs.
       list_dir = {
         body = "if status --is-interactive; echo ''; eza -F; end;";
         onVariable = "PWD";

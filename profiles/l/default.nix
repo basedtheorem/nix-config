@@ -22,6 +22,7 @@
     ./apps/kitty.nix
 
     ./desktop/gnome.nix
+    ./desktop/flatpak.nix
     ./desktop/cursors.nix
 
     ./services/picom.nix

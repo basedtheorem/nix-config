@@ -25,6 +25,8 @@
     fish-peco-todoist.flake = false;
     fish-tide.url = "github:IlanCosman/tide";
     fish-tide.flake = false;
+
+    flatpak.url = "github:GermanBread/declarative-flatpak/stable";
   };
 
   outputs = inputs:

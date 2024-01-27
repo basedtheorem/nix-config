@@ -14,7 +14,7 @@
         matches = [
           {
             trigger = ":now";
-            replace = "It's {{currentdate}} {{currenttime}}";
+            replace = "{{currentdate}} {{currenttime}}";
           }
           {
             trigger = ":eg";

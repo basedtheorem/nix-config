@@ -38,10 +38,8 @@
       gsconnect # KDE connect for gnome
       paperwm # scrolling, tiling wm
       blur-my-shell
-      rounded-window-corners
-      another-window-session-manager
       just-perfection # overview tweaks + hide panel
-      emoji-copy
+      smile-complementary-extension
       unite # hide title bars
       pano # clipboard manager
       vertical-workspaces

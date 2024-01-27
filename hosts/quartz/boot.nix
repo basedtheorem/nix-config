@@ -9,6 +9,7 @@
 
   boot = {
     initrd.kernelModules = ["amdgpu"];
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = true;
       timeout = 0; # Hold shift during boot for disaster recovery.

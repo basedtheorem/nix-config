@@ -8,6 +8,7 @@ in {
     thermald.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
+    flatpak.enable = true;
     hardware.openrgb.enable = true;
     hardware.openrgb.motherboard = "amd";
 
