@@ -6,7 +6,7 @@
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
-    ./apps/lazygit.nix
+    ./apps/gitui.nix
     ./apps/vivaldi.nix
     ./apps/mpv.nix
     ./apps/nnn.nix
@@ -45,9 +45,19 @@
 
     # CLI
     ripgrep
-    skim
+    grex # generate regex
+    bat-extras.batgrep
+    procs # ps alt
+    dua # disk usage
+    tokei # sloc
+    sd # sed
+    skim # fzf
+    hyperfine # benchmarking tool
     file
     fd
+    onefetch # neofetch but for git repos
+    btop # system monitor
+    bandwhich # display network utilisation
     git-filter-repo
     socat # pass cmds to mpv socket
     tealdeer
@@ -64,11 +74,14 @@
     glow
     fontpreview
     peco
-    imagemagick_light
+    sic-image-cli
+    broot # interactive tree
+    kalker
 
     # Desktop
     gifski
     planify
+    gcolor3 # colour picker
     freetube
     xorg.xset
     xclip
@@ -98,7 +111,8 @@
     playerctl
 
     # Dev
-    dconf2nix
+    just
+    xorg.xev
     nix-index
 
     # # You can also create simple shell scripts directly inside your
@@ -108,6 +122,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs = {
+    direnv.enable = true;
+    direnv.nix-direnv.enable = true;
+    home-manager.enable = true;
+  };
 
   news.display = "silent";
   news.json = lib.mkForce {};
@@ -136,11 +156,6 @@
     NIXPKGS_ALLOW_UNFREE = 1;
   };
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-
   xsession.enable = true;
   systemd.user.startServices = true; # fixes warning: 'systemd user session is degraded'
-
-  programs.home-manager.enable = true;
 }

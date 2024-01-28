@@ -8,59 +8,76 @@
 
     settings = {
       infobar = false;
-      tabstospaces = true;
+      tabstospaces = false;
       tabsize = 2;
-      colorscheme = "simple";
+      colorscheme = "twilight-edit";
       # colorcolumn = 80;
-      statusformatl = "$(filename) $(modified)| $(col) $(status.paste)";
-      statusformatr = "";
+      statusformatl = "";
+      statusformatr = "$(filename) $(modified)| $(line):$(col) $(status.paste)";
+      statusline = true;
       scrollmargin = 6;
-      diffgutter = true;
+      diffgutter = false;
+      ruler = false;
       hlsearch = true;
       mkparents = true;
+      multiopen = "hsplit";
       mouse = true;
       parsecursor = true;
       autoclose = true;
       rmtrailingws = true;
       savecursor = true;
       saveundo = true;
+      keepautoindent = true;
+      indentchar = "⇥";
       scrollbar = true;
+      scrollbarchar = ".";
     };
   };
 
   xdg.configFile = {
     "micro/bindings.json".source = ../sources/micro/bindings;
+    # True-colour colour schemes with transparency.
+    "micro/colorschemes/twilight-edit.micro".text = ''
+      color-link default "#F8F8F8," #
+      color-link constant.specialChar "#DDF2A4" #
+      color-link constant "#af3232" #
+      color-link constant.number "c06c51" #
+      color-link constant.string "#ab6767" #
+      color-link current-line-number "#868686,#1B1B1B" #
+      color-link cursor-line "#1B1B1B" #
+      color-link scrollbar "#681900," #
+      color-link indent-char "#343434" #
+      color-link statusline "#515151," #
+      color-link comment "#5F5A60"
+      color-link color-column "#1B1B1B"
+      color-link divider "#1E1E1E"
+      color-link error "#D2A8A1"
+      color-link diff-added "#00AF00"
+      color-link diff-modified "#FFAF00"
+      color-link diff-deleted "#D70000"
+      color-link gutter-error "#9B859D"
+      color-link gutter-warning "#9B859D"
+      color-link hlsearch "#141414,#FFB2B2"
+      color-link identifier "#9B703F"
+      color-link identifier.class "#DAD085"
+      color-link identifier.var "#7587A6"
+      color-link line-number "#868686,#1B1B1B"
+      color-link current-line-number "#868686,#141414"
+      color-link preproc "#E0C589"
+      color-link special "#E0C589"
+      color-link symbol.brackets "#F8F8F8"
 
-    "micro/colorschemes/solarized-tc-edit.micro".text = ''
-      # Solarized without the background theme.
-      color-link comment "#586E75,#002833"
-      color-link identifier "#268BD2,#002833"
-      color-link constant "#2AA198,#002833"
-      color-link constant.specialChar "#DC322F,#002833"
-      color-link statement "#859900,#002833"
-      color-link symbol "#859900,#002833"
-      color-link preproc "#CB4B16,#002833"
-      color-link type "#B58900,#002833"
-      color-link special "#268BD2,#002833"
-      color-link underlined "#D33682,#002833"
-      color-link error "bold #CB4B16,#002833"
-      color-link todo "bold #D33682,#002833"
-      color-link hlsearch "#002833,#B58900"
-      color-link statusline "#586E75,"
-      color-link tabbar "#003541,#839496"
-      color-link indent-char "#003541,#002833"
-      color-link line-number "#586E75,"
-      color-link current-line-number "#586E75,"
-      color-link diff-added "#3e943e"
-      color-link diff-modified "#47b1b5"
-      color-link diff-deleted "#944040"
-      color-link gutter-error "#003541,#CB4B16"
-      color-link gutter-warning "#CB4B16,#002833"
-      color-link cursor-line "#1e2842"
-      color-link color-column "#003541"
-      color-link type.extended "#839496,#002833"
-      color-link symbol.brackets "#839496,#002833"
-      color-link scrollbar "000510,"
+      color-link statement "#CC5E5F"
+      color-link symbol "#CC5E5F"
+      color-link symbol.operator "#CC5E5F"
+      color-link symbol.tag "#CC5E5F"
+      color-link type "#CC5E5F"
+      color-link type.keyword "#CC5E5F"
+
+      color-link tabbar "#F2F0EC,#2D2D2D"
+      color-link todo "#8B98AB"
+      color-link underlined "#8996A8"
+
     '';
   };
 }

@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   imports = [
     inputs.flatpak.homeManagerModules.default
   ];
@@ -12,7 +11,6 @@
   };
 
   services.flatpak.packages = [
-      "flathub:app/it.mijorus.smile//stable"
-    ];
-
+    "flathub:app/it.mijorus.smile//stable"
+  ];
 }

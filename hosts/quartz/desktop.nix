@@ -21,7 +21,6 @@
     [
       micro
       git
-      btop
       firefox
       openrgb-with-all-plugins
       nvtop-amd
