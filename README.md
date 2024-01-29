@@ -124,6 +124,7 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 [noogle.dev](https://noogle.dev)
 [NixOS Search](https://search.nixos.org/packages?channel=unstable)
 [Zero to Nix](https://zero-to-nix.com)
+[Kernel Modules](https://web.archive.org/web/20240129074852/https://gist.github.com/CMCDragonkai/810f78ee29c8fce916d072875f7e1751)
 
 #### TODO
 

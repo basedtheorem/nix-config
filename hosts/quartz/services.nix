@@ -21,15 +21,13 @@ in {
 
     xserver = {
       enable = true;
+      # videoDrivers = ["amdgpu"];
 
       displayManager = {
         sddm.enable = true;
         sddm.theme = "LentenRose";
         gdm.enable = false;
-        setupCommands = "xrandr --output HDMI-A-0 --off";
       };
-
-      videoDrivers = ["amdgpu"];
 
       layout = "us";
       xkbVariant = "";

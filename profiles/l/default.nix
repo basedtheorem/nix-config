@@ -77,6 +77,8 @@
     sic-image-cli
     broot # interactive tree
     kalker
+    p7zip
+    difftastic
 
     # Desktop
     gifski
