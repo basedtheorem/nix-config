@@ -1,16 +1,19 @@
 {
   pkgs,
   config,
+  inputs,
   ...
-}: {
+}:
+{
   _file = ./boot.nix;
 
   fileSystems."/boot".options = ["umask=0077"]; # Removes permissions and security warnings.
 
   boot = {
-    # initrd.kernelModules = ["amdgpu"];
+    initrd.kernelModules = ["amdgpu"];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # TODO: https://nixpk.gs/pr-tracker.html?pr=284487
+    kernelPackages = inputs.master.legacyPackages.${pkgs.system}.linuxPackages_latest;
 
     loader = {
       efi.canTouchEfiVariables = true;

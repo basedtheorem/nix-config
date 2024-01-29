@@ -12,6 +12,7 @@ in {
   flake.nixosConfigurations = {
     quartz = withSystem "x86_64-linux" ({self', ...}:
       nixosSystem {
+        specialArgs = {inherit inputs;};
         modules =
           [
             {nixpkgs.pkgs = self'.legacyPackages;}
