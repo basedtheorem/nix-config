@@ -36,7 +36,7 @@
 
   xdg.configFile = {
     "micro/bindings.json".source = ../sources/micro/bindings;
-    # True-colour colour schemes with transparency.
+    # Modified colour scheme with transparency.
     "micro/colorschemes/twilight-edit.micro".text = ''
       color-link default "#F8F8F8," #
       color-link constant.specialChar "#DDF2A4" #

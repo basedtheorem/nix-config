@@ -72,11 +72,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1706432390,
-        "narHash": "sha256-xN/4UF4hbQRWp7S27tFkndfmUOkaV8a4HhwPmHoHK5U=",
+        "lastModified": 1706601106,
+        "narHash": "sha256-wnyggfUkueOkAYw08HQEqUKCVaiaUZqmHibroXx5Ghs=",
         "owner": "GermanBread",
         "repo": "declarative-flatpak",
-        "rev": "8169022bd214fa7f2f3a15d900ada5c109ac3b1d",
+        "rev": "16817f92d77c3f2246443e2bcb2cee9be1701a40",
         "type": "github"
       },
       "original": {
@@ -93,11 +93,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706435589,
-        "narHash": "sha256-yhEYJxMv5BkfmUuNe4QELKo+V5eq1pwhtVs6kEziHfE=",
+        "lastModified": 1706473109,
+        "narHash": "sha256-iyuAvpKTsq2u23Cr07RcV5XlfKExrG8gRpF75hf1uVc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "4d54c29bce71f8c261513e0662cc573d30f3e33e",
+        "rev": "d634c3abafa454551f2083b054cd95c3f287be61",
         "type": "github"
       },
       "original": {
@@ -106,13 +106,29 @@
         "type": "github"
       }
     },
+    "kitty-grab": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677934962,
+        "narHash": "sha256-k36WSbYw6Kfuy6iaD3QN6dFegR3MwQp0hSHJjidStIc=",
+        "owner": "yurikhan",
+        "repo": "kitty_grab",
+        "rev": "8e550df645333b81400ac2cbeb3131412dd2fda5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yurikhan",
+        "repo": "kitty_grab",
+        "type": "github"
+      }
+    },
     "master": {
       "locked": {
-        "lastModified": 1706550327,
-        "narHash": "sha256-RAv3AjdL3BZWBS3M/Kq9tiBsbu8oGuvtAdKDrddvBXM=",
+        "lastModified": 1706603668,
+        "narHash": "sha256-a3oovxEAUOjKbQ3Wz5kUINNtEbOd3Lpn6T055lL7Nuo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fa11d3130a5d757a4ff5d39c458409a95565e126",
+        "rev": "dbbcf3e28c92309cc7e8d6a3878010e86c7a360b",
         "type": "github"
       },
       "original": {
@@ -177,11 +193,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1704982712,
-        "narHash": "sha256-2Ptt+9h8dczgle2Oo6z5ni5rt/uLMG47UFTR1ry/wgg=",
+        "lastModified": 1706569497,
+        "narHash": "sha256-oixb0IDb5eZYw6BaVr/R/1pSoMh4rfJHkVnlgeRIeZs=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "07f6395285469419cf9d078f59b5b49993198c00",
+        "rev": "60c614008eed1d0383d21daac177a3e036192ed8",
         "type": "github"
       },
       "original": {
@@ -197,6 +213,7 @@
         "fish-tide": "fish-tide",
         "flatpak": "flatpak",
         "home-manager": "home-manager",
+        "kitty-grab": "kitty-grab",
         "master": "master",
         "nixpkgs": [
           "unstable"

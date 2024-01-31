@@ -15,10 +15,10 @@
       };
 
       defaultFonts = {
-        serif = ["Readex Pro" "Symbols Nerd Font Mono"];
-        sansSerif = ["Readex Pro" "Symbols Nerd Font Mono"];
+        serif = ["Source Serif" "Symbols Nerd Font Mono"];
+        sansSerif = ["" "Symbols Nerd Font Mono"];
         monospace = ["M PLUS 1 Code" "Symbols Nerd Font Mono"];
-        emoji = ["JoyPixels" "OpenMoji Black" "EmojiOne Color" "Twitter Color Emoji"];
+        emoji = ["OpenMoji Black" "EmojiOne Color" "Twitter Color Emoji"];
       };
     };
 
@@ -35,7 +35,6 @@
       })
 
       mononoki
-      joypixels
       ankacoder
       google-fonts
       twitter-color-emoji

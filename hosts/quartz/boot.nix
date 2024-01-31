@@ -3,8 +3,7 @@
   config,
   inputs,
   ...
-}:
-{
+}: {
   _file = ./boot.nix;
 
   fileSystems."/boot".options = ["umask=0077"]; # Removes permissions and security warnings.

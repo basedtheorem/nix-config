@@ -26,6 +26,9 @@
     fish-tide.url = "github:IlanCosman/tide";
     fish-tide.flake = false;
 
+    kitty-grab.url = "github:yurikhan/kitty_grab";
+    kitty-grab.flake = false;
+
     flatpak.url = "github:GermanBread/declarative-flatpak/stable";
   };
 
@@ -48,28 +51,16 @@
         lib,
         ...
       }: {
-        legacyPackages = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          config.joypixels.acceptLicense = true;
-          config.permittedInsecurePackages = [
-            "electron-25.9.0"
-          ];
-        };
-
         devShells.default = pkgs.mkShell rec {
           name = "dotfiles devenv";
           formatter = pkgs.alejandra;
 
           packages = with pkgs; [
-            alejandra # formatter
-            nil # language server
+            alejandra # Formatter
+            nil # Language server
           ];
 
           shellHook = ''
-            echo
-            echo Entering NixOS config environment...
-            echo
             echo Packages: ${
               builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
             }

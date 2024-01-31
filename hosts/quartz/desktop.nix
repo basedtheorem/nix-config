@@ -15,7 +15,7 @@
     kdeconnect.enable = true;
   };
 
-  environment.shells = [pkgs.fish];
+  environment.shells = [pkgs.fish pkgs.nushell];
 
   environment.systemPackages = with pkgs;
     [
@@ -34,10 +34,10 @@
       })
     ]
     ++ (with pkgs.gnomeExtensions; [
-      gsconnect # KDE connect for gnome
+      # gsconnect # KDE connect for gnome
       paperwm # scrolling, tiling wm
-      blur-my-shell
-      just-perfection # overview tweaks + hide panel
+      # blur-my-shell
+      # just-perfection # overview tweaks + hide panel
       smile-complementary-extension
       unite # hide title bars
       pano # clipboard manager

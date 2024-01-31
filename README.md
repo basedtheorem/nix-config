@@ -4,6 +4,8 @@
 
 ##### Trace
 
+#self.packages.${pkgs.system}.advcp
+
 ```nix
 # For use with nix repl after loading the flake.
 parts.lib.mkFlake { ... }: {
@@ -119,6 +121,12 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 - Avoid eliding the config attribute
   - I.e. if you define any options, always nest them underneath the config attribute.
 
+#### Important keybinds
+
+- kitty
+  - `ctrl+shift+p` - previous scrollback
+  - `ctrl+shift+h` - browse scrollback in less
+
 #### References
 
 [noogle.dev](https://noogle.dev)
@@ -130,12 +138,17 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 
 - [ ] Set SDDM theme resolution to 1440p (by repackaging it).
   - [ ] Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
+- [ ] get better history pager
+- [ ] fix syntax highlighting micro nix
+- [ ] viv
 - [ ] Keybinds
   - [x] ctrl down moves view down
   - [x] ctrl shift down dupes cursor
   - [x] alt shift down dupes lines
   - [x] ctrl shift left selects word
   - [x] alt n dupe matches
+  - [ ] resize wins
+  - [ ] indent lines using tab vsc ffs why isnt it default
   - [ ] ctrl shift pgdown null in micro, selects eof obs vsc
   - [ ] shift pgdown null in micro, selects pgdown obs vscode
   - [ ] navigate cursor history obs mc vsc

@@ -10,7 +10,7 @@
 
     matches = {
       base = {
-        backend = "Auto"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
+        backend = "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
         matches = [
           {
             trigger = ":now";

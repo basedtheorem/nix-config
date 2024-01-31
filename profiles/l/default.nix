@@ -134,15 +134,9 @@
   news.display = "silent";
   news.json = lib.mkForce {};
   news.entries = lib.mkForce [];
-  # disabledModules = [ "misc/news.nix" ];
 
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
@@ -150,8 +144,8 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "micro"; # this var only works here for some reason
-    NIXOS_OZONE_WL = "1"; # enable if on wayland
+    EDITOR = "micro";
+    # NIXOS_OZONE_WL = "1"; # #TODO: auto enable if on wayland
   };
 
   systemd.user.sessionVariables = {

@@ -2,6 +2,18 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions;
+      [
+        bbenoist.nix
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "rainglow";
+          publisher = "daylerees";
+          version = "1.5.2";
+          sha256 = "sha256-1c/xQYnuJ3BkwfqjMeT2kG1ZsXyjEOypJs0pJbouZMQ=";
+        }
+      ];
     keybindings = [
       {
         "key" = "ctrl+p";

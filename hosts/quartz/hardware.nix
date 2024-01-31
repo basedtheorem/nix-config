@@ -8,7 +8,12 @@
   hardware = {
     pulseaudio.enable = false;
     keyboard.uhk.enable = true;
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        amdvlk
+      ];
+    };
   };
 
   security.rtkit.enable = true;

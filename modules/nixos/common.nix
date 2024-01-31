@@ -1,6 +1,8 @@
 {lib, ...}: {
   _file = ./common.nix;
 
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
+
   # Sets `/etc/nix/nix.conf`.
   nix = {
     extraOptions = lib.mkDefault ''

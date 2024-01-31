@@ -1,7 +1,6 @@
 {
   self,
   inputs,
-  withSystem,
   lib,
   ...
 }: let
@@ -10,15 +9,14 @@ in {
   _file = ./default.nix;
 
   flake.nixosConfigurations = {
-    quartz = withSystem "x86_64-linux" ({self', ...}:
-      nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules =
-          [
-            {nixpkgs.pkgs = self'.legacyPackages;}
-            ./quartz
-          ]
-          ++ builtins.attrValues self.nixosModules;
-      });
+    quartz = nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules =
+        [
+          ./quartz
+        ]
+        ++ builtins.attrValues self.nixosModules;
+    };
   };
 }

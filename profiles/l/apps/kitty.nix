@@ -1,3 +1,5 @@
+{inputs, ...}:
+
 {
   programs.kitty = {
     enable = true;
@@ -11,4 +13,6 @@
 
     extraConfig = builtins.readFile ../sources/kitty.conf;
   };
+
+  xdg.configFile."kitty/kitty_grab".source = inputs.kitty-grab.outPath;
 }

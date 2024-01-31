@@ -1,6 +1,9 @@
-{pkgs, ...}: let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-in {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   _file = ./services.nix;
 
   services = {
@@ -21,11 +24,14 @@ in {
 
     xserver = {
       enable = true;
-      # videoDrivers = ["amdgpu"];
+      videoDrivers = ["amdgpu"];
 
       displayManager = {
-        sddm.enable = true;
-        sddm.theme = "LentenRose";
+        sddm = {
+          enable = true;
+          theme = "where_is_my_sddm_theme";
+        };
+        defaultSession = "gnome";
         gdm.enable = false;
       };
 
@@ -37,8 +43,12 @@ in {
       };
     };
   };
-  environment.systemPackages = with pkgs; [
-    (callPackage ../../packages/lentenrose.nix {})
-    libsForQt5.qt5.qtgraphicaleffects
+  environment.systemPackages = [
+    (pkgs.where-is-my-sddm-theme.override {
+      themeConfig.General = {
+        passwordCharacter = "∗";
+        cursorColor = "random";
+      };
+    })
   ];
 }
