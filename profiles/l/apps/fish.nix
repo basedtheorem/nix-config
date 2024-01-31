@@ -34,12 +34,13 @@
       loc = "tokei";
       time = "hyperfine";
 
-      dots = "cd ~/dots/";
-      hm = "cd ~/dots/home-manager";
-      home = "cd ~/dots/home-manager";
-      os = "cd ~/dots/os/";
-      apps = "~/dots/home-manager/apps/";
-      trash = "cd ~/trash";
+      dots = "cd ~/nome/";
+      hm = "cd ~/nome/home-manager";
+      home = "cd ~/nome/home-manager";
+      nome = "cd ~/nome";
+      os = "cd ~/nome/hosts/quartz/";
+      apps = "~/nome/home-manager/apps/";
+      trash = "cd ~/Trash";
       srm = "sudo rm";
       srmr = "sudo rm -r";
       sued = "sudo ed";

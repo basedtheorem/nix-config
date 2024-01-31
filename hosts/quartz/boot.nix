@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }: {
   _file = ./boot.nix;
@@ -11,8 +10,7 @@
   boot = {
     initrd.kernelModules = ["amdgpu"];
 
-    # TODO: https://nixpk.gs/pr-tracker.html?pr=284487
-    kernelPackages = inputs.master.legacyPackages.${pkgs.system}.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
       efi.canTouchEfiVariables = true;

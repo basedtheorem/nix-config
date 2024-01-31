@@ -8,7 +8,7 @@
 
     settings = {
       infobar = false;
-      tabstospaces = false;
+      tabstospaces = true;
       tabsize = 2;
       colorscheme = "twilight-edit";
       # colorcolumn = 80;

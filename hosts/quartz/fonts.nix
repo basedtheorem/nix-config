@@ -15,10 +15,10 @@
       };
 
       defaultFonts = {
-        serif = ["Source Serif" "Symbols Nerd Font Mono"];
-        sansSerif = ["" "Symbols Nerd Font Mono"];
-        monospace = ["M PLUS 1 Code" "Symbols Nerd Font Mono"];
-        emoji = ["OpenMoji Black" "EmojiOne Color" "Twitter Color Emoji"];
+        serif = ["EB Garamond" "Symbols Nerd Font Mono"];
+        sansSerif = ["Questrial" "Symbols Nerd Font Mono"];
+        monospace = ["Iosevka Comfy" "Symbols Nerd Font Mono"];
+        emoji = ["Twitter Color Emoji"];
       };
     };
 

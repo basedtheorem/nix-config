@@ -27,6 +27,7 @@
 
     ./services/picom.nix
     ./services/espanso.nix
+    ./services/ulauncher.nix
     ./services/syncthing.nix
     ./services/flameshot.nix
     ./services/xbanish.nix
@@ -85,6 +86,7 @@
     planify
     gcolor3 # colour picker
     freetube
+    bitwarden
     xorg.xset
     xclip
     flameshot

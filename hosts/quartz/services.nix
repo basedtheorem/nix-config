@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   _file = ./services.nix;
 
   services = {
@@ -47,7 +46,7 @@
     (pkgs.where-is-my-sddm-theme.override {
       themeConfig.General = {
         passwordCharacter = "∗";
-        cursorColor = "random";
+        cursorColor = "#FFFFFF";
       };
     })
   ];

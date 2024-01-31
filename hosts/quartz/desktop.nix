@@ -12,7 +12,7 @@
 
   programs = {
     fish.enable = true;
-    kdeconnect.enable = true;
+    kdeconnect.enable = false;
   };
 
   environment.shells = [pkgs.fish pkgs.nushell];
@@ -34,13 +34,13 @@
       })
     ]
     ++ (with pkgs.gnomeExtensions; [
-      # gsconnect # KDE connect for gnome
       paperwm # scrolling, tiling wm
       # blur-my-shell
       # just-perfection # overview tweaks + hide panel
       smile-complementary-extension
       unite # hide title bars
       pano # clipboard manager
+      search-light
       vertical-workspaces
     ]);
 }

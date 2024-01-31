@@ -136,21 +136,21 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 
 #### TODO
 
-- [ ] Set SDDM theme resolution to 1440p (by repackaging it).
-  - [ ] Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
-- [ ] get better history pager
-- [ ] fix syntax highlighting micro nix
-- [ ] viv
-- [ ] Keybinds
-  - [x] ctrl down moves view down
-  - [x] ctrl shift down dupes cursor
-  - [x] alt shift down dupes lines
-  - [x] ctrl shift left selects word
-  - [x] alt n dupe matches
-  - [ ] resize wins
-  - [ ] indent lines using tab vsc ffs why isnt it default
-  - [ ] ctrl shift pgdown null in micro, selects eof obs vsc
-  - [ ] shift pgdown null in micro, selects pgdown obs vscode
-  - [ ] navigate cursor history obs mc vsc
-  - [ ] ctrl alt down null in all
-  - [ ] sort uhk delete key
+- Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
+- get better history pager
+- modularise!
+- ulauncher
+  - move to this flake (currently in separate repo due to API keys)
+- Keybinds
+  - ctrl down moves view down
+  - ctrl shift down dupes cursor
+  - alt shift down dupes lines
+  - ctrl shift left selects word
+  - alt n dupe matches
+  - resize wins
+  - indent lines using tab vsc ffs why isnt it default
+  - ctrl shift pgdown null in micro, selects eof obs vsc
+  - shift pgdown null in micro, selects pgdown obs vscode
+  - navigate cursor history obs mc vsc
+  - ctrl alt down null in all
+  - sort uhk delete key

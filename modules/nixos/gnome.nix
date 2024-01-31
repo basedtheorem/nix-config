@@ -36,6 +36,7 @@ in {
       gnome.gvfs
       gnome.sushi
       gnome.file-roller
+      gnome.gnome-session
       nautilus-open-any-terminal
     ];
 
