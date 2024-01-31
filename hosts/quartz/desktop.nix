@@ -29,14 +29,11 @@
 
       # Gnome
       gnome.gnome-tweaks
-      (graphite-gtk-theme.override {
-        themeVariants = ["all"];
-      })
     ]
     ++ (with pkgs.gnomeExtensions; [
       paperwm # scrolling, tiling wm
       # blur-my-shell
-      # just-perfection # overview tweaks + hide panel
+      just-perfection # remove annoying notifications!!!! f**k
       smile-complementary-extension
       unite # hide title bars
       pano # clipboard manager

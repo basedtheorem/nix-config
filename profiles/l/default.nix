@@ -23,7 +23,6 @@
 
     ./desktop/gnome.nix
     ./desktop/flatpak.nix
-    ./desktop/cursors.nix
 
     ./services/picom.nix
     ./services/espanso.nix
@@ -56,15 +55,14 @@
     hyperfine # benchmarking tool
     file
     fd
+    peco # filtering tool
     onefetch # neofetch but for git repos
     btop # system monitor
     bandwhich # display network utilisation
     git-filter-repo
     socat # pass cmds to mpv socket
     tealdeer
-    delta
     bat
-    pciutils
     jq
     wget
     neofetch
@@ -74,7 +72,6 @@
     ranger
     glow
     fontpreview
-    peco
     sic-image-cli
     broot # interactive tree
     kalker

@@ -4,8 +4,6 @@
 
 ##### Trace
 
-#self.packages.${pkgs.system}.advcp
-
 ```nix
 # For use with nix repl after loading the flake.
 parts.lib.mkFlake { ... }: {
@@ -20,17 +18,16 @@ lib.trace (<expression>) (<expression>);
 
 ##### Garbage collection
 
-```
+```bash
 # Delete all previous generations
 sudo nix-collect-garbage -d
 home-manager expire-generations '-1 second'
 
-# Update everything
-cd ~/nome; git add . && git commit -S -m "chore: update lock" && \
-  sudo nix-channel --update && nix flake update ~/nome/. && \
-  sudo nixos-rebuild boot --flake ~/nome#quartz && \
-  home-manager switch --flake ~/nome#l &&  \
-  git push origin dev && sudo nix-collect-garbage
+
+sudo nix-channel --update
+nix flake update
+sudo nixos-rebuild boot --flake ~/nome#quartz
+home-manager switch --flake ~/nome#l
 ```
 
 ##### Print in repl
@@ -136,7 +133,6 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 
 #### TODO
 
-- Figure out how SDDM knows where the theme is located despite only including it in systemPackages.
 - get better history pager
 - modularise!
 - ulauncher
