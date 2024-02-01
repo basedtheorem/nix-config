@@ -150,3 +150,4 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
   - navigate cursor history obs mc vsc
   - ctrl alt down null in all
   - sort uhk delete key
+- jj git

@@ -17,14 +17,6 @@
             replace = "{{currentdate}} {{currenttime}}";
           }
           {
-            trigger = ":eg";
-            replace = "e.g., ";
-          }
-          {
-            trigger = ":hello";
-            replace = "line1\nline2";
-          }
-          {
             regex = ":hi(?P<person>.*)\\.";
             replace = "Hi {{person}}!";
           }
@@ -53,10 +45,6 @@
             replace = "site:lesswrong.com";
           }
           {
-            trigger = "ob:p";
-            replace = "`\\begin{proof}`\n$|$\n`\\end{proof}`";
-          }
-          {
             trigger = "st:hn";
             replace = "site:news.ycombinator.com";
           }
@@ -67,23 +55,6 @@
           {
             trigger = "w/o";
             replace = "without ";
-          }
-          {
-            # it wont work unless formatted like this...
-            trigger = "ob:ac";
-            replace = ''
-              ```anki
-              deck: general
-              tags:
-                - knowledge-base
-
-
-              ---
-              $|$
-              ===
-
-              ```
-            '';
           }
         ];
       };

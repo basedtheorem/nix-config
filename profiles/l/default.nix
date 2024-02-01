@@ -51,6 +51,7 @@
     dua # disk usage
     tokei # sloc
     sd # sed
+    ruplacer # find and replace
     skim # fzf
     hyperfine # benchmarking tool
     file
@@ -64,6 +65,7 @@
     tealdeer
     bat
     jq
+
     wget
     neofetch
     starship

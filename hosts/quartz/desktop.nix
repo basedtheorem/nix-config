@@ -32,12 +32,12 @@
     ]
     ++ (with pkgs.gnomeExtensions; [
       paperwm # scrolling, tiling wm
-      # blur-my-shell
+      blur-my-shell
       just-perfection # remove annoying notifications!!!! f**k
-      smile-complementary-extension
+      smile-complementary-extension # allow paste on option select
+      impatience # increase animation speed
       unite # hide title bars
       pano # clipboard manager
       search-light
-      vertical-workspaces
     ]);
 }

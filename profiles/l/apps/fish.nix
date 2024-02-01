@@ -33,6 +33,7 @@
       sed = "sd";
       loc = "tokei";
       time = "hyperfine";
+      diff = "difft";
 
       dots = "cd ~/nome/";
       hm = "cd ~/nome/home-manager";
