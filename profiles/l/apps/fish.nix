@@ -6,7 +6,7 @@
   programs.fish = {
     enable = true;
     # tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Dotted --prompt_spacing=Sparse --icons='Few icons' --transient=Yes
-    shellInit = ''
+    interactiveShellInit = ''
       set -U fish_greeting
       zoxide init fish | source
       procs --gen-completion-out fish | source
@@ -20,6 +20,7 @@
       set -x PAGER bat
       set -x MICRO_TRUECOLOR 1
       direnv hook fish | source
+      list_dir
     '';
 
     shellAbbrs = {
@@ -93,9 +94,14 @@
         onVariable = "PWD";
       };
 
-      tere = ''
-        set --local result (command tere $argv)
-        [ -n "$result" ] && cd -- "$result"
+      cdr = ''
+        set tmp (mktemp)
+        ranger --choosedir="$tmp" "$argv"
+        if test -f $tmp
+          set dir (cat $tmp)
+          rm -f $tmp
+          test -d $dir && test "$dir" != "$pwd" && cd $dir
+        end
       '';
 
       stream = ''

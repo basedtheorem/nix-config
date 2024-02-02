@@ -75,10 +75,8 @@
     pipe-rename
     zoxide
     eza
-    ranger
     glow
     fontpreview
-    sic-image-cli
     broot # interactive tree
     kalker
     p7zip
@@ -92,6 +90,7 @@
     bitwarden
     xorg.xset
     xclip
+    curtail # compress imgs
     flameshot
     freetube
     gimp

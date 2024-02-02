@@ -34,7 +34,7 @@
         gdm.enable = false;
       };
 
-      layout = "us";
+      xkb.layout = "us";
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";

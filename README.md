@@ -22,12 +22,17 @@ lib.trace (<expression>) (<expression>);
 # Delete all previous generations
 sudo nix-collect-garbage -d
 home-manager expire-generations '-1 second'
+```
 
+##### Upgrading system
 
+```fish
 sudo nix-channel --update
-nix flake update
-sudo nixos-rebuild boot --flake ~/nome#quartz
-home-manager switch --flake ~/nome#l
+and nix flake update ~/nome
+and sudo nixos-rebuild switch --flake ~/nome#quartz
+and home-manager switch --flake ~/nome#l
+and \nsuccess
+or echo \nfail
 ```
 
 ##### Print in repl
