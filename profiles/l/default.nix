@@ -9,10 +9,10 @@
     ./apps/gitui.nix
     ./apps/vivaldi.nix
     ./apps/mpv.nix
-    ./apps/nnn.nix
-    # ./apps/helix.nix
+    # ./apps/xplr.nix #TODO
     ./apps/obsidian.nix
     ./apps/spicetify.nix
+    ./apps/sioyek.nix # PDF
     ./apps/discord.nix
     ./apps/vscodium.nix
     ./apps/micro.nix
@@ -23,6 +23,7 @@
 
     ./desktop/gnome.nix
     ./desktop/flatpak.nix
+    ./desktop/obs.nix
 
     ./services/picom.nix
     ./services/espanso.nix
@@ -53,6 +54,7 @@
     sd # sed
     ruplacer # find and replace
     skim # fzf
+    ranger # tui filemgr
     hyperfine # benchmarking tool
     file
     fd
@@ -63,12 +65,14 @@
     git-filter-repo
     socat # pass cmds to mpv socket
     tealdeer
+    ttyper # typing practice
     bat
     jq
 
     wget
     neofetch
     starship
+    pipe-rename
     zoxide
     eza
     ranger
@@ -101,8 +105,6 @@
     vivaldi-ffmpeg-codecs
     anki
     cryptomator
-    okular
-    qalculate-gtk
     syncthing
     libreoffice
     woeusb-ng

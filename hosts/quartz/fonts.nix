@@ -15,9 +15,9 @@
       };
 
       defaultFonts = {
-        serif = ["EB Garamond" "Symbols Nerd Font Mono"];
-        sansSerif = ["Questrial" "Symbols Nerd Font Mono"];
-        monospace = ["Iosevka Comfy" "Symbols Nerd Font Mono"];
+        serif = ["EB Garamond"];
+        sansSerif = ["Questrial"];
+        monospace = ["Iosevka Comfy"];
         emoji = ["Twitter Color Emoji"];
       };
     };
@@ -27,6 +27,7 @@
     packages = with pkgs; [
       (nerdfonts.override {
         fonts = [
+          "Iosevka"
           "FiraCode"
           "DroidSansMono"
           "Gohu"
@@ -39,10 +40,8 @@
       google-fonts
       twitter-color-emoji
       emojione
-      openmoji-black
       material-design-icons
       roboto
-      iosevka
       iosevka-comfy.comfy
       office-code-pro
       victor-mono

@@ -35,7 +35,6 @@
       };
 
       layout = "us";
-      xkbVariant = "";
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";

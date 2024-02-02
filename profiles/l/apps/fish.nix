@@ -27,13 +27,16 @@
       la = "eza -la";
       ll = "eza --header --git --classify --long --binary --group --time-style=long-iso --links --all --group-directories-first --sort=name --icons";
       ls = "eza";
+      logout = "gnome-session-quit";
       cat = "bat";
       fzf = "sk";
       ps = "procs --sortd CPU --watch-interval 99";
-      sed = "sd";
+      sed = "sd --preview";
+      rup = "ruplacer";
       loc = "tokei";
       time = "hyperfine";
       diff = "difft";
+      type = "ttyper -w 15 -l english100";
 
       dots = "cd ~/nome/";
       hm = "cd ~/nome/home-manager";
@@ -55,6 +58,7 @@
       ed = "micro";
       cpcb = "| xclip -selection clipboard";
       gitc = "git commit -S ";
+      gad = "git add .";
       jt = {
         setCursor = true;
         expansion = "jot ' - [ ] %'";

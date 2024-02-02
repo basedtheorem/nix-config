@@ -57,6 +57,10 @@ nix-repl> :p output
 
 ```
 
+##### etc
+
+- `chmod u=rwx,go=r-x foo`
+
 ##### Inherit
 
 ```

@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   # TODO: Put dconf2nix output here, backup gnome keybinds and misc conf.
 
-  xdg.configFile."paperwm/user.css".source = ../sources/paperwm.css;
+  xdg.configFile."paperwm/user.css".text = ''
+    .paperwm-selection {
+      border: 2px solid #7c2c2c !important;
+    }
+  '';
 
   home.packages = with pkgs; [
     qogir-icon-theme
