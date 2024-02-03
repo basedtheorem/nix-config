@@ -130,8 +130,8 @@
         "command" = "-workbench.action.nextEditorInGroup";
       }
       {
-        "key" = "ctrl+k ctrl+pageup";
         "command" = "-workbench.action.previousEditorInGroup";
+        "key" = "ctrl+k ctrl+pageup";
       }
       {
         "key" = "ctrl+k ctrl+left";
@@ -427,6 +427,10 @@
       {
         "key" = "ctrl+tab";
         "command" = "workbench.action.nextEditorInGroup";
+      }
+      {
+        "key" = "ctrl+shift+tab";
+        "command" = "workbench.action.previousEditorInGroup";
       }
       {
         "key" = "ctrl+0";

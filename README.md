@@ -2,6 +2,11 @@
 
 #### Useful snippets
 
+```nix
+# Avoid dealing with the peculiarities of escaping manually.
+lib.escapeShellArg
+```
+
 ##### Trace
 
 ```nix
@@ -31,7 +36,7 @@ sudo nix-channel --update
 and nix flake update ~/nome
 and sudo nixos-rebuild switch --flake ~/nome#quartz
 and home-manager switch --flake ~/nome#l
-and \nsuccess
+and echo \nsuccess
 or echo \nfail
 ```
 

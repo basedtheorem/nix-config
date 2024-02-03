@@ -7,7 +7,7 @@
     enable = true;
     # tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Dotted --prompt_spacing=Sparse --icons='Few icons' --transient=Yes
     interactiveShellInit = ''
-      set -U fish_greeting
+      set fish_greeting
       zoxide init fish | source
       procs --gen-completion-out fish | source
       xset r rate 200 65
@@ -17,7 +17,7 @@
       bind \e\[1\;5C 'forward-word' 'forward-single-char'
       bind \e\[1\;3C 'forward-word' 'forward-single-char'
       set -x DIRENV_LOG_FORMAT ""
-      set -x PAGER bat
+      set -x PAGER "less"
       set -x MICRO_TRUECOLOR 1
       direnv hook fish | source
       list_dir

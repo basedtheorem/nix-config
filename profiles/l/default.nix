@@ -90,7 +90,7 @@
     bitwarden
     xorg.xset
     xclip
-    curtail # compress imgs
+    imagemagick
     flameshot
     freetube
     gimp
@@ -118,6 +118,15 @@
     just
     xorg.xev
     nix-index
+    nixd
+    nixpkgs-fmt
+
+    # `echo "GET <link>" | hurl -o ./out`
+    hurl
+
+    # `entr -rs <files> <commands>`
+    # run commands on file change, -r(eload on each change), -s(hell envvar)
+    entr
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
