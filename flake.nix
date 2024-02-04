@@ -4,9 +4,10 @@
   inputs = {
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    unstable-small.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     master.url = "github:nixos/nixpkgs/master";
 
-    nixpkgs.follows = "unstable";
+    nixpkgs.follows = "unstable-small";
 
     parts.url = "github:hercules-ci/flake-parts";
 
