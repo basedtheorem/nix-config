@@ -21,6 +21,7 @@
     Service = {
       Type = "simple";
       Restart = "on-failure";
+      RestartSec = "2";
       ExecStart = "${pkgs.ulauncher}/bin/ulauncher --hide-window";
     };
 

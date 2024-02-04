@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   #TODO: Module -> if dua installed, enable dua integration, etc.
 
   programs.fish.shellAbbrs.xcd = "cd \"$(xplr --print-pwd-as-result)\"";
@@ -17,22 +16,22 @@
       # local-plugin = "/home/user/.config/plugins/local-plugin";
     };
 
-  extraConfig = ''
-    xplr.config.modes.builtin.default.key_bindings.on_key.R = {
-      help = "batch rename",
-      messages = {
-        {
-          BashExec = [===[
-           SELECTION=$(cat "''${XPLR_PIPE_SELECTION_OUT:?}")
-           NODES=''${SELECTION:-$(cat "''${XPLR_PIPE_DIRECTORY_NODES_OUT:?}")}
-           if [ "$NODES" ]; then
-             echo -e "$NODES" | renamer
-             "$XPLR" -m ExplorePwdAsync
-           fi
-         ]===],
+    extraConfig = ''
+      xplr.config.modes.builtin.default.key_bindings.on_key.R = {
+        help = "batch rename",
+        messages = {
+          {
+            BashExec = [===[
+             SELECTION=$(cat "''${XPLR_PIPE_SELECTION_OUT:?}")
+             NODES=''${SELECTION:-$(cat "''${XPLR_PIPE_DIRECTORY_NODES_OUT:?}")}
+             if [ "$NODES" ]; then
+               echo -e "$NODES" | renamer
+               "$XPLR" -m ExplorePwdAsync
+             fi
+           ]===],
+          },
         },
-      },
-    }
-  '';
+      }
+    '';
   };
 }

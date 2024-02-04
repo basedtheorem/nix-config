@@ -26,6 +26,7 @@
     ./desktop/obs.nix
 
     ./services/picom.nix
+    ./services/opensnitch.nix
     ./services/espanso.nix
     ./services/ulauncher.nix
     ./services/syncthing.nix
@@ -92,7 +93,6 @@
     xclip
     imagemagick
     flameshot
-    freetube
     gimp
     qbittorrent
     xbanish
@@ -117,8 +117,8 @@
     # Dev
     just
     xorg.xev
-    nix-index
     nixd
+    cachix
     nixpkgs-fmt
 
     # `echo "GET <link>" | hurl -o ./out`

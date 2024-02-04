@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -10,6 +11,7 @@
     thermald.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
+    opensnitch.enable = true;
     flatpak.enable = true;
     hardware.openrgb.enable = true;
     hardware.openrgb.motherboard = "amd";
@@ -29,6 +31,9 @@
         sddm = {
           enable = true;
           theme = "where_is_my_sddm_theme";
+          settings = {
+            Wayland.SessionDir = ""; # Prevents auto-selecting wayland
+          };
         };
         defaultSession = "gnome";
         gdm.enable = false;

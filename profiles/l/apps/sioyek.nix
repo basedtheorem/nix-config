@@ -4,11 +4,9 @@
     enable = true;
 
     config = {
-
     };
 
     bindings = {
-
     };
   };
 }
