@@ -12,6 +12,7 @@
       procs --gen-completion-out fish | source
       xset r rate 200 65
       bind \b 'backward-kill-word'
+      bind \cg expand-abbr or self-insert
       bind \ea 'prevd-or-backward-word'
       bind \ed 'nextd-or-forward-word'
       bind \e\[1\;5C 'forward-word' 'forward-single-char'
@@ -38,11 +39,14 @@
       time = "hyperfine";
       diff = "difft";
       type = "ttyper -w 15 -l english100";
+      notes = "cd ~/notes/";
 
       dots = "cd ~/nome/";
       hm = "cd ~/nome/home-manager";
       home = "cd ~/nome/home-manager";
       nome = "cd ~/nome";
+      ednome = "micro ~/nome/";
+      cdnome = "z ~/nome/";
       os = "cd ~/nome/hosts/quartz/";
       apps = "~/nome/home-manager/apps/";
       trash = "cd ~/Trash";

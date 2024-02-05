@@ -33,6 +33,8 @@
     ./services/flameshot.nix
     ./services/xbanish.nix
     ./services/sxhkd.nix
+
+    ./nix.nix
   ];
 
   home = {
@@ -152,15 +154,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-  };
-
-  home.sessionVariables = {
-    EDITOR = "micro";
-    # NIXOS_OZONE_WL = "1"; # #TODO: auto enable if on wayland
-  };
-
-  systemd.user.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = 1;
   };
 
   xsession.enable = true;

@@ -8,8 +8,7 @@ in {
   flake.homeConfigurations = {
     l = homeManagerConfiguration {
       pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
-      #pkgs = self.legacyPackages."x86_64-linux";
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs; inherit self;};
       modules = [./l ./shared];
     };
   };

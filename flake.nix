@@ -42,6 +42,7 @@
         nixosModules = import ./modules/nixos inputs;
         homeManagerModules = import ./modules/home-manager inputs;
         lib = import ./lib inputs;
+        overlays = import ./overlays inputs;
       };
 
       imports = [./hosts ./profiles ./packages];

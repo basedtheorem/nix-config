@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  home.sessionVariables = {
+    EDITOR = "micro";
+  };
   programs.micro = {
     enable = true;
 
@@ -17,7 +20,8 @@
       statusline = true;
       scrollmargin = 6;
       diffgutter = false;
-      ruler = false;
+      ruler = true;
+      relativeruler = true;
       hlsearch = true;
       mkparents = true;
       multiopen = "hsplit";
@@ -41,13 +45,14 @@
       color-link default "#F8F8F8," #
       color-link constant.specialChar "#DDF2A4" #
       color-link constant "#af3232" #
-      color-link constant.number "c06c51" #
+      color-link constant.number "#c06c51" #
       color-link constant.string "#ab6767" #
-      color-link current-line-number "#868686,#1B1B1B" #
-      color-link cursor-line "#1B1B1B" #
+      color-link current-line-number "#7C2C2C," #
+      color-link cursor-line "#191919" #
       color-link scrollbar "#681900," #
       color-link indent-char "#343434" #
       color-link statusline "#515151," #
+      color-link line-number "#262626," #
       color-link comment "#5F5A60"
       color-link color-column "#1B1B1B"
       color-link divider "#1E1E1E"
@@ -61,7 +66,6 @@
       color-link identifier "#9B703F"
       color-link identifier.class "#DAD085"
       color-link identifier.var "#7587A6"
-      color-link line-number "#868686,#1B1B1B"
       color-link current-line-number "#868686,#141414"
       color-link preproc "#E0C589"
       color-link special "#E0C589"
