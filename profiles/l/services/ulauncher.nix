@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{ pkgs, inputs, ... }: {
   home.packages = with pkgs; [
     ulauncher
 
@@ -15,7 +11,7 @@
     Unit = {
       Description = "Ulauncher service";
       Documentation = "https://ulauncher.io/";
-      PartOf = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -25,8 +21,6 @@
       ExecStart = "${pkgs.ulauncher}/bin/ulauncher --hide-window";
     };
 
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
 }

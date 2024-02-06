@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   _file = ./hardware.nix;
 
   hardware = {
@@ -10,9 +6,7 @@
     keyboard.uhk.enable = true;
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [
-        amdvlk
-      ];
+      extraPackages = with pkgs; [ amdvlk ];
     };
   };
 

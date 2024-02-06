@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{ pkgs, inputs, ... }: {
   programs.fish = {
     enable = true;
     # tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Dotted --prompt_spacing=Sparse --icons='Few icons' --transient=Yes
@@ -27,7 +23,8 @@
     shellAbbrs = {
       l = "eza";
       la = "eza -la";
-      ll = "eza --header --git --classify --long --binary --group --time-style=long-iso --links --all --group-directories-first --sort=name --icons";
+      ll =
+        "eza --header --git --classify --long --binary --group --time-style=long-iso --links --all --group-directories-first --sort=name --icons";
       ls = "eza";
       logout = "gnome-session-quit";
       cat = "bat";

@@ -1,15 +1,11 @@
-{
-  stdenvNoCC,
-  source,
-  ...
-}:
+{ stdenvNoCC, source, ... }:
 stdenvNoCC.mkDerivation (self: {
   src = source;
 
   pname = "micro-autofmt";
   version = source.shortRev;
 
-  phases = ["unpackPhase" "installPhase"];
+  phases = [ "unpackPhase" "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/micro-autofmt/help

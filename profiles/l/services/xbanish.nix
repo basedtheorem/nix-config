@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   systemd.user.services.xbanish = {
     Unit = {
       Description = "xbanish hides the mouse pointer";
-      PartOf = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -11,8 +11,6 @@
       '';
     };
 
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
 }

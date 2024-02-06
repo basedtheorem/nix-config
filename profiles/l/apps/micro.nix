@@ -1,11 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  home.sessionVariables = {
-    EDITOR = "micro";
-  };
+{ inputs, pkgs, ... }: {
+  home.sessionVariables = { EDITOR = "micro"; };
   programs.micro = {
     enable = true;
 

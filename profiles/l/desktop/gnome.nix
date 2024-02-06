@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # TODO: Put dconf2nix output here, backup gnome keybinds and misc conf.
 
   xdg.configFile."paperwm/user.css".text = ''

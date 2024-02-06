@@ -1,2 +1,1 @@
-inputs:
-import ../../lib/filterModules.nix inputs.nixpkgs.lib ./.
+inputs: import ../../lib/filterModules.nix inputs.nixpkgs.lib ./.

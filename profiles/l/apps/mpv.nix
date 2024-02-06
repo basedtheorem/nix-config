@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   mpv-unwrapped-updated = pkgs.mpv-unwrapped.overrideAttrs (final: prev: {
     version = "0.36.0";
     src = pkgs.fetchFromGitHub {
@@ -7,13 +8,14 @@
       rev = "v${final.version}";
       sha256 = "sha256-82moFbWvfc1awXih0d0D+dHqYbIoGNZ77RmafQ80IOY=";
     };
-    patches = [];
+    patches = [ ];
 
     # The following fixes `error: cycle detected in build of..`.
     # Source: https://discourse.nixos.org/t/using-overlays-cause-cycle-detected-error-if-modified-mpv-package-is-present-what-could-cause-this/28300
-    outputInclude = ["out"];
+    outputInclude = [ "out" ];
   });
-in {
+in
+{
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {
@@ -31,7 +33,8 @@ in {
       # -- Behaviour --
       pause = true;
       border = "no";
-      input-ipc-server = "/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
+      input-ipc-server =
+        "/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
       save-position-on-quit = true;
       resume-playback = false;
       no-keepaspect-window = ""; # breaks paperwm otherwise
@@ -43,7 +46,8 @@ in {
       hdr-compute-peak = false;
 
       # -- yt-dlp --
-      ytdl-raw-options = "sub-lang='en',write-subs=,write-auto-sub=,write-subs=";
+      ytdl-raw-options =
+        "sub-lang='en',write-subs=,write-auto-sub=,write-subs=";
       ytdl-format = "bestvideo[height<=1440]+bestaudio/best[height<=1440]";
 
       # -- Subtitles --
@@ -91,16 +95,15 @@ in {
         hidetimeout = 500;
         boxalpha = 25;
       };
-      ytdl_hook = {
-        ytdl_path = "yt-dlp";
-      };
+      ytdl_hook = { ytdl_path = "yt-dlp"; };
     };
   };
 
   # Additional scripts that aren't in nixpkgs.
   xdg.configFile = {
     "mpv/scripts/oscc.lua".source = ../sources/mpv/scripts/oscc;
-    "mpv/scripts/seek-show.js".source = ../sources/mpv/scripts/seek-show-position;
+    "mpv/scripts/seek-show.js".source =
+      ../sources/mpv/scripts/seek-show-position;
     "mpv/fonts/".source = ../sources/mpv/fonts;
   };
 }

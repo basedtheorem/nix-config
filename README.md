@@ -3,22 +3,26 @@
 #### Useful snippets
 
 ```nix
-# Avoid dealing with the peculiarities of escaping manually.
-lib.escapeShellArg
-```
+  # Avoid dealing with the peculiarities of escaping manually.
+  lib.escapeShellArg
+  ```
 
-##### Trace
+  ##### Trace
 
-```nix
-# For use with nix repl after loading the flake.
-parts.lib.mkFlake { ... }: {
+  ```
+  nix
+  # For use with nix repl after loading the flake.
+  parts.lib.mkFlake { ... }:
+{
   debug = true;
   /* ... */
 }
 
-# Can be used like a print statement for debugging,
-# it will print the first arg then return the second.
-lib.trace (<expression>) (<expression>);
+  # Can be used like a print statement for debugging,
+  # it will print the first arg then return the second.
+  lib.trace
+  (<expression>)
+  (<expression>);
 ```
 
 ##### Garbage collection
@@ -59,10 +63,10 @@ nix-repl> :p output
 
 ```nix
 {
-  outputs = { self }: {
-    a = 1;
-    b = self.a + 1;
-  };
+outputs = { self }: {
+a = 1;
+b = self.a + 1;
+};
 }
 
 ```
@@ -83,13 +87,13 @@ x = a.x; y = a.y;
 ```
 # This snippet:
 let
-  inherit ({ x = 1; y = 2; }) x y;
+inherit ({ x = 1; y = 2; }) x y;
 in
-  [ x y ]
+[ x y ]
 # is equivalent to:
 let
-  x = { x = 1; y = 2; }.x;
-  y = { x = 1; y = 2; }.y;
+x = { x = 1; y = 2; }.x;
+y = { x = 1; y = 2; }.y;
 in [ x y ]
 ```
 
@@ -130,13 +134,13 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 - Permit omitting the module arguments
 - Permit omitting the imports, options, or config attributes
 - Avoid eliding the config attribute
-  - I.e. if you define any options, always nest them underneath the config attribute.
+- I.e. if you define any options, always nest them underneath the config attribute.
 
 #### Important keybinds
 
 - kitty
-  - `ctrl+shift+p` - previous scrollback
-  - `ctrl+shift+h` - browse scrollback in less
+- `ctrl+shift+p` - previous scrollback
+- `ctrl+shift+h` - browse scrollback in less
 
 #### References
 
@@ -150,18 +154,18 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 - get better history pager
 - modularise!
 - ulauncher
-  - move to this flake (currently in separate repo due to API keys)
+- move to this flake (currently in separate repo due to API keys)
 - Keybinds
-  - ctrl down moves view down
-  - ctrl shift down dupes cursor
-  - alt shift down dupes lines
-  - ctrl shift left selects word
-  - alt n dupe matches
-  - resize wins
-  - indent lines using tab vsc ffs why isnt it default
-  - ctrl shift pgdown null in micro, selects eof obs vsc
-  - shift pgdown null in micro, selects pgdown obs vscode
-  - navigate cursor history obs mc vsc
-  - ctrl alt down null in all
-  - sort uhk delete key
+- ctrl down moves view down
+- ctrl shift down dupes cursor
+- alt shift down dupes lines
+- ctrl shift left selects word
+- alt n dupe matches
+- resize wins
+- indent lines using tab vsc ffs why isnt it default
+- ctrl shift pgdown null in micro, selects eof obs vsc
+- shift pgdown null in micro, selects pgdown obs vscode
+- navigate cursor history obs mc vsc
+- ctrl alt down null in all
+- sort uhk delete key
 - jj git

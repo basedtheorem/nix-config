@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{ lib, pkgs, ... }: {
   _file = ./desktop.nix;
 
   gnome = {
@@ -15,7 +11,7 @@
     kdeconnect.enable = false;
   };
 
-  environment.shells = [pkgs.fish pkgs.nushell];
+  environment.shells = [ pkgs.fish pkgs.nushell ];
 
   environment.systemPackages = with pkgs;
     [
@@ -29,8 +25,7 @@
 
       # Gnome
       gnome.gnome-tweaks
-    ]
-    ++ (with pkgs.gnomeExtensions; [
+    ] ++ (with pkgs.gnomeExtensions; [
       paperwm # scrolling, tiling wm
       blur-my-shell
       just-perfection # remove annoying notifications!!!! f**k

@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 # TODO: move to profiles
 {
   fonts = {
@@ -15,10 +15,10 @@
       };
 
       defaultFonts = {
-        serif = ["EB Garamond"];
-        sansSerif = ["Questrial"];
-        monospace = ["Iosevka Comfy"];
-        emoji = ["Twitter Color Emoji"];
+        serif = [ "EB Garamond" ];
+        sansSerif = [ "Questrial" ];
+        monospace = [ "Iosevka Comfy" ];
+        emoji = [ "Twitter Color Emoji" ];
       };
     };
 

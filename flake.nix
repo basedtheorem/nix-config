@@ -34,8 +34,8 @@
   };
 
   outputs = inputs:
-    inputs.parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+    inputs.parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
       debug = true;
 
       flake = {
@@ -45,22 +45,16 @@
         overlays = import ./overlays inputs;
       };
 
-      imports = [./hosts ./profiles ./packages];
+      imports = [ ./hosts ./profiles ./packages ];
 
-      perSystem = {
-        pkgs,
-        system,
-        lib,
-        ...
-      }: {
+      perSystem = { pkgs, system, lib, ... }: {
         devShells.default = pkgs.mkShell rec {
           name = "dotfiles devenv";
           formatter = pkgs.alejandra;
 
-          packages = with pkgs; [
-            alejandra # Formatter
-            nil # Language server
-          ];
+          packages = builtins.attrValues {
+            inherit (pkgs) nixfmt nil; # langserver
+          };
 
           shellHook = ''
             echo Packages: ${

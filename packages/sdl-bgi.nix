@@ -1,19 +1,15 @@
-{
-  stdenv,
-  gcc,
-  SDL2,
-  ...
-}:
+{ stdenv, gcc, SDL2, ... }:
 stdenv.mkDerivation rec {
   name = "SDL_bgi";
   version = "3.0.0";
 
   src = builtins.fetchTarball {
-    url = "https://versaweb.dl.sourceforge.net/project/sdl-bgi/${name}-${version}.tar.gz";
+    url =
+      "https://versaweb.dl.sourceforge.net/project/sdl-bgi/${name}-${version}.tar.gz";
     sha256 = "sha256:04ybrz38nq30nh3iyviq1jad8kq8512q2hmxmvrvxc5zy9i0xgad";
   };
 
-  buildInputs = [gcc SDL2 SDL2.dev];
+  buildInputs = [ gcc SDL2 SDL2.dev ];
 
   buildPhase = ''
     cd src

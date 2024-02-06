@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{ pkgs, lib, self, ... }: {
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
@@ -33,8 +29,6 @@
     ./services/flameshot.nix
     ./services/xbanish.nix
     ./services/sxhkd.nix
-
-    ./nix.nix
   ];
 
   home = {
@@ -121,7 +115,7 @@
     xorg.xev
     nixd
     cachix
-    nixpkgs-fmt
+    nixfmt
 
     # `echo "GET <link>" | hurl -o ./out`
     hurl
@@ -144,9 +138,14 @@
     home-manager.enable = true;
   };
 
-  news.display = "silent";
-  news.json = lib.mkForce {};
-  news.entries = lib.mkForce [];
+  nixpkgs = {
+    overlays = [ self.overlays.micro ];
+    config.allowUnfree = true;
+  };
+
+  news.display = lib.mkForce "silent";
+  news.json = lib.mkForce { };
+  news.entries = lib.mkForce [ ];
 
   home.file = {
     # ".screenrc".source = dotfiles/screenrc;
@@ -157,5 +156,5 @@
   };
 
   xsession.enable = true;
-  systemd.user.startServices = true; # fixes warning: 'systemd user session is degraded'
+  # systemd.user.startServices = true; # fixes warning: 'systemd user session is degraded'
 }

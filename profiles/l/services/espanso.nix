@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.espanso = {
     enable = true;
 
@@ -10,7 +10,8 @@
 
     matches = {
       base = {
-        backend = "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
+        backend =
+          "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
         matches = [
           {
             trigger = ":now";
@@ -63,12 +64,12 @@
           {
             name = "currentdate";
             type = "date";
-            params = {format = "%d/%m/%Y";};
+            params = { format = "%d/%m/%Y"; };
           }
           {
             name = "currenttime";
             type = "date";
-            params = {format = "%R";};
+            params = { format = "%R"; };
           }
         ];
       };

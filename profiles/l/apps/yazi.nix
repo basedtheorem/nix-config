@@ -7,19 +7,19 @@
       input.keymap = [
         {
           exec = "close";
-          on = ["<C-q>"];
+          on = [ "<C-q>" ];
         }
         {
           exec = "close --submit";
-          on = ["<Enter>"];
+          on = [ "<Enter>" ];
         }
         {
           exec = "escape";
-          on = ["<Esc>"];
+          on = [ "<Esc>" ];
         }
         {
           exec = "backspace";
-          on = ["<Backspace>"];
+          on = [ "<Backspace>" ];
         }
       ];
       # manager.keymap = [

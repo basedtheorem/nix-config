@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   _file = ./common.nix;
 
   nixpkgs.config.allowUnfree = lib.mkDefault true;
@@ -17,8 +17,9 @@
 
     settings = {
       auto-optimise-store = true; # cli: `nix-store --optimise`
-      cores = 6; # 0 means all cpu cores are used for building (non-deterministic!)
-      trusted-users = ["@wheel"];
+      cores =
+        6; # 0 means all cpu cores are used for building (non-deterministic!)
+      trusted-users = [ "@wheel" ];
 
       # Binary caches
       substituters = [
