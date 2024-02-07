@@ -27,6 +27,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
+      xdg-desktop-portal # Fixes "No such interface..."
       gnome-firmware
       gnome.gvfs
       gnome.sushi
