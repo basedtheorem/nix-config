@@ -39,20 +39,20 @@ in {
     environment.gnome = lib.mkIf cfg.minimal {
       excludePackages = (with pkgs; [ gnome-photos gnome-tour gedit ])
         ++ (with pkgs.gnome; [
-        cheese # webcam tool
-        gnome-music
-        gnome-terminal
-        simple-scan
-        epiphany # web browser
-        geary # email reader
-        geary
-        evince # document viewer
-        totem # video player
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
-      ]);
+          cheese # webcam tool
+          gnome-music
+          gnome-terminal
+          simple-scan
+          epiphany # web browser
+          geary # email reader
+          geary
+          evince # document viewer
+          totem # video player
+          tali # poker game
+          iagno # go game
+          hitori # sudoku game
+          atomix # puzzle game
+        ]);
     };
   };
 }

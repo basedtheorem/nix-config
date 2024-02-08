@@ -13,5 +13,4 @@ let
 
   # [ "dir/gnome.nix" ] => [ <lambda> ]
   modules = lib.forEach files (e: import e);
-in
-mergeAttrsList (lib.zipListsWith (a: b: { "${a}" = b; }) names modules)
+in mergeAttrsList (lib.zipListsWith (a: b: { "${a}" = b; }) names modules)

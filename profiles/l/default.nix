@@ -5,7 +5,6 @@
     ./apps/gitui.nix
     ./apps/vivaldi.nix
     ./apps/mpv.nix
-    # ./apps/xplr.nix #TODO
     ./apps/obsidian.nix
     ./apps/spicetify.nix
     ./apps/sioyek.nix # PDF
@@ -138,25 +137,14 @@
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
     home-manager.enable = true;
-
-    neovim = {
-      enable = true;
-      plugins = [
-        (pkgs.vimUtils.buildVimPlugin {
-          name = "novim-mode";
-          src = pkgs.fetchFromGitHub {
-            owner = "tombh";
-            repo = "novim-mode";
-            rev = "master";
-            sha256 = "sha256-qA9pcsTBGkEGZPEhZi2HS9n3fb7LggHTxqvkDn0GzMI=";
-          };
-        })
-      ];
-    };
   };
 
   nixpkgs = {
-    overlays = [ self.overlays.micro inputs.rust-overlay.overlays.default ];
+    overlays = [
+      self.overlays.micro
+      self.overlays.kakoune-unwrapped
+      inputs.rust-overlay.overlays.default
+    ];
     config.allowUnfree = true;
   };
 

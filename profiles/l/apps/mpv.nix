@@ -14,8 +14,7 @@ let
     # Source: https://discourse.nixos.org/t/using-overlays-cause-cycle-detected-error-if-modified-mpv-package-is-present-what-could-cause-this/28300
     outputInclude = [ "out" ];
   });
-in
-{
+in {
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {

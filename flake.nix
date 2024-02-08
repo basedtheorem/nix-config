@@ -32,6 +32,9 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    kakoune.url = "github:mawww/kakoune";
+    kakoune.flake = false;
   };
 
   outputs = inputs:

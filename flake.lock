@@ -108,6 +108,22 @@
         "type": "github"
       }
     },
+    "kakoune": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707218168,
+        "narHash": "sha256-rciiy/rk1jVGqrNEWMD08HozNMaRzespL27A3HDR7f0=",
+        "owner": "mawww",
+        "repo": "kakoune",
+        "rev": "3ef68188b470d4f23707c32fce4a19b4fa38965e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mawww",
+        "repo": "kakoune",
+        "type": "github"
+      }
+    },
     "kitty-grab": {
       "flake": false,
       "locked": {
@@ -126,11 +142,11 @@
     },
     "master": {
       "locked": {
-        "lastModified": 1707379569,
-        "narHash": "sha256-B+YhzLR/OWYvqaQYGmhkQU1Jaf0a6hPaYl+1rHw6wpI=",
+        "lastModified": 1707389978,
+        "narHash": "sha256-jwXu2l/KqL2XaJmJJsFdt1r7k89Sn+HFOkl+Hp+TFqw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "568bb7639ef24417eff784c37bfb20e1944bd0d9",
+        "rev": "075bf9cffe5b04d39874747239022de9aec5cdcd",
         "type": "github"
       },
       "original": {
@@ -214,6 +230,7 @@
         "fish-tide": "fish-tide",
         "flatpak": "flatpak",
         "home-manager": "home-manager",
+        "kakoune": "kakoune",
         "kitty-grab": "kitty-grab",
         "master": "master",
         "nixpkgs": [

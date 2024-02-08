@@ -14,7 +14,7 @@
       statusline = true;
       scrollmargin = 6;
       diffgutter = false;
-      ruler = true;
+      ruler = false;
       relativeruler = true;
       hlsearch = true;
       mkparents = true;
