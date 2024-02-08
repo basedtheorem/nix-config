@@ -25,7 +25,7 @@
   (<expression>);
 ```
 
-##### Garbage collection
+##### Clean house
 
 ```bash
 # Delete all previous generations
@@ -33,18 +33,7 @@ sudo nix-collect-garbage -d
 home-manager expire-generations '-1 second'
 ```
 
-##### Upgrading system
-
-```fish
-sudo nix-channel --update
-and nix flake update ~/nome
-and sudo nixos-rebuild switch --flake ~/nome#quartz
-and home-manager switch --flake ~/nome#l
-and echo \nsuccess
-or echo \nfail
-```
-
-##### Print in repl
+##### Printing in repl
 
 ```nix
 nix-repl> output = { b = true; }
@@ -63,10 +52,10 @@ nix-repl> :p output
 
 ```nix
 {
-outputs = { self }: {
-a = 1;
-b = self.a + 1;
-};
+  outputs = { self }: {
+    a = 1;
+    b = self.a + 1;
+  };
 }
 
 ```
@@ -78,22 +67,18 @@ b = self.a + 1;
 ##### Inherit
 
 ```
-# This line:
-inherit (a) x y;
-# is equivalent to:
-x = a.x; y = a.y;
+inherit (a) x y; # equivalent to: x = a.x; y = a.y;
 ```
 
 ```
-# This snippet:
 let
-inherit ({ x = 1; y = 2; }) x y;
+  inherit ({ x = 1; y = 2; }) x y;
 in
 [ x y ]
-# is equivalent to:
+# ^ is equivalent to:
 let
-x = { x = 1; y = 2; }.x;
-y = { x = 1; y = 2; }.y;
+  x = { x = 1; y = 2; }.x;
+  y = { x = 1; y = 2; }.y;
 in [ x y ]
 ```
 
@@ -102,25 +87,25 @@ in [ x y ]
 ```
 // mkFlake args:
 [ "config"
-"flake-parts-lib"
-"inputs"
-"lib"
-"moduleLocation"
-"options"
-"self"
-"specialArgs" ]
+  "flake-parts-lib"
+  "inputs"
+  "lib"
+  "moduleLocation"
+  "options"
+  "self"
+  "specialArgs" ]
 
 
 // mkflake imports args:
 [ "config"
-"flake-parts-lib"
-"inputs"
-"lib"
-"moduleLocation"
-"nixpkgs"
-"options"
-"self"
-"specialArgs" ]
+  "flake-parts-lib"
+  "inputs"
+  "lib"
+  "moduleLocation"
+  "nixpkgs"
+  "options"
+  "self"
+  "specialArgs" ]
 ```
 
 ##### .desktop files
@@ -139,8 +124,7 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 #### Important keybinds
 
 - kitty
-- `ctrl+shift+p` - previous scrollback
-- `ctrl+shift+h` - browse scrollback in less
+  - `ctrl+shift+h` (browse scrollback in less)
 
 #### References
 
@@ -152,20 +136,14 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 #### TODO
 
 - get better history pager
-- modularise!
+- modularize profile
+  - e.g. fish init is a single script that depends on several pkgs
 - ulauncher
-- move to this flake (currently in separate repo due to API keys)
-- Keybinds
-- ctrl down moves view down
-- ctrl shift down dupes cursor
-- alt shift down dupes lines
-- ctrl shift left selects word
-- alt n dupe matches
-- resize wins
-- indent lines using tab vsc ffs why isnt it default
+- move misc dotfiles to this flake (api keys)
+- resize kitty wins
+- indent lines using tab in vscode ffs why isnt it default
 - ctrl shift pgdown null in micro, selects eof obs vsc
 - shift pgdown null in micro, selects pgdown obs vscode
 - navigate cursor history obs mc vsc
 - ctrl alt down null in all
 - sort uhk delete key
-- jj git

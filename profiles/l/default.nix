@@ -50,7 +50,6 @@
     sd # sed
     ruplacer # find and replace
     skim # fzf
-    ranger # tui filemgr
     hyperfine # benchmarking tool
     file
     fd
