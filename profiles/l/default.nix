@@ -1,4 +1,4 @@
-{ pkgs, lib, self, ... }: {
+{ pkgs, inputs, lib, self, ... }: {
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
@@ -73,6 +73,7 @@
     zoxide
     eza
     glow
+    fuc # rmz cpz
     fontpreview
     broot # interactive tree
     kalker
@@ -116,6 +117,7 @@
     nixd
     cachix
     nixfmt
+    rust-bin.beta.latest.default
 
     # `echo "GET <link>" | hurl -o ./out`
     hurl
@@ -136,16 +138,35 @@
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
     home-manager.enable = true;
+
+    neovim = {
+      enable = true;
+      plugins = [
+        (pkgs.vimUtils.buildVimPlugin {
+          name = "novim-mode";
+          src = pkgs.fetchFromGitHub {
+            owner = "tombh";
+            repo = "novim-mode";
+            rev = "master";
+            sha256 = "sha256-qA9pcsTBGkEGZPEhZi2HS9n3fb7LggHTxqvkDn0GzMI=";
+          };
+        })
+      ];
+    };
   };
 
   nixpkgs = {
-    overlays = [ self.overlays.micro ];
+    overlays = [ self.overlays.micro inputs.rust-overlay.overlays.default ];
     config.allowUnfree = true;
   };
 
   news.display = lib.mkForce "silent";
   news.json = lib.mkForce { };
   news.entries = lib.mkForce [ ];
+
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
 
   home.file = {
     # ".screenrc".source = dotfiles/screenrc;

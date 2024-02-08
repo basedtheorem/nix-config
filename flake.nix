@@ -22,8 +22,6 @@
     chillax-discord-theme.url = "github:warrayquipsome/Chillax";
     chillax-discord-theme.flake = false;
 
-    fish-peco-todoist.url = "github:ka2n/fish-peco_todoist";
-    fish-peco-todoist.flake = false;
     fish-tide.url = "github:IlanCosman/tide";
     fish-tide.flake = false;
 
@@ -31,6 +29,9 @@
     kitty-grab.flake = false;
 
     flatpak.url = "github:GermanBread/declarative-flatpak/stable";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
