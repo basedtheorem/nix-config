@@ -26,7 +26,7 @@
       loc = "tokei";
       time = "hyperfine";
       diff = "difft";
-      type = "ttyper -w 10 -l english100";
+      type = "ttyper -w 10 --language-file ~/Documents/english_200.txt";
       notes = "cd ~/notes/";
 
       dots = "cd ~/nome/";

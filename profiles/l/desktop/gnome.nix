@@ -12,19 +12,26 @@
   };
 
   home.packages = [ pkgs.flat-remix-gnome ];
-  home.sessionVariables.GTK_THEME = "Flat-Remix-GTK-Red-Darkest:dark";
+  home.sessionVariables.GTK_THEME = "Flat-Remix-GTK-Red-Darkest-Solid:dark";
 
   gtk = {
     enable = true;
+
+    # ~/.config/gtk{3,4}.0/settings.ini
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk3.extraConfig = {
+      gtk-decoration-layout = "menu:";
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    # ../.gtkrc-2.0
     cursorTheme.name = "Bibata-Modern-Classic";
     cursorTheme.package = pkgs.bibata-cursors;
-
     iconTheme.package = pkgs.flat-remix-icon-theme;
     iconTheme.name = "Flat-Remix-Red-Dark";
-
     theme.package = pkgs.flat-remix-gtk;
-    theme.name = "Flat-Remix-GTK-Red";
-
-    gtk3.extraConfig.gtk-decoration-layout = "menu:";
+    theme.name = "Flat-Remix-GTK-Red-Darkest-Solid"; # gsettings get org.gnome.desktop.interface gtk-theme
   };
 }

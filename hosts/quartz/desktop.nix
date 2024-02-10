@@ -31,6 +31,7 @@
       just-perfection # remove annoying notifications!!!! f**k
       smile-complementary-extension # allow paste on option select
       impatience # increase animation speed
+      zen # mouse follows focus
       pano # clipboard manager
       search-light
     ]);
