@@ -10,6 +10,9 @@
     flatpak.enable = true;
     hardware.openrgb.enable = true;
     hardware.openrgb.motherboard = "amd";
+    mullvad-vpn.enable = true;
+    mullvad-vpn.package = pkgs.mullvad-vpn;
+    resolved.enable = true;
 
     pipewire = {
       enable = true;

@@ -15,7 +15,9 @@
       ll =
         "eza --header --git --classify --long --binary --group --time-style=long-iso --links --all --group-directories-first --sort=name --icons";
       ls = "eza";
+      lst = "eza --tree";
       logout = "gnome-session-quit";
+      rm = "rm -I";
       cat = "bat";
       fzf = "sk";
       ps = "procs --sortd CPU --watch-interval 99";
@@ -24,7 +26,7 @@
       loc = "tokei";
       time = "hyperfine";
       diff = "difft";
-      type = "ttyper -w 15 -l english100";
+      type = "ttyper -w 10 -l english100";
       notes = "cd ~/notes/";
 
       dots = "cd ~/nome/";
@@ -106,7 +108,7 @@
       set fish_greeting
       zoxide init fish | source
       procs --gen-completion-out fish | source
-      xset r rate 190 50
+      xset r rate 175 150
       bind \b 'backward-kill-word'
       bind \cg expand-abbr or self-insert
       bind \ea 'prevd-or-backward-word'

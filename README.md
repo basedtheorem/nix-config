@@ -25,6 +25,10 @@
   (<expression>);
 ```
 
+##### Prefetch
+
+`nix-prefetch-url "https..."`
+
 ##### Clean house
 
 ```bash

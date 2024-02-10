@@ -35,6 +35,9 @@
 
     kakoune.url = "github:mawww/kakoune";
     kakoune.flake = false;
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:

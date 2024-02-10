@@ -8,6 +8,7 @@
     ./apps/obsidian.nix
     ./apps/spicetify.nix
     ./apps/sioyek.nix # PDF
+    ./apps/emacs.nix
     ./apps/discord.nix
     ./apps/vscodium.nix
     ./apps/micro.nix
@@ -36,101 +37,93 @@
     stateVersion = "22.11";
   };
 
-  home.packages = with pkgs; [
-    # Demo
-    tere
-
+  home.packages = builtins.attrValues {
     # CLI
-    ripgrep
-    grex # generate regex
-    bat-extras.batgrep
-    procs # ps alt
-    dua # disk usage
-    tokei # sloc
-    sd # sed
-    ruplacer # find and replace
-    skim # fzf
-    hyperfine # benchmarking tool
-    file
-    fd
-    peco # filtering tool
-    onefetch # neofetch but for git repos
-    btop # system monitor
-    bandwhich # display network utilisation
-    git-filter-repo
-    socat # pass cmds to mpv socket
-    tealdeer
-    ttyper # typing practice
-    bat
-    jq
+    inherit (pkgs)
+      ripgrep
+      grex # generate regex
+      procs # ps alt
+      dua # disk usage
+      tokei # sloc
+      sd # sed
+      ruplacer # find and replace
+      skim # fzf
+      hyperfine # benchmarking tool
+      file
+      fd
+      onefetch # neofetch but for git repos
+      btop # system monitor
+      bandwhich # display network utilisation
+      tealdeer
+      ttyper # typing practice
+      bat
+      jq
+      wget
+      neofetch
+      starship
+      pipe-rename
+      zoxide
+      eza
+      glow
+      fuc # rmz cpz
+      fontpreview
+      broot # interactive tree
+      kalker
+      p7zip
+      difftastic
 
-    wget
-    neofetch
-    starship
-    pipe-rename
-    zoxide
-    eza
-    glow
-    fuc # rmz cpz
-    fontpreview
-    broot # interactive tree
-    kalker
-    p7zip
-    difftastic
+    # ------------------------------------------ #
 
     # Desktop
-    gifski
-    planify
-    gcolor3 # colour picker
-    freetube
-    bitwarden
-    xorg.xset
-    xclip
-    imagemagick
-    flameshot
-    gimp
-    qbittorrent
-    xbanish
-    chromium
-    lite-xl
-    uhk-agent
-    cpu-x
+      gifski
+      gcolor3 # colour picker
+      freetube
+      bitwarden
+      xclip
+      imagemagick
+      flameshot
+      gimp
+      qbittorrent
+      xbanish
+      chromium
+      uhk-agent
+      cpu-x
+      vivaldi-ffmpeg-codecs
+      anki
+      cryptomator
+      syncthing
+      libreoffice
+      woeusb-ng;
+    inherit (pkgs.xorg)
+      xset
+      xev;
 
-    vivaldi-ffmpeg-codecs
-    anki
-    cryptomator
-    syncthing
-    libreoffice
-    woeusb-ng
+    # ------------------------------------------ #
 
     # Media
-    ffmpeg-full
-    yt-dlp
-    alsa-utils
-    playerctl
+    inherit (pkgs)
+      ffmpeg-full
+      yt-dlp
+      alsa-utils
+      playerctl
+
+    # ------------------------------------------ #
 
     # Dev
-    just
-    xorg.xev
-    nixd
-    cachix
-    nixfmt
-    rust-bin.beta.latest.default
+      git-filter-repo
+      just
+      nixd
+      cachix
+      nixfmt
+      # `echo "GET <link>" | hurl -o ./out`
+      hurl
+      # `entr -rs <files> <commands>`
+      # run commands on file change, -r(eload on each change), -s(hell envvar)
+      entr;
+    inherit (pkgs.bat-extras)
+      batgrep;
 
-    # `echo "GET <link>" | hurl -o ./out`
-    hurl
-
-    # `entr -rs <files> <commands>`
-    # run commands on file change, -r(eload on each change), -s(hell envvar)
-    entr
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+  };
 
   programs = {
     direnv.enable = true;
@@ -141,8 +134,8 @@
   nixpkgs = {
     overlays = [
       self.overlays.micro
-      self.overlays.kakoune-unwrapped
       inputs.rust-overlay.overlays.default
+      inputs.emacs-overlay.overlays.emacs
     ];
     config.allowUnfree = true;
   };
