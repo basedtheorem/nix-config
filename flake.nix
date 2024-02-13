@@ -38,6 +38,9 @@
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    mpv.url = "github:mpv-player/mpv";
+    mpv.flake = false;
   };
 
   outputs = inputs:

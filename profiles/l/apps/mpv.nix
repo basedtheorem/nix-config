@@ -1,32 +1,10 @@
-{ pkgs, ... }:
-let
-  mpv-unwrapped-updated = pkgs.mpv-unwrapped.overrideAttrs (final: prev: {
-    version = "0.36.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "mpv-player";
-      repo = "mpv";
-      rev = "v${final.version}";
-      sha256 = "sha256-82moFbWvfc1awXih0d0D+dHqYbIoGNZ77RmafQ80IOY=";
-    };
-    patches = [ ];
-
-    # The following fixes `error: cycle detected in build of..`.
-    # Source: https://discourse.nixos.org/t/using-overlays-cause-cycle-detected-error-if-modified-mpv-package-is-present-what-could-cause-this/28300
-    outputInclude = [ "out" ];
-  });
-in {
+{ pkgs, ... }: {
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {
     enable = true;
 
-    package = pkgs.wrapMpv mpv-unwrapped-updated {
-      scripts = with pkgs.mpvScripts; [
-        autoload
-        mpris # use w/ playerctl
-        thumbfast
-      ];
-    };
+    package = pkgs.mpv;
 
     config = {
       # -- Behaviour --

@@ -37,6 +37,7 @@
       config.allowUnfree = true;
       overlays = [
         self.overlays.micro
+        self.overlays.mpv
         inputs.rust-overlay.overlays.default
         inputs.emacs-overlay.overlays.emacs
       ];
@@ -96,7 +97,6 @@
         qbittorrent
         xbanish
         chromium
-        uhk-agent
         cpu-x
         anki
         cryptomator
