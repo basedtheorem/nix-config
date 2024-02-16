@@ -18,9 +18,7 @@
     enable = true;
 
     # ~/.config/gtk{3,4}.0/settings.ini
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
     gtk3.extraConfig = {
       gtk-decoration-layout = "menu:";
       gtk-application-prefer-dark-theme = 1;
@@ -32,6 +30,6 @@
     iconTheme.package = pkgs.flat-remix-icon-theme;
     iconTheme.name = "Flat-Remix-Red-Dark";
     theme.package = pkgs.flat-remix-gtk;
-    theme.name = "Flat-Remix-GTK-Red-Darkest-Solid"; # gsettings get org.gnome.desktop.interface gtk-theme
+    theme.name = "Flat-Remix-GTK-Red"; # gsettings get org.gnome.desktop.interface gtk-theme
   };
 }

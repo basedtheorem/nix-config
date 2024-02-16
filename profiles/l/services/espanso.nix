@@ -10,8 +10,7 @@
 
     matches = {
       base = {
-        backend =
-          "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
+        backend = "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
         matches = [
           {
             trigger = ":now";
@@ -52,6 +51,10 @@
           {
             trigger = "st:gr";
             replace = "site:goodreads.com";
+          }
+          {
+            trigger = "af:";
+            replace = "after:";
           }
           {
             trigger = "w/o";

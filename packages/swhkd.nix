@@ -1,4 +1,10 @@
-{ lib, pkgs, fetchFromGitHub, rustPlatform, pkg-config, }:
+{ lib
+, pkgs
+, fetchFromGitHub
+, rustPlatform
+, pkg-config
+,
+}:
 rustPlatform.buildRustPackage rec {
   pname = "swhkd";
   version = "unstable-2023-10-16";

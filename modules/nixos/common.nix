@@ -1,7 +1,7 @@
 { lib, ... }: {
   _file = ./common.nix;
 
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
+  nixpkgs.config.allowUnfree = true;
 
   # Sets `/etc/nix/nix.conf`.
   nix = {

@@ -10,8 +10,7 @@
       # -- Behaviour --
       pause = true;
       border = "no";
-      input-ipc-server =
-        "/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
+      input-ipc-server = "/tmp/mpvsocket"; # for kb cmds that playerctl cant handle
       save-position-on-quit = true;
       resume-playback = false;
       no-keepaspect-window = ""; # breaks paperwm otherwise
@@ -23,8 +22,7 @@
       hdr-compute-peak = false;
 
       # -- yt-dlp --
-      ytdl-raw-options =
-        "sub-lang='en',write-subs=,write-auto-sub=,write-subs=";
+      ytdl-raw-options = "sub-lang='en',write-subs=,write-auto-sub=,write-subs=";
       ytdl-format = "bestvideo[height<=1440]+bestaudio/best[height<=1440]";
 
       # -- Subtitles --

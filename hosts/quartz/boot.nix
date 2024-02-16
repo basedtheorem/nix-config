@@ -1,8 +1,10 @@
-{ pkgs, config, ... }: {
+{ pkgs
+, config
+, ...
+}: {
   _file = ./boot.nix;
 
-  fileSystems."/boot".options =
-    [ "umask=0077" ]; # Removes permissions and security warnings.
+  fileSystems."/boot".options = [ "umask=0077" ]; # Removes permissions and security warnings.
 
   boot = {
     initrd.kernelModules = [ "amdgpu" ];

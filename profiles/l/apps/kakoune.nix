@@ -1,9 +1,8 @@
-{ pkgs, inputs, ... }:
-
-{
-  home.packages = [
-    pkgs.kakoune
-  ];
+{ pkgs
+, inputs
+, ...
+}: {
+  home.packages = [ pkgs.kakoune ];
   #TODO: put kak dotfiles here
   #   programs.kakoune = {
   #     enable = true;

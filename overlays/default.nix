@@ -8,20 +8,20 @@ inputs: {
   kakoune-unwrapped = final: prev: {
     kakoune = prev.kakoune-unwrapped.overrideAttrs (_: {
       src = inputs.kakoune;
-      patches = [];
+      patches = [ ];
     });
   };
 
   mpv = final: prev: {
-    mpv-unwrapped = prev.mpv-unwrapped.overrideAttrs (_: {
-      src = inputs.mpv;
-    });
+    mpv-unwrapped = prev.mpv-unwrapped.overrideAttrs (_: { src = inputs.mpv; });
     mpv = prev.mpv.override {
       scripts = builtins.attrValues {
-        inherit (prev.mpvScripts)
+        inherit
+          (prev.mpvScripts)
           autoload
-          mpris # use w/ playerctl
-          thumbfast;
+          mpris# use w/ playerctl
+          thumbfast
+          ;
       };
     };
   };

@@ -33,8 +33,8 @@
 
 ```bash
 # Delete all previous generations
-sudo nix-collect-garbage -d
 home-manager expire-generations '-1 second'
+sudo nix-collect-garbage -d
 ```
 
 ##### Printing in repl
@@ -143,6 +143,8 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 - modularize profile
   - e.g. fish init is a single script that depends on several pkgs
 - ulauncher
+- gitui
+- switch from kitty to wezterm for sessions
 - move misc dotfiles to this flake (api keys)
 - resize kitty wins
 - indent lines using tab in vscode ffs why isnt it default

@@ -1,4 +1,7 @@
-{ stdenvNoCC, source, ... }:
+{ stdenvNoCC
+, source
+, ...
+}:
 stdenvNoCC.mkDerivation (self: {
   src = source;
 

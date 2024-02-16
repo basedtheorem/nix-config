@@ -1,4 +1,8 @@
-{ lib, pkgs, inputs, ... }: {
+{ lib
+, pkgs
+, inputs
+, ...
+}: {
   _file = ./services.nix;
 
   services = {

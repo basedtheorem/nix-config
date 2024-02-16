@@ -1,5 +1,8 @@
-{ lib, stdenvNoCC, fetchzip }:
-
+{ lib
+, stdenvNoCC
+, fetchzip
+,
+}:
 stdenvNoCC.mkDerivation rec {
   pname = "ClockFace-font";
   version = "bad1107";
@@ -8,8 +11,7 @@ stdenvNoCC.mkDerivation rec {
   src = fetchzip {
     # Use the 'ttc' files here for a smaller closure size.
     # (Using 'ttf' files gives a closure size about 15x larger, as of November 2021.)
-    url =
-      "https://github.com/ocodo/ClockFace-font/archive/bad11070c962d328679e9bfec7769fb920097615.zip";
+    url = "https://github.com/ocodo/ClockFace-font/archive/bad11070c962d328679e9bfec7769fb920097615.zip";
     hash = "sha256-2+kiG5apYMKI5P1o1ahr9BsV87UVWjSmM8S+Vf5MAO0=";
   };
 

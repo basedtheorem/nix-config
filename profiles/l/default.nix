@@ -1,5 +1,9 @@
-{ self, pkgs, inputs, lib, ... }: {
-
+{ self
+, pkgs
+, inputs
+, lib
+, ...
+}: {
   imports = [
     ./apps/fish.nix
     ./apps/git.nix
@@ -13,7 +17,6 @@
     ./apps/discord.nix
     ./apps/vscodium.nix
     ./apps/micro.nix
-    ./apps/firefox.nix
     ./apps/kakoune.nix
     ./apps/yazi.nix
     ./apps/kitty.nix
@@ -53,21 +56,21 @@
       # CLI
       inherit (pkgs)
         ripgrep
-        grex # generate regex
-        procs # ps alt
-        dua # disk usage
-        tokei # sloc
-        sd # sed
-        ruplacer # find and replace
-        skim # fzf
-        hyperfine # benchmarking tool
+        grex# generate regex
+        procs# ps alt
+        dua# disk usage
+        tokei# sloc
+        sd# sed
+        ruplacer# find and replace
+        skim# fzf
+        hyperfine# benchmarking tool
         file
         fd
-        onefetch # neofetch but for git repos
-        btop # system monitor
-        bandwhich # display network utilisation
+        onefetch# neofetch but for git repos
+        btop# system monitor
+        bandwhich# display network utilisation
         tealdeer
-        ttyper # typing practice
+        ttyper# typing practice
         bat
         jq
         wget
@@ -77,23 +80,25 @@
         zoxide
         eza
         glow
-        fuc # rmz cpz
+        fuc# rmz cpz
         fontpreview
-        broot # interactive tree
+        broot# interactive tree
         kalker
         p7zip
         difftastic
+        # ------------------------------------------ #
 
-      # ------------------------------------------ #
+        # Desktop
 
-      # Desktop
         gifski
-        gcolor3 # colour picker
+        gcolor3# colour picker
         freetube
         bitwarden
         xclip
         flameshot
         gimp
+        floorp
+        onlyoffice-bin_latest
         qbittorrent
         xbanish
         chromium
@@ -101,11 +106,12 @@
         anki
         cryptomator
         syncthing
-        libreoffice
-        woeusb-ng;
+        woeusb-ng
+        ;
       inherit (pkgs.xorg)
         xset
-        xev;
+        xev
+        ;
 
       # ------------------------------------------ #
 
@@ -118,9 +124,9 @@
         alsa-utils
         playerctl
 
-      # ------------------------------------------ #
+        # ------------------------------------------ #
 
-      # Dev
+        # Dev
         git-filter-repo
         just
         nixd
@@ -129,11 +135,11 @@
         # `echo "GET <link>" | hurl -o ./out`
         hurl
         # `entr -rs <files> <commands>`
-        # run commands on file change, -r(eload on each change), -s(hell envvar)
-        entr;
-      inherit (pkgs.bat-extras)
-        batgrep;
 
+        # run commands on file change, -r(eload on each change), -s(hell envvar)
+        entr
+        ;
+      inherit (pkgs.bat-extras) batgrep;
     };
 
     home.sessionPath = [ "$HOME/.cargo/bin" ];

@@ -1,6 +1,12 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.gnome;
-in {
+{ config
+, lib
+, pkgs
+, ...
+}:
+let
+  cfg = config.gnome;
+in
+{
   _file = ./gnome.nix;
 
   # TODO:
@@ -28,6 +34,8 @@ in {
 
     environment.systemPackages = with pkgs; [
       xdg-desktop-portal # Fixes "No such interface..."
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
       gnome-firmware
       gnome.gvfs
       gnome.sushi
@@ -37,7 +45,8 @@ in {
     ];
 
     environment.gnome = lib.mkIf cfg.minimal {
-      excludePackages = (with pkgs; [ gnome-photos gnome-tour gedit ])
+      excludePackages =
+        (with pkgs; [ gnome-photos gnome-tour gedit ])
         ++ (with pkgs.gnome; [
           cheese # webcam tool
           gnome-music

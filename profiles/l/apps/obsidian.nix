@@ -6,7 +6,7 @@
         runHook preInstall
         mkdir -p $out/bin
         makeWrapper ${pkgs.electron_25}/bin/electron $out/bin/obsidian \
-          --set LD_LIBRARY_PATH "${pkgs.lib.makeLibraryPath [ pkgs.libGL ]}" \
+          --set LD_LIBRARY_PATH "${pkgs.lib.makeLibraryPath [pkgs.libGL]}" \
           --add-flags $out/share/obsidian/app.asar \
           --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"
         install -m 444 -D resources/app.asar $out/share/obsidian/app.asar

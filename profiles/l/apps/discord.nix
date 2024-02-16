@@ -1,4 +1,7 @@
-{ pkgs, inputs, ... }: {
+{ pkgs
+, inputs
+, ...
+}: {
   config = {
     home.packages = with pkgs; [
       betterdiscordctl # run `betterdiscordctl install` then restart dc

@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{ config
+, lib
+, pkgs
+, ...
+}: {
   _file = ./hardware.nix;
 
   hardware = {
@@ -9,6 +13,9 @@
       extraPackages = with pkgs; [ amdvlk ];
     };
   };
+
+  environment.systemPackages =
+    lib.mkIf config.hardware.keyboard.uhk.enable [ pkgs.uhk-agent ];
 
   security.rtkit.enable = true;
 

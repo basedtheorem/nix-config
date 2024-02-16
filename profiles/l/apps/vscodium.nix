@@ -3,12 +3,15 @@
     enable = true;
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions;
-      [ bbenoist.nix ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "rainglow";
-        publisher = "daylerees";
-        version = "1.5.2";
-        sha256 = "sha256-1c/xQYnuJ3BkwfqjMeT2kG1ZsXyjEOypJs0pJbouZMQ=";
-      }];
+      [ bbenoist.nix ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "rainglow";
+          publisher = "daylerees";
+          version = "1.5.2";
+          sha256 = "sha256-1c/xQYnuJ3BkwfqjMeT2kG1ZsXyjEOypJs0pJbouZMQ=";
+        }
+      ];
     keybindings = [
       {
         "key" = "ctrl+p";
@@ -438,14 +441,12 @@
       {
         "key" = "alt+left";
         "command" = "-workbench.action.terminal.focusPreviousPane";
-        "when" =
-          "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+        "when" = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
       }
       {
         "key" = "alt+right";
         "command" = "-workbench.action.terminal.focusNextPane";
-        "when" =
-          "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+        "when" = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
       }
       {
         "key" = "alt+left";
@@ -458,14 +459,12 @@
       }
       {
         "key" = "ctrl+tab";
-        "command" =
-          "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup";
+        "command" = "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup";
         "when" = "!activeEditorGroupEmpty";
       }
       {
         "key" = "ctrl+pageup";
-        "command" =
-          "-workbench.action.quickOpenLeastRecentlyUsedEditor"; # It's least recently used... Might as well disable.
+        "command" = "-workbench.action.quickOpenLeastRecentlyUsedEditor"; # It's least recently used... Might as well disable.
       }
       {
         "key" = "ctrl+pagedown";

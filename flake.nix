@@ -57,23 +57,30 @@
 
       imports = [ ./hosts ./profiles ./packages ];
 
-      perSystem = { pkgs, system, lib, ... }: {
-        devShells.default = pkgs.mkShell rec {
-          name = "dotfiles devenv";
-          formatter = pkgs.alejandra;
+      perSystem =
+        { pkgs
+        , system
+        , lib
+        , ...
+        }: {
+          devShells.default = pkgs.mkShell rec {
+            name = "dotfiles devenv";
+            formatter = pkgs.alejandra;
 
-          packages = builtins.attrValues {
-            inherit (pkgs) nixfmt nil; # langserver
+            packages = builtins.attrValues {
+              inherit (pkgs)
+                nixpkgs-fmt
+                nil; # langserver
+            };
+
+            shellHook = ''
+              echo Packages: ${
+                builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
+              }
+            '';
+
+            DIRENV_LOG_FORMAT = "";
           };
-
-          shellHook = ''
-            echo Packages: ${
-              builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
-            }
-          '';
-
-          DIRENV_LOG_FORMAT = "";
         };
-      };
     };
 }
