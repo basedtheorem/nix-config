@@ -17,6 +17,14 @@
             replace = "{{currentdate}} {{currenttime}}";
           }
           {
+            trigger = ":time";
+            replace = "{{currenttime}}";
+          }
+          {
+            trigger = ":date";
+            replace = "{{currentdate}}";
+          }
+          {
             regex = ":hi(?P<person>.*)\\.";
             replace = "Hi {{person}}!";
           }
@@ -62,6 +70,7 @@
           }
         ];
       };
+
       global_vars = {
         global_vars = [
           {

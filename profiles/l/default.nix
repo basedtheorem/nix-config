@@ -56,8 +56,8 @@
       # CLI
       inherit (pkgs)
         ripgrep
-        grex# generate regex
-        procs# ps alt
+        grex # generate regex
+        procs # ps alt
         dua# disk usage
         tokei# sloc
         sd# sed
@@ -66,11 +66,11 @@
         hyperfine# benchmarking tool
         file
         fd
-        onefetch# neofetch but for git repos
-        btop# system monitor
-        bandwhich# display network utilisation
+        onefetch # neofetch but for git repos
+        btop # system monitor
+        bandwhich # display network utilisation
         tealdeer
-        ttyper# typing practice
+        ttyper # typing practice
         bat
         jq
         wget
@@ -86,6 +86,7 @@
         kalker
         p7zip
         difftastic
+
         # ------------------------------------------ #
 
         # Desktop

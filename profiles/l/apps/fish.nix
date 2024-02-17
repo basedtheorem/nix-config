@@ -43,7 +43,8 @@
       srmr = "sudo rm -r";
       sued = "sudo micro";
       sudoed = "sudo micro";
-      ed = "emacsclient";
+      ed = "emacsclient -nw -c";
+      mc = "micro";
       fonts = "fc-list";
       config = "~/.config";
       cd = "z";
@@ -62,9 +63,12 @@
         setCursor = true;
         expansion = "jot ' - [ ] %'";
       };
-      gitcm = {
+      gitcmm = {
         setCursor = true;
         expansion = "git commit -S -m '%'";
+      };
+      gitcm = {
+        expansion = "git commit -S -v";
       };
     };
 
