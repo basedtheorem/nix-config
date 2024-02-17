@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   _file = ./nix.nix;
 
   #TODO should extend rather than overwrite

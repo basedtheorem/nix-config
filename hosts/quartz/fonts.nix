@@ -1,6 +1,7 @@
-{ self
-, pkgs
-, ...
+{
+  self,
+  pkgs,
+  ...
 }:
 # TODO: move to profiles
 {
@@ -19,38 +20,41 @@
       };
 
       defaultFonts = {
-        serif = [ "EB Garamond" ];
-        sansSerif = [ "Questrial" ];
-        monospace = [ "Iosevka Comfy" ];
-        emoji = [ "Twitter Color Emoji" ];
+        serif = ["EB Garamond"];
+        sansSerif = ["Questrial"];
+        monospace = ["Iosevka Comfy"];
+        emoji = ["Twitter Color Emoji"];
       };
     };
 
     fontDir.enable = true;
 
-    packages = [
-      self.packages."${pkgs.system}".clock-face
-      pkgs.iosevka-comfy.comfy
+    packages =
+      [
+        self.packages."${pkgs.system}".clock-face
+        pkgs.iosevka-comfy.comfy
 
-      (pkgs.nerdfonts.override { fonts =
-        [
-          "Iosevka"
-          "FiraCode"
-        ];
-      })
-      (pkgs.google-fonts.override { fonts =
-        [
-          "DM Mono"
-          "Noto Sans Mono"
-        ];
-      })
-    ]
-    ++ builtins.attrValues {
-      inherit (pkgs)
-        twitter-color-emoji
-        roboto
-        victor-mono
-        sarasa-gothic;
-    };
+        (pkgs.nerdfonts.override {
+          fonts = [
+            "Iosevka"
+            "FiraCode"
+          ];
+        })
+        (pkgs.google-fonts.override {
+          fonts = [
+            "DM Mono"
+            "Noto Sans Mono"
+          ];
+        })
+      ]
+      ++ builtins.attrValues {
+        inherit
+          (pkgs)
+          twitter-color-emoji
+          roboto
+          victor-mono
+          sarasa-gothic
+          ;
+      };
   };
 }

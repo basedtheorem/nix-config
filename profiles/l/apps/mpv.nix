@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {
@@ -70,7 +70,7 @@
         hidetimeout = 500;
         boxalpha = 25;
       };
-      ytdl_hook = { ytdl_path = "yt-dlp"; };
+      ytdl_hook = {ytdl_path = "yt-dlp";};
     };
   };
 

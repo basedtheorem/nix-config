@@ -1,10 +1,11 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
   programs.dconf.enable = true;
 
-  users.users.l.extraGroups = [ "libvirtd" ];
+  users.users.l.extraGroups = ["libvirtd"];
 
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -23,7 +24,7 @@
       qemu = {
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
     spiceUSBRedirection.enable = true;

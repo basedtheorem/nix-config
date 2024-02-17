@@ -1,6 +1,7 @@
-{ lib
-, pkgs
-, ...
+{
+  lib,
+  pkgs,
+  ...
 }: {
   _file = ./desktop.nix;
 
@@ -14,7 +15,7 @@
     kdeconnect.enable = false;
   };
 
-  environment.shells = [ pkgs.fish pkgs.nushell ];
+  environment.shells = [pkgs.fish pkgs.nushell];
 
   environment.systemPackages = with pkgs;
     [

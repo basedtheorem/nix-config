@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = [
     #TODO: https://github.com/NixOS/nixpkgs/pull/282595
     (pkgs.obsidian.overrideAttrs (final: prev: {
@@ -22,5 +22,5 @@
     }))
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages = ["electron-25.9.0"];
 }

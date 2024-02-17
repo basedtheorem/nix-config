@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, inputs
-, ...
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
 }: {
   _file = ./services.nix;
 
@@ -27,7 +28,7 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = ["amdgpu"];
 
       displayManager = {
         sddm = {

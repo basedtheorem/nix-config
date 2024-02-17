@@ -1,23 +1,27 @@
-{ inputs
-, pkgs
-, ...
+{
+inputs,
+pkgs,
+...
 }:
 let
-  emacsWithPackages = pkgs.emacsWithPackagesFromUsePackage {
+  emacs = pkgs.emacsWithPackagesFromUsePackage {
     package = pkgs.emacs-git;
-    config = ../sources/init.el;
-    defaultInitFile = true;
+    extraEmacsPackages = epkgs: with epkgs; [
+      use-package
+    ];
   };
-in
-{
-  # https://web.archive.org/web/20240209082003/https://esrh.me/posts/2021-11-27-emacs-config
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs-git;
-  };
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs-git;
-    startWithUserSession = true;
-  };
-}
+  in {
+    # TODO
+    #xdg.configFile."emacs/".source = ../sources/emacs;
+
+    programs.emacs = {
+      enable = true;
+      package = pkgs.emacs-git;
+    };
+
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacs-git;
+      startWithUserSession = true;
+    };
+  }

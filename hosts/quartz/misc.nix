@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   _file = ./misc.nix;
 
   networking = {

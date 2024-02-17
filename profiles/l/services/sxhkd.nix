@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = [
     pkgs.socat # pass cmds to mpv socket
   ];

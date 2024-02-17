@@ -1,6 +1,7 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   programs.fish = {
     enable = true;
@@ -43,7 +44,6 @@
       srmr = "sudo rm -r";
       sued = "sudo micro";
       sudoed = "sudo micro";
-      ed = "emacsclient -nw -c";
       mc = "micro";
       fonts = "fc-list";
       config = "~/.config";
@@ -80,6 +80,7 @@
     ];
 
     functions = {
+      ed = "emacsclient -nw -c $argv";
       ya = ''
         set tmp (mktemp -t "yazi-cwd.XXXXX")
         yazi $argv --cwd-file="$tmp"
