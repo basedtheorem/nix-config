@@ -6,34 +6,33 @@
   ...
 }: {
   imports = [
-    ./apps/fish.nix
-    ./apps/git.nix
-    ./apps/gitui.nix
-    ./apps/vivaldi.nix
-    ./apps/mpv.nix
-    ./apps/obsidian.nix
-    ./apps/spicetify.nix
-    ./apps/sioyek.nix # PDF
-    ./apps/emacs.nix
-    ./apps/discord.nix
-    ./apps/vscodium.nix
-    ./apps/micro.nix
-    ./apps/kakoune.nix
-    ./apps/yazi.nix
-    ./apps/kitty.nix
+    ./cli/mpv # Media player
+    ./cli/micro # Text editor
+    ./cli/vscodium
+    ./cli/emacs # Operating system
+    ./cli/kitty # Terminal emulator
+    ./cli/fish.nix # Shell
+    ./cli/git.nix
+    ./cli/gitui.nix
+    ./cli/spicetify.nix # Spotify
+    ./cli/yazi.nix # File browser
 
+    ./desktop/vivaldi.nix
+    ./desktop/obsidian.nix # Notes (.md)
+    ./desktop/sioyek.nix # PDF
+    ./desktop/discord.nix
     ./desktop/gnome.nix
     ./desktop/flatpak.nix
     ./desktop/obs.nix
 
-    ./services/picom.nix
-    ./services/opensnitch.nix
-    ./services/espanso.nix
-    ./services/ulauncher.nix
+    ./services/picom.nix # Compositor
+    ./services/opensnitch.nix # Firewall
+    ./services/espanso.nix # Text expander
+    ./services/ulauncher.nix # App launcher
     ./services/syncthing.nix
-    ./services/flameshot.nix
-    ./services/xbanish.nix
-    ./services/sxhkd.nix
+    ./services/flameshot.nix # Screenshot
+    ./services/xbanish.nix # Hide mouse on input
+    ./services/sxhkd.nix # Keybind -> shell cmd
   ];
 
   config = {
@@ -54,122 +53,104 @@
     };
 
     home.packages = builtins.attrValues {
-      # CLI
-      inherit
-        (pkgs)
-        ripgrep
-        grex # generate regex
-        procs # ps alt
-        dua # disk usage
-        tokei # sloc
-        sd # sed
-        ruplacer # find and replace
-        skim # fzf
-        hyperfine # benchmarking tool
-        file
-        fd
-        onefetch # neofetch but for git repos
-        btop # system monitor
-        bandwhich # display network utilisation
-        tealdeer
-        ttyper # typing practice
-        bat
-        jq
-        wget
-        neofetch
-        starship
-        pipe-rename
-        zoxide
-        eza
-        glow
-        fuc # rmz cpz
-        fontpreview
-        broot # interactive tree
-        kalker
-        p7zip
-        difftastic
-        # ------------------------------------------ #
-        
-        # Desktop
-        
-        gifski
-        gcolor3 # colour picker
-        freetube
-        bitwarden
-        xclip
-        flameshot
-        gimp
-        floorp
-        onlyoffice-bin_latest
-        qbittorrent
-        xbanish
-        chromium
-        cpu-x
-        anki
-        cryptomator
-        syncthing
-        woeusb-ng
+
+        # CLI
+      inherit (pkgs)
+        ripgrep # `grep` alt.
+        grex # Generate regex
+        procs # `ps` (process )alt.
+        skim # `fzf` alt.
+        dua # Disk usage
+        tokei # Count lines of code
+        ruplacer # Find & replace
+        sd # Alt. find & replace
+        hyperfine # Benchmarking
+        file # File info
+        fd # Find files
+        onefetch # Fetch for git repos
+        btop # System monitor
+        bandwhich # Network monitor
+        tealdeer # TLDR for commands
+        ttyper # Typing practice
+        bat # `cat` alt.
+        wget # Download files
+        neofetch # System info
+        pipe-rename # `ls | renamer`
+        zoxide # `cd` alt.
+        eza # `ls` alt.
+        glow # Print .md
+        fuc # `rm,cp` -> `rmz,cpz`
+        broot # Interactive file tree
+        kalker # Calculator
+        p7zip # 7z util
+        difftastic # `diff` alt
+        xclip # Clipboard utils
+        cpu-x # Detailed sys info
         ;
-      inherit
-        (pkgs.xorg)
-        xset
-        xev
+      inherit (pkgs.bat-extras) batgrep;
+
+        # ------------------------------------------ #
+
+        # Desktop
+      inherit (pkgs)
+        gcolor3 # colour picker
+        freetube # YT client
+        bitwarden # Password manager
+        floorp # Firefox fork
+        onlyoffice-bin_latest # Office suite
+        anki
+        cryptomator # Encryption
+        ;
+      inherit (pkgs.xorg)
+        xset # Key delay & repeat rate
+        xev # Print xserver events
         ;
 
       # ------------------------------------------ #
 
-      # Media
-      inherit
-        (pkgs)
-        ffmpeg-full
+        # Media
+      inherit (pkgs)
         vivaldi-ffmpeg-codecs
-        imagemagick
+        ffmpeg-full # Video/audio/etc utils
+        imagemagick # Image utils
         yt-dlp
         alsa-utils
         playerctl
-        # ------------------------------------------ #
-        
+
+      # ------------------------------------------ #
+
         # Dev
-        
         git-filter-repo
+        chromium
+        jq # JSON query
         just
         nixd
         cachix
         tree-sitter
         gcc
+        python
         alejandra
         # `echo "GET <link>" | hurl -o ./out`
-        
         hurl
         # `entr -rs <files> <commands>`
-        
+
         # run commands on file change, -r(eload on each change), -s(hell envvar)
-        
         entr
         ;
-      inherit (pkgs.bat-extras) batgrep;
     };
 
     home.sessionPath = ["$HOME/.cargo/bin"];
     home.file = {
       # ".screenrc".source = dotfiles/screenrc;
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
     };
 
     programs = {
+      home-manager.enable = true;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
-      home-manager.enable = true;
     };
 
-    news = {
-      display = lib.mkForce "silent";
-      json = lib.mkForce {};
-      entries = lib.mkForce [];
-    };
+    news.display = lib.mkForce "silent";
 
     xsession.enable = true;
   };

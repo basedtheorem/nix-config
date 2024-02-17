@@ -38,6 +38,22 @@
         "type": "github"
       }
     },
+    "ergoemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707583444,
+        "narHash": "sha256-GH6Toc3kKyAIBR+1vvx4QnXeuoNlwgKR2atET8njZnc=",
+        "owner": "meow-edit",
+        "repo": "meow",
+        "rev": "54d4e933039827c158a4f593a94681a64e0d8042",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meow-edit",
+        "repo": "meow",
+        "type": "github"
+      }
+    },
     "fish-tide": {
       "flake": false,
       "locked": {
@@ -196,6 +212,22 @@
         "type": "github"
       }
     },
+    "meow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707583444,
+        "narHash": "sha256-GH6Toc3kKyAIBR+1vvx4QnXeuoNlwgKR2atET8njZnc=",
+        "owner": "meow-edit",
+        "repo": "meow",
+        "rev": "54d4e933039827c158a4f593a94681a64e0d8042",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meow-edit",
+        "repo": "meow",
+        "type": "github"
+      }
+    },
     "mpv": {
       "flake": false,
       "locked": {
@@ -300,12 +332,14 @@
       "inputs": {
         "chillax-discord-theme": "chillax-discord-theme",
         "emacs-overlay": "emacs-overlay",
+        "ergoemacs": "ergoemacs",
         "fish-tide": "fish-tide",
         "flatpak": "flatpak",
         "home-manager": "home-manager",
         "kakoune": "kakoune",
         "kitty-grab": "kitty-grab",
         "master": "master",
+        "meow": "meow",
         "mpv": "mpv",
         "nixpkgs": [
           "unstable-small"

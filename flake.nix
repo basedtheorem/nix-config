@@ -36,11 +36,15 @@
     kakoune.url = "github:mawww/kakoune";
     kakoune.flake = false;
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
     mpv.url = "github:mpv-player/mpv";
     mpv.flake = false;
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    meow.url = "github:meow-edit/meow";
+    meow.flake = false;
+    ergoemacs.url = "github:meow-edit/meow";
+    ergoemacs.flake = false;
   };
 
   outputs = inputs:
@@ -49,8 +53,8 @@
       debug = true;
 
       flake = {
-        nixosModules = import ./modules/nixos inputs;
-        homeManagerModules = import ./modules/home-manager inputs;
+        nixosModules = import ./hosts/modules inputs;
+        homeManagerModules = import ./profiles/modules inputs;
         lib = import ./lib inputs;
         overlays = import ./overlays inputs;
       };
