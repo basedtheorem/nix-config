@@ -44,8 +44,8 @@
   };
 
   outputs = inputs:
-    inputs.parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+    inputs.parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
       debug = true;
 
       flake = {
@@ -55,34 +55,34 @@
         overlays = import ./overlays inputs;
       };
 
-      imports = [./hosts ./profiles ./packages];
+      imports = [ ./hosts ./profiles ./packages ];
 
-      perSystem = {
-        pkgs,
-        system,
-        lib,
-        ...
-      }: {
-        devShells.default = pkgs.mkShell rec {
-          name = "dotfiles devenv";
-          formatter = pkgs.alejandra;
+      perSystem =
+        { pkgs
+        , system
+        , lib
+        , ...
+        }: {
+          devShells.default = pkgs.mkShell rec {
+            name = "dotfiles devenv";
+            formatter = pkgs.alejandra;
 
-          packages = builtins.attrValues {
-            inherit
-              (pkgs)
-              nixpkgs-fmt
-              nil # langserver
-              ;
+            packages = builtins.attrValues {
+              inherit
+                (pkgs)
+                nixpkgs-fmt
+                nil# langserver
+                ;
+            };
+
+            shellHook = ''
+              echo Packages: ${
+                builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
+              }
+            '';
+
+            DIRENV_LOG_FORMAT = "";
           };
-
-          shellHook = ''
-            echo Packages: ${
-              builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
-            }
-          '';
-
-          DIRENV_LOG_FORMAT = "";
         };
-      };
     };
 }

@@ -1,9 +1,8 @@
-{
-  self,
-  pkgs,
-  inputs,
-  lib,
-  ...
+{ self
+, pkgs
+, inputs
+, lib
+, ...
 }: {
   imports = [
     ./apps/fish.nix
@@ -58,21 +57,22 @@
       inherit
         (pkgs)
         ripgrep
-        grex # generate regex
-        procs # ps alt
-        dua # disk usage
-        tokei # sloc
-        sd # sed
-        ruplacer # find and replace
-        skim # fzf
-        hyperfine # benchmarking tool
+        grex# generate regex
+        procs# ps alt
+        murex
+        dua# disk usage
+        tokei# sloc
+        sd# sed
+        ruplacer# find and replace
+        skim# fzf
+        hyperfine# benchmarking tool
         file
         fd
-        onefetch # neofetch but for git repos
-        btop # system monitor
-        bandwhich # display network utilisation
+        onefetch# neofetch but for git repos
+        btop# system monitor
+        bandwhich# display network utilisation
         tealdeer
-        ttyper # typing practice
+        ttyper# typing practice
         bat
         jq
         wget
@@ -82,18 +82,18 @@
         zoxide
         eza
         glow
-        fuc # rmz cpz
+        fuc# rmz cpz
         fontpreview
-        broot # interactive tree
+        broot# interactive tree
         kalker
         p7zip
         difftastic
         # ------------------------------------------ #
-        
+
         # Desktop
-        
+
         gifski
-        gcolor3 # colour picker
+        gcolor3# colour picker
         freetube
         bitwarden
         xclip
@@ -128,29 +128,29 @@
         alsa-utils
         playerctl
         # ------------------------------------------ #
-        
+
         # Dev
-        
+
         git-filter-repo
         just
         nixd
         cachix
         tree-sitter
         gcc
-        alejandra
+        nixpkgs-fmt
         # `echo "GET <link>" | hurl -o ./out`
-        
+
         hurl
         # `entr -rs <files> <commands>`
-        
+
         # run commands on file change, -r(eload on each change), -s(hell envvar)
-        
+
         entr
         ;
       inherit (pkgs.bat-extras) batgrep;
     };
 
-    home.sessionPath = ["$HOME/.cargo/bin"];
+    home.sessionPath = [ "$HOME/.cargo/bin" ];
     home.file = {
       # ".screenrc".source = dotfiles/screenrc;
       # ".gradle/gradle.properties".text = ''
@@ -167,8 +167,8 @@
 
     news = {
       display = lib.mkForce "silent";
-      json = lib.mkForce {};
-      entries = lib.mkForce [];
+      json = lib.mkForce { };
+      entries = lib.mkForce [ ];
     };
 
     xsession.enable = true;

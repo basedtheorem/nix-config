@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{ pkgs
+, ...
+}: {
   services.espanso = {
     enable = true;
 
@@ -10,7 +12,8 @@
 
     matches = {
       base = {
-        backend = "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
+        backend =
+          "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
         matches = [
           {
             trigger = ":now";
@@ -27,6 +30,18 @@
           {
             regex = ":hi(?P<person>.*)\\.";
             replace = "Hi {{person}}!";
+          }
+          {
+            regex = ":af2(?P<x>\\d)";
+            replace = "after:202{{x}}";
+          }
+          {
+            regex = ":af1(?P<x>\\d)";
+            replace = "after:201{{x}}";
+          }
+          {
+            regex = ":bf2(?P<x>\\d)";
+            replace = "before:202{{x}}";
           }
           {
             trigger = "st:r";
@@ -61,10 +76,6 @@
             replace = "site:goodreads.com";
           }
           {
-            trigger = ":af";
-            replace = "after:202";
-          }
-          {
             trigger = "w/o";
             replace = "without ";
           }
@@ -76,12 +87,12 @@
           {
             name = "currentdate";
             type = "date";
-            params = {format = "%d/%m/%Y";};
+            params = { format = "%d/%m/%Y"; };
           }
           {
             name = "currenttime";
             type = "date";
-            params = {format = "%R";};
+            params = { format = "%R"; };
           }
         ];
       };
