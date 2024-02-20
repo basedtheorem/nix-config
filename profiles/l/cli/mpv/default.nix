@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{self, pkgs, ...}: {
+
+  nixpkgs.overlays = [ self.overlays.mpv ];
   services.playerctld.enable = true; # sends my keybinds to mpv
 
   programs.mpv = {

@@ -1,8 +1,10 @@
 {
+  self,
   inputs,
   pkgs,
   ...
 }: {
+  nixpkgs.overlays = [ self.overlays.micro ];
   home.sessionVariables = {EDITOR = "micro";};
   programs.micro = {
     enable = true;

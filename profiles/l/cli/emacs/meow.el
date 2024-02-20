@@ -1,6 +1,31 @@
+(require 'meow-util)
+
 (use-package meow
   :ensure t
   :init
+  (defun meow-backward-line (n)
+    "Like `meow-line', but always backward."
+    (interactive "p")
+    (let* ((n (if (not (meow--direction-backward-p))
+                  (- n)
+                n)))
+      (meow-line n)))
+
+  (defun meow-forward-line (n)
+    "Like `meow-line', but always forward."
+    (interactive "p")
+    (let* ((n (if (meow--direction-backward-p)
+                  (- n)
+                n)))
+      (meow-line n)))
+
+  (defun lrns/meow-insert-exit ()
+    "Cancel selection before exiting insert mode."
+    (interactive)
+    (when (use-region-p)
+      (meow-cancel-selection))
+    (mc/keyboard-quit)
+    (meow-insert-exit))
   (defun meow-setup ()
     (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak-dh)
     (meow-motion-overwrite-define-key
@@ -47,11 +72,10 @@
      '("c" . meow-change)
      '("d" . meow-delete)
      '("D" . meow-backward-delete)
-     ;; '("e" . meow-prev)
-     ;; '("E" . meow-prev-expand)
+     '("e" . meow-prev)
+     '("E" . meow-prev-expand)
      '("f" . meow-find)
      '("g" . meow-goto-line)
-     '("C-g" . meow-goto-line)
      '("G" . meow-grab)
      '("h" . meow-left)
      '("H" . meow-left-expand)
@@ -86,9 +110,12 @@
      '("<escape>" . meow-cancel-selection)
      '(">" . intui-tab-region)
      '("<" . intui-untab-region)))
+  :map meow-insert-state-keymap
+         ("C-<escape>" . 'meow-insert-exit)
+         ("<escape>" . 'lrns/meow-insert-exit)
   :config
   (meow-setup)
+  ;; Hack to make append work like vim/kak (disabled since it's too buggy)
   (setq meow-use-cursor-position-hack nil
         meow-use-enhanced-selection-effect nil)  ;; optional, for visual effect
-  (meow-global-mode t)
-  (meow-global-mode 1))
+  (meow-global-mode t))

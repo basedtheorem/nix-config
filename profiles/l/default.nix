@@ -1,9 +1,8 @@
-{
-  self,
-  pkgs,
-  inputs,
-  lib,
-  ...
+{ self
+, pkgs
+, inputs
+, lib
+, ...
 }: {
   imports = [
     ./cli/mpv # Media player
@@ -25,7 +24,7 @@
     ./desktop/flatpak.nix
     ./desktop/obs.nix
 
-    ./services/picom.nix # Compositor
+    ./services/picom # Compositor
     ./services/opensnitch.nix # Firewall
     ./services/espanso.nix # Text expander
     ./services/ulauncher.nix # App launcher
@@ -39,10 +38,7 @@
     nixpkgs = {
       config.allowUnfree = true;
       overlays = [
-        self.overlays.micro
-        self.overlays.mpv
         inputs.rust-overlay.overlays.default
-        inputs.emacs-overlay.overlays.emacs
       ];
     };
 
@@ -54,82 +50,81 @@
 
     home.packages = builtins.attrValues {
 
-        # CLI
+      # CLI
       inherit (pkgs)
-        ripgrep # `grep` alt.
-        grex # Generate regex
-        procs # `ps` (process )alt.
-        skim # `fzf` alt.
-        dua # Disk usage
-        tokei # Count lines of code
-        ruplacer # Find & replace
-        sd # Alt. find & replace
-        hyperfine # Benchmarking
-        file # File info
-        fd # Find files
-        onefetch # Fetch for git repos
-        btop # System monitor
-        bandwhich # Network monitor
-        tealdeer # TLDR for commands
-        ttyper # Typing practice
-        bat # `cat` alt.
-        wget # Download files
-        neofetch # System info
-        pipe-rename # `ls | renamer`
-        zoxide # `cd` alt.
-        eza # `ls` alt.
-        glow # Print .md
-        fuc # `rm,cp` -> `rmz,cpz`
-        broot # Interactive file tree
-        kalker # Calculator
-        p7zip # 7z util
-        difftastic # `diff` alt
-        xclip # Clipboard utils
-        cpu-x # Detailed sys info
+        ripgrep# `grep` alt.
+        grex# Generate regex
+        procs# `ps` (process )alt.
+        skim# `fzf` alt.
+        dua# Disk usage
+        tokei# Count lines of code
+        ruplacer# Find & replace
+        sd# Alt. find & replace
+        hyperfine# Benchmarking
+        file# File info
+        fd# Find files
+        onefetch# Fetch for git repos
+        btop# System monitor
+        bandwhich# Network monitor
+        tealdeer# TLDR for commands
+        ttyper# Typing practice
+        bat# `cat` alt.
+        wget# Download files
+        neofetch# System info
+        pipe-rename# `ls | renamer`
+        zoxide# `cd` alt.
+        eza# `ls` alt.
+        glow# Print .md
+        fuc# `rm,cp` -> `rmz,cpz`
+        broot# Interactive file tree
+        kalker# Calculator
+        p7zip# 7z util
+        difftastic# `diff` alt
+        xclip# Clipboard utils
+        cpu-x# Detailed sys info
         ;
       inherit (pkgs.bat-extras) batgrep;
 
-        # ------------------------------------------ #
+      # ------------------------------------------ #
 
-        # Desktop
+      # Desktop
       inherit (pkgs)
-        gcolor3 # colour picker
-        freetube # YT client
-        bitwarden # Password manager
-        floorp # Firefox fork
-        onlyoffice-bin_latest # Office suite
+        gcolor3# colour picker
+        freetube# YT client
+        bitwarden# Password manager
+        floorp# Firefox fork
+        onlyoffice-bin_latest# Office suite
         anki
-        cryptomator # Encryption
+        cryptomator# Encryption
         ;
       inherit (pkgs.xorg)
-        xset # Key delay & repeat rate
-        xev # Print xserver events
+        xset# Key delay & repeat rate
+        xev# Print xserver events
         ;
 
       # ------------------------------------------ #
 
-        # Media
+      # Media
       inherit (pkgs)
         vivaldi-ffmpeg-codecs
-        ffmpeg-full # Video/audio/etc utils
-        imagemagick # Image utils
+        ffmpeg-full# Video/audio/etc utils
+        imagemagick# Image utils
         yt-dlp
         alsa-utils
-        playerctl
 
-      # ------------------------------------------ #
+        # ------------------------------------------ #
 
         # Dev
         git-filter-repo
         chromium
-        jq # JSON query
+        jq# JSON query
         just
         nixd
         cachix
         tree-sitter
         gcc
-        python
-        alejandra
+        python3
+        nixfmt-rfc-style
         # `echo "GET <link>" | hurl -o ./out`
         hurl
         # `entr -rs <files> <commands>`
@@ -139,7 +134,7 @@
         ;
     };
 
-    home.sessionPath = ["$HOME/.cargo/bin"];
+    home.sessionPath = [ "$HOME/.cargo/bin" ];
     home.file = {
       # ".screenrc".source = dotfiles/screenrc;
     };

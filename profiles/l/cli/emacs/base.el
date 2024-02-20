@@ -1,9 +1,12 @@
 ;;; Contents:
 ;;;
 ;;;  - Motion aids
-;;;  - Power-ups: Embark and Consult
+;;;  - Embark & Consult
 ;;;  - Minibuffer and completion
-;;;  - Misc. editing enhancements
+;;;  - Wgrep & Deadgrep
+
+;; Use C-y as prefix key instead of C-c which is mapped to copy
+(global-set-key (kbd "C-y") nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -14,12 +17,12 @@
 (use-package avy
   :ensure t
   :demand t
-  :bind (("C-c j" . avy-goto-line)
+  :bind (("C-y j" . avy-goto-line)
          ("s-j"   . avy-goto-char-timer)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Power-ups: Embark and Consult
+;;;   Embark & Consult
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -50,9 +53,9 @@
   :ensure t
   :demand t
   :after avy
-  :bind (("C-c a" . embark-act))        ; bind this to an easy key to hit
+  :bind (("C-y a" . embark-act))
   :init
-  ;; Add the option to run embark when using avy
+  ;; Run embark when using avy
   (defun bedrock/avy-action-embark (pt)
     (unwind-protect
         (save-excursion
@@ -63,7 +66,7 @@
     t)
 
   ;; After invoking avy-goto-char-timer, hit "." to run embark at the next
-  ;; candidate you select
+  ;; candidate selected
   (setf (alist-get ?. avy-dispatch-alist) 'bedrock/avy-action-embark))
 
 (use-package embark-consult
@@ -75,22 +78,19 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Vertico: better vertical completion for minibuffer commands
+;; Better vertical completion for minibuffer commands
 (use-package vertico
   :ensure t
   :init
   ;; You'll want to make sure that e.g. fido-mode isn't enabled
   (vertico-mode))
-;(fido-vertical-mode)
-(setopt icomplete-delay-completions-threshold 4000)
-
 
 (use-package vertico-directory
   :after vertico
   :bind (:map vertico-map
               ("M-DEL" . vertico-directory-delete-word)))
 
-;; Marginalia: annotations for minibuffer
+;; Annotations for minibuffer
 (use-package marginalia
   :ensure t
   :config
@@ -107,7 +107,6 @@
         ("C-n" . corfu-next)
         ("C-p" . corfu-previous)))
 
-;; Part of corfu
 (use-package corfu-popupinfo
   :after corfu
   :hook (corfu-mode . corfu-popupinfo-mode)
@@ -124,15 +123,15 @@
   :config
   (corfu-terminal-mode))
 
-;; Fancy completion-at-point functions; there's too much in the cape package to
-;; configure here; dive in when you're comfortable!
+;; Fancy completion-at-point functions
+;; #TODO
 (use-package cape
   :ensure t
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file))
 
-;; Pretty icons for corfu
+;; Icons for corfu
 (use-package kind-icon
   :if (display-graphic-p)
   :ensure t
@@ -142,13 +141,12 @@
 
 (use-package eshell
   :init
-  (defun bedrock/setup-eshell ()
-    ;; Something funny is going on with how Eshell sets up its keymaps; this is
-    ;; a work-around to make C-r bound in the keymap
+  (defun setup-eshell ()
+    ;; Work-around to bind "C-r" in the keymap
     (keymap-set eshell-mode-map "C-r" 'consult-history))
-  :hook ((eshell-mode . bedrock/setup-eshell)))
+  :hook ((eshell-mode . setup-eshell)))
 
-;; Orderless: powerful completion style
+;; Completion style
 (use-package orderless
   :ensure t
   :config
@@ -156,7 +154,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Misc. editing enhancements
+;;;   Deadgrep & Wgrep
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -165,3 +163,12 @@
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
+
+(use-package deadgrep
+  :ensure t
+  :bind
+  ("<f7>" . #'deadgrep))
+
+;; Writable deadgrep buffer that applies the changes to files
+(use-package wgrep-deadgrep
+  :ensure t)
