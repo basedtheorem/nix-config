@@ -1,11 +1,7 @@
-{
-  self,
-  inputs,
-  pkgs,
-  ...
-}: {
+{ self, ... }: {
+
   nixpkgs.overlays = [ self.overlays.micro ];
-  home.sessionVariables = {EDITOR = "micro";};
+
   programs.micro = {
     enable = true;
 
@@ -39,7 +35,8 @@
   };
 
   xdg.configFile = {
-    "micro/bindings.json".source = ./bindings;
+    "micro/bindings.json".source = ./bindings.json;
+
     # Modified colour scheme with transparency.
     "micro/colorschemes/twilight-edit.micro".text = ''
       color-link default "#F8F8F8," #
@@ -81,19 +78,6 @@
       color-link tabbar "#F2F0EC,#2D2D2D"
       color-link todo "#8B98AB"
       color-link underlined "#8996A8"
-
     '';
   };
 }
-# # mark/unmark current line (Ctrl-F2)
-# > toggleBookmark
-#
-# # clear all bookmarks (CtrlShift-F2)
-# > clearBookmarks
-#
-# # jump to next bookmark (F2)
-# > nextBookmark
-#
-# # jump to previous bookmark (Shift-F2)
-# > prevBookmark
-

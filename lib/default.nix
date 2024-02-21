@@ -1,6 +1,15 @@
-inputs: {
+{ pkgs, lib, ... }:
+{
   _file = ./default.nix;
 
-  filterModules = import ./filterModules.nix inputs.lib;
-  emacs.genPackage = import ./genEmacsPackage.nix;
+  perSystem = { ... }: {
+    options.lib = lib.mkOption {
+      type = lib.types.attrsOf lib.types.unspecified;
+      default = { };
+    };
+
+    config.lib = {
+      filterModules = import ./filterModules.nix lib;
+    };
+  };
 }

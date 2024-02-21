@@ -134,6 +134,7 @@
         ;
     };
 
+    home.sessionVariables = { EDITOR = "micro"; };
     home.sessionPath = [ "$HOME/.cargo/bin" ];
     home.file = {
       # ".screenrc".source = dotfiles/screenrc;

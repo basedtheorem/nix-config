@@ -10,14 +10,10 @@
       v-shell = pkgs.callPackage ./v-shell.nix {};
       swhkd = pkgs.callPackage ./swhkd.nix {};
       lentenrose = pkgs.callPackage ./lentenrose.nix {};
-      clock-face =
-        (import inputs.master {
+      clock-face = (import inputs.master {
           inherit system;
           config.allowUnfree = true;
-        })
-        .callPackage
-        ./clock-face.nix
-        {};
+      }).callPackage ./clock-face.nix {};
     };
   };
 }

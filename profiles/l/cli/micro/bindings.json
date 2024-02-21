@@ -1,4 +1,7 @@
 {
+  "F5": "toggleBookmark",
+  "F6": "nextBookmark",
+  "Shift-F6": "prevBookmark",
   "CtrlDelete": "DeleteWordRight",
   "OldBackspace": "DeleteWordLeft",
   "Ctrl-l": "SelectLine",

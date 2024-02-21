@@ -30,7 +30,7 @@ let
     };
   };
 
-  emacsPkg = pkgs.emacsPackagesFromUsePackage {
+  emacsPkg = pkgs.emacsWithPackagesFromUsePackage {
     config = initFile;
     defaultInitFile = true;
     package = pkgs.emacs-git;

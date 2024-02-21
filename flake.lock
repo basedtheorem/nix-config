@@ -38,22 +38,6 @@
         "type": "github"
       }
     },
-    "ergoemacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707583444,
-        "narHash": "sha256-GH6Toc3kKyAIBR+1vvx4QnXeuoNlwgKR2atET8njZnc=",
-        "owner": "meow-edit",
-        "repo": "meow",
-        "rev": "54d4e933039827c158a4f593a94681a64e0d8042",
-        "type": "github"
-      },
-      "original": {
-        "owner": "meow-edit",
-        "repo": "meow",
-        "type": "github"
-      }
-    },
     "fish-tide": {
       "flake": false,
       "locked": {
@@ -164,19 +148,19 @@
         "type": "github"
       }
     },
-    "kakoune": {
+    "indent-bars": {
       "flake": false,
       "locked": {
-        "lastModified": 1707812664,
-        "narHash": "sha256-+ZgWd0X/2sC/uauhtAvS1MToOGa0bhypdo8Kn58aMfA=",
-        "owner": "mawww",
-        "repo": "kakoune",
-        "rev": "e1fd2351e0b1060e92a63be2418d2d6d68f568e7",
+        "lastModified": 1708290176,
+        "narHash": "sha256-7V1+9MtZzak2aPKbyuPvHEI2XjLNrH1EW96Pxj7d3IU=",
+        "owner": "jdtsmith",
+        "repo": "indent-bars",
+        "rev": "c86c2b670ef587cb9d277a8b994ae92ae9145468",
         "type": "github"
       },
       "original": {
-        "owner": "mawww",
-        "repo": "kakoune",
+        "owner": "jdtsmith",
+        "repo": "indent-bars",
         "type": "github"
       }
     },
@@ -212,22 +196,6 @@
         "type": "github"
       }
     },
-    "meow": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707583444,
-        "narHash": "sha256-GH6Toc3kKyAIBR+1vvx4QnXeuoNlwgKR2atET8njZnc=",
-        "owner": "meow-edit",
-        "repo": "meow",
-        "rev": "54d4e933039827c158a4f593a94681a64e0d8042",
-        "type": "github"
-      },
-      "original": {
-        "owner": "meow-edit",
-        "repo": "meow",
-        "type": "github"
-      }
-    },
     "mpv": {
       "flake": false,
       "locked": {
@@ -260,24 +228,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib": {
-      "locked": {
-        "dir": "lib",
-        "lastModified": 1706550542,
-        "narHash": "sha256-UcsnCG6wx++23yeER4Hg18CXWbgNpqNXcHIo5/1Y+hc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "97b17f32362e475016f942bbdfda4a4a72a8a652",
-        "type": "github"
-      },
-      "original": {
-        "dir": "lib",
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1707978831,
@@ -294,25 +244,11 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1686020360,
-        "narHash": "sha256-Wee7lIlZ6DIZHHLiNxU5KdYZQl0iprENXa/czzI6Cj4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "4729ffac6fd12e26e5a8de002781ffc49b0e94b7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "parts": {
       "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1706830856,
@@ -332,14 +268,12 @@
       "inputs": {
         "chillax-discord-theme": "chillax-discord-theme",
         "emacs-overlay": "emacs-overlay",
-        "ergoemacs": "ergoemacs",
         "fish-tide": "fish-tide",
         "flatpak": "flatpak",
         "home-manager": "home-manager",
-        "kakoune": "kakoune",
+        "indent-bars": "indent-bars",
         "kitty-grab": "kitty-grab",
         "master": "master",
-        "meow": "meow",
         "mpv": "mpv",
         "nixpkgs": [
           "unstable-small"
@@ -379,7 +313,9 @@
     "spicetify-nix": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1704167711,
