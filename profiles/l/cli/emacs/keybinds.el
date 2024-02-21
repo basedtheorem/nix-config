@@ -1,3 +1,5 @@
+;;; keybinds.el --- Supercharged insert-mode keybindings
+
 ;;; Contents:
 ;;;
 ;;;  - Clipboard
@@ -111,7 +113,7 @@
   ;; Save bookmarks
   (setq-default bm-buffer-persistence t)
   ;; Where to store persistant files
-  (setq bm-repository-file "~/.emacs.d/bm-repository")
+  (setq bm-repository-file "~/tmp/emacs/bm-repository")
   ;; Saving bookmarks
   (add-hook 'kill-buffer-hook #'bm-buffer-save)
   ;; Loading the repository from file when on start up.
@@ -212,7 +214,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Local keybinds
-;;;   These don't rely on external packages.
+;;;   - These don't rely on external packages.
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -244,6 +246,9 @@
         (pixel-scroll-precision-interpolate distance-in-pixels)))))
 
 (use-package emacs
+  :config
+  ;; Use common keystrokes by default
+  (cua-mode)
   :bind (("C-s" . 'save-buffer)
          ("C-S-o" . 'find-file)
          ("C-M-o" . 'lrns/find-file-rec)
@@ -261,7 +266,7 @@
          ("C-<backspace>" . 'lrns/backward-kill-word)
          ("C-<delete>" . 'lrns/forward-kill-word)
          ("C-/" . 'lrns/comment-line)
-         ("M-/" . 'lrns/comment-line) ;TODO: make this go up
+         ("M-/" . 'lrns/comment-line)                    ; #TODO: make this comment up
          ("M-<left>" . 'previous-buffer)
          ("M-<right>" . 'next-buffer)
          ("M-<return>" . 'default-indent-new-line)       ; New line when inside comments
@@ -271,9 +276,15 @@
          :map emacs-lisp-mode-map
          ("C-r" . 'eval-defun))
   :init
+  ;; Use C-y as prefix key instead of C-c which is mapped to copy
+  (global-set-key (kbd "C-y") nil)
+
   ;; `xterm-paste` does NOT replace region with pasted contents,
   ;; only appends to it, so swap with cua-paste
   (define-key global-map [xterm-paste] #'cua-paste)
+
+  ;; Make forward-word also work with camelCase
+  (subword-mode +1)
 
   (defun lrns/find-file-rec ()
     "Find a file in the current working directory recursively."

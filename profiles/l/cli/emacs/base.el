@@ -1,12 +1,11 @@
+;;; base.el --- Base enhancements
+
 ;;; Contents:
 ;;;
 ;;;  - Motion aids
+;;;  - Discovery aids
 ;;;  - Embark & Consult
 ;;;  - Minibuffer and completion
-;;;  - Wgrep & Deadgrep
-
-;; Use C-y as prefix key instead of C-c which is mapped to copy
-(global-set-key (kbd "C-y") nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -19,6 +18,25 @@
   :demand t
   :bind (("C-y j" . avy-goto-line)
          ("s-j"   . avy-goto-char-timer)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Discovery aids
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Shows popup of keybindings when typing long key sequences
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+;; Better help defaults
+(use-package helpful
+  :ensure t
+  :config (global-set-key (kbd "C-h f") #'helpful-callable)
+  :config (global-set-key (kbd "C-h v") #'helpful-variable)
+  :config (global-set-key (kbd "C-h x") #'helpful-command))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -99,13 +117,18 @@
 ;; Popup completion-at-point
 (use-package corfu
   :ensure t
-  :init
-  (global-corfu-mode)
+  :init (global-corfu-mode)
+  :custom
+  (corfu-auto nil)
+  (corfu-cycle t)
+  (corfu-separator ?\s)
+  (corfu-quit-no-match t)
   :bind
   (:map corfu-map
         ("SPC" . corfu-insert-separator)
         ("C-n" . corfu-next)
-        ("C-p" . corfu-previous)))
+        ("C-p" . corfu-previous)
+        ("<esc>" . corfu-quit)))
 
 (use-package corfu-popupinfo
   :after corfu
@@ -123,14 +146,6 @@
   :config
   (corfu-terminal-mode))
 
-;; Fancy completion-at-point functions
-;; #TODO
-(use-package cape
-  :ensure t
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file))
-
 ;; Icons for corfu
 (use-package kind-icon
   :if (display-graphic-p)
@@ -138,6 +153,14 @@
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+;; Fancy completion-at-point functions
+;; #TODO
+(use-package cape
+  :ensure t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
 
 (use-package eshell
   :init
@@ -151,24 +174,3 @@
   :ensure t
   :config
   (setq completion-styles '(orderless)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Deadgrep & Wgrep
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Modify search results en masse
-(use-package wgrep
-  :ensure t
-  :config
-  (setq wgrep-auto-save-buffer t))
-
-(use-package deadgrep
-  :ensure t
-  :bind
-  ("<f7>" . #'deadgrep))
-
-;; Writable deadgrep buffer that applies the changes to files
-(use-package wgrep-deadgrep
-  :ensure t)

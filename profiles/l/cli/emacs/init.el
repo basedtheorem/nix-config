@@ -1,3 +1,5 @@
+;;; init.el --- Sane config using only defaults
+
 ;;; Contents:
 ;;;
 ;;;  - Basic settings
@@ -38,7 +40,7 @@
 ;; Restore cursor position
 (save-place-mode 1)
 
-;; Whitespace command will show the following:
+;; What the whitespace command will show
 (setq whitespace-style '(face spaces tabs space-mark tab-mark))
 
 ;; Fix archaic defaults
@@ -49,25 +51,26 @@
   (context-menu-mode))
 
 ;; Don't litter file system with *~ backup files
-(defun backup-file-name (fpath)
-  "Return a new file path of a given file path.
-If the new path's directories does not exist, create them."
-  (let* ((backupRootDir "~/.emacs.d/emacs-backup/")
-         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path
-         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
-    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
-    backupFilePath))
-(setopt make-backup-file-name-function 'backup-file-name)
-
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+(let ((backup-dir "~/tmp/emacs/backups")
+      (auto-saves-dir "~/tmp/emacs/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+        auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+        auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+        tramp-backup-directory-alist `((".*" . ,backup-dir))
+        tramp-auto-save-directory auto-saves-dir))
+(setq backup-by-copying t    ; Don't delink hardlinks
+      delete-old-versions t
+      version-control t      ; Use version numbers on backups
+      kept-new-versions 5
+      kept-old-versions 2)
 
 ;; Disable `xterm-paste` since it doesn't replace region with pasted contents, only appends to it
 (define-key global-map [xterm-paste] #'cua-paste)
 
-;; Allow mouse clicks when run in terminal
+;; Allow mouse clicks when running in the terminal
 (when (not (window-system))
   (xterm-mouse-mode))
 
@@ -77,12 +80,6 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Discovery aids
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
-
 ;; Shorter prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -90,10 +87,10 @@ If the new path's directories does not exist, create them."
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 (setopt completion-cycle-threshold 1)                       ; TAB cycles candidates
 (setopt completions-detailed t)                             ; Show annotations
-(setopt tab-always-indent 'complete)                        ; When I hit TAB, try to complete, otherwise, indent
+(setopt tab-always-indent 'complete)                        ; If TAB try to complete, else indent
 (setopt completion-styles '(basic initials substring))      ; Different styles to match input to candidates
-(setopt completion-auto-help 'always)                       ; Open completion always; `lazy' another option
-(setopt completions-max-height 20)                          ; This is arbitrary
+(setopt completion-auto-help 'always)                       ; Open completion always; other opt: `lazy'
+(setopt completions-max-height 20)
 (setopt completions-detailed t)
 (setopt completions-format 'one-column)
 (setopt completions-group t)
@@ -105,14 +102,9 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Mode line information
-(setopt line-number-mode t)                      ; Show current line in modeline
-(setopt column-number-mode t)                    ; Show column as well
-
 (setopt x-underline-at-descent-line nil)         ; Prettier underlines
 (setopt switch-to-buffer-obey-display-actions t) ; Make switching buffers more consistent
-
-(setopt show-trailing-whitespace nil)            ; By default, don't underline trailing spaces
+(setopt show-trailing-whitespace nil)            ; Don't underline trailing spaces
 (setopt indicate-buffer-boundaries 'left)        ; Show buffer top and bottom in the margin
 
 ;; Enable horizontal scrolling
@@ -128,24 +120,7 @@ If the new path's directories does not exist, create them."
 (setq scroll-conservatively 1000)
 (setq scroll-preserve-screen-position 'always)  ; Keep scroll position when navigating
 
-;; Misc. UI tweaks
-(blink-cursor-mode 1)                           ; Steady cursor
-(pixel-scroll-precision-mode)                   ; Smooth scrolling
-
-;; Use common keystrokes by default
-(cua-mode)
-
-;; Display line numbers in programming mode
-;(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(setopt display-line-numbers-width 3)
-
-;; Wrap lines when working with text
-(add-hook 'text-mode-hook 'visual-line-mode)
-
-;; Highlight the current line
-(let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
-  (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
-
+;; Hide unimportant UI functions
 (setq-default show-help-function nil
               use-file-dialog nil
               use-dialog-box nil
@@ -170,7 +145,6 @@ If the new path's directories does not exist, create them."
 
 ;; Disable visual alarm when, e.g., backspacing at start of buffer.
 (setopt visible-bell nil ring-bell-function #'ignore)
-
 
 ;; Persistent frame geometry
 (defun save-frameg ()
@@ -216,6 +190,7 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Don't show the tab-bar
 (setq-default tab-bar-show nil)
 
 ;; Add the time to the tab-bar, if visible
@@ -225,20 +200,20 @@ If the new path's directories does not exist, create them."
 (setopt display-time-interval 1)
 (display-time-mode)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Theme
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; For light theme
-;; (use-package emacs
-;;   ;; Light: modus-operandi, dark: modus-vivendi
-;;  :config
-;;  (load-theme 'modus-operandi))
+;; Good default theme
+(use-package emacs
+  :disabled
+  ;; Light: modus-operandi, dark: modus-vivendi
+ :config
+ (load-theme 'modus-operandi))
 
-;; Default black/red theme
+;; Black & red theme
 (use-package ef-themes
   :ensure t
   :init
@@ -264,6 +239,10 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Show current line & column in modeline
+(setopt line-number-mode t)
+(setopt column-number-mode t)
+
 ;; Minimal modeline config
 (use-package doom-modeline
   :ensure t
@@ -282,6 +261,7 @@ If the new path's directories does not exist, create them."
   (setq display-time-format "%T")
   (doom-modeline-mode 1))
 
+;; Modeline toggle
 (use-package hide-mode-line
   :ensure t
   :config

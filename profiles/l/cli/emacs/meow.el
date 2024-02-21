@@ -1,3 +1,5 @@
+;;; meow.el --- Probably the best modal editor out there
+
 (require 'meow-util)
 
 (use-package meow
