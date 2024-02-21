@@ -1,15 +1,9 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
+
 {
   _file = ./default.nix;
-
-  perSystem = { ... }: {
-    options.lib = lib.mkOption {
-      type = lib.types.attrsOf lib.types.unspecified;
-      default = { };
-    };
-
-    config.lib = {
-      filterModules = import ./filterModules.nix lib;
-    };
+  flake.lib = {
+    emacs.generatePackage = import ./genEmacsPackage.nix;
+    filterModules = import ./filterModules.nix { inherit lib; };
   };
 }
