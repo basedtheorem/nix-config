@@ -1,94 +1,78 @@
 { self, pkgs, inputs, config, lib, ... }:
 let
-  cfg = config.programs.emacs;
-  confPackages =
-    let
-      fileContent =
-        lib.attrsets.mapAttrs'
-          (k: v: {
-            name = "${k}";
-            value = {
-              ep = v.packageRequires;
-              src =
-                config.lib.emacs.generatePackage k v.tag v.comments v.requires
-                  v.code;
-            };
-          })
-          cfg.localPackages;
-      derivations =
-        lib.attrsets.mapAttrs
-          (k: v: {
-            inherit (v) ep;
-            src = pkgs.writeText "${k}.el" v.src;
-          })
-          fileContent;
-    in
-    derivations;
+  emacsEnabled = config.programs.emacs.enable;
 
-  requires =
-    let
-      names = lib.attrsets.mapAttrsToList (n: _: n) cfg.localPackages;
-      sorted = builtins.sort (l: r: l < r) names;
-      required = builtins.map (r: "(require '${r})") sorted;
-    in
-    builtins.concatStringsSep "\n" required;
+  initConf = builtins.readFile ./init.el;
+  baseConf = builtins.readFile ./base.el;
+  editingConf = builtins.readFile ./editing.el;
+  meowConf = builtins.readFile ./meow.el;
+  keybindsConf = builtins.readFile ./keybinds.el;
+
+  initFile = ''
+    This file was automatically generated. Do not modify!
+
+    ${initConf}
+
+    ${baseConf}
+
+    ${editingConf}
+
+    ${meowConf}
+
+    ${keybindsConf}
+  '';
+
+  nonMelpaPackages = {
+    indent-bars = {
+      src = "${inputs.indent-bars.outPath}/indent-bars.el";
+      version = inputs.indent-bars.shortRev;
+      requiredEmacsPackages = [ ];
+    };
+  };
+
+  emacsPkg = pkgs.emacsPackagesFromUsePackage {
+    config = initFile;
+    defaultInitFile = true;
+    package = pkgs.emacs-git;
+
+    override = final: prev: {
+      meow = prev.melpaPackages.meow.overrideAttrs (old: {
+        patches = [ ./meow-ctrlf.patch ];
+      });
+    };
+    extraEmacsPackages = ep: [
+      ep.treesit-grammars.with-all-grammars
+    ] ++ lib.attrSets.mapAttrsToList
+      (pname: val:
+        ep.trivialBuild {
+          inherit pname;
+          version = val.version;
+          inherit (val) src;
+          packageRequires = val.requiredPackages;
+        })
+      nonMelpaPackages;
+  };
 in
 {
   _file = ./default.nix;
 
-  options.programs.emacs = {
-    localPackages = lib.mkOption {
-      description = "Use this to modularise packages.";
-      type = lib.type.attrsOf
-        (lib.types.submodule (_: {
-          options = {
-            tag = lib.mkOption { type = lib.types.str; };
-            comments = lib.mkOption { type = lib.types.listOf lib.types.str; };
-            requires = lib.mkOption { type = lib.types.listOf lib.types.str; };
-            code = lib.mkOption { type = lib.types.str; };
-          };
-        }));
-    };
+  config = lib.mkIf emacsEnabled {
+    programs.emacs.package = lib.mkDefault emacsPkg;
+    services.emacs.package = lib.mkDefault emacsPkg;
 
-    earlyInit = lib.mkOption {
-      type = lib.types.lines;
-      description = "Customisations to be run before the GUI is initialised.";
-      default = "";
-    };
-  };
-
-  config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlays.emacs ];
 
-    programs.emacs.earlyInit = lib.mkDefault ''
-
-    '';
-
-    programs.emacs.init = ''
-      ${requires}
-    '';
-
-    programs.emacs.extraPackages = ep: [
-
-    ] ++ lib.attrsets.mapAttrsToList
-      (name: val:
-        ep.trivialBuild {
-          pname = name;
-          version = "x";
-          src = val.src;
-        })
-      confPackages;
+    # Emacs packages' individual dependencies
+    environment.systemPackages = [
+      pkgs.ripgrep # Deadgrep
+      pkgs.python312 # Ctrlf
+    ];
 
     xdg.configFile = {
       "emacs/early-init.el" = {
         text = self.lib.emacs.genPackage "early-init"
           "Config to run on startup, before the GUI is loaded."
-          cfg.earlyInit;
-      };
-      "emacs/init.el" = {
-        text = self.lib.emacs.genPackage "init"
-          "Initialise emacs configuration" [ ] [ ]
-          cfg.init;
+          builtins.readFile ./early-init.el;
       };
     };
   };

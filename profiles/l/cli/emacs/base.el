@@ -6,6 +6,8 @@
 ;;;  - Discovery aids
 ;;;  - Embark & Consult
 ;;;  - Minibuffer and completion
+;;;  - Theme
+;;;  - Modeline
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -174,3 +176,70 @@
   :ensure t
   :config
   (setq completion-styles '(orderless)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Theme
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Good default theme
+(use-package emacs
+  ;; Light: modus-operandi, dark: modus-vivendi
+  :config
+  (load-theme 'modus-vivendi))
+
+;; Black & red theme
+(use-package ef-themes
+  :ensure t
+  :init
+  (set-face-attribute 'default nil :family "Sarasa Mono HC" :height 130);
+  (set-face-attribute 'bold nil :weight 'Semibold)
+  (setq ef-themes-common-palette-overrides
+        '((fg-main "#ffffff")
+          (bg-main "#000000")
+          (comment "#696969")
+          (string "#ba6e6e")
+          (cursor "#ffffff")
+          (variable "#cc635c")
+          (constant "#f6726a")
+          (builtin "#ac4742")
+          (bg-mode-line "#1c1618")
+          (bg-hl-line "#101010")))
+  :config
+  (load-theme 'ef-tritanopia-dark :no-confirm))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Modeline
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Minimal modeline config
+(use-package doom-modeline
+  :ensure t
+  :init
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-time-icon nil)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-modification-icon nil)
+  (setq doom-modeline-unicode-fallback t)
+  (setq doom-modeline-modal nil)
+  (setq doom-modeline-gnus nil)
+  (setq doom-modeline-modal-modern-icon nil)
+  (setq doom-modeline-percent-position nil)
+  (setq doom-modeline-time t)
+  (setq display-time-format "%T")
+  (doom-modeline-mode 1))
+
+;; Modeline toggle
+(use-package hide-mode-line
+  :ensure t
+  :config
+  ;; No mode line in terminal by default
+  (if (not (window-system))
+    (global-hide-mode-line-mode)))
+
+;;; base.el ends here

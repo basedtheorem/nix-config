@@ -121,3 +121,5 @@
   (setq meow-use-cursor-position-hack nil
         meow-use-enhanced-selection-effect nil)  ;; optional, for visual effect
   (meow-global-mode t))
+
+;;; meow.el ends here

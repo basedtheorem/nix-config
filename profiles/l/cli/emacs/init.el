@@ -1,4 +1,4 @@
-;;; init.el --- Sane config using only defaults
+;;; init.el --- Sane config without third-party packages
 
 ;;; Contents:
 ;;;
@@ -14,10 +14,6 @@
 ;;;   Basic settings
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Package initialization
-(with-eval-after-load 'package
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 ;; Minimal welcome screen
 (setopt inhibit-splash-screen t)
@@ -73,6 +69,10 @@
 ;; Allow mouse clicks when running in the terminal
 (when (not (window-system))
   (xterm-mouse-mode))
+
+; Show current line & column in modeline
+(setopt line-number-mode t)
+(setopt column-number-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -200,71 +200,4 @@
 (setopt display-time-interval 1)
 (display-time-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Theme
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Good default theme
-(use-package emacs
-  :disabled
-  ;; Light: modus-operandi, dark: modus-vivendi
- :config
- (load-theme 'modus-operandi))
-
-;; Black & red theme
-(use-package ef-themes
-  :ensure t
-  :init
-  (set-face-attribute 'default nil :family "Sarasa Mono HC" :height 130);
-  (set-face-attribute 'bold nil :weight 'Semibold)
-  (setq ef-themes-common-palette-overrides
-        '((fg-main "#ffffff")
-          (bg-main "#000000")
-          (comment "#696969")
-          (string "#ba6e6e")
-          (cursor "#ffffff")
-          (variable "#cc635c")
-          (constant "#f6726a")
-          (builtin "#ac4742")
-          (bg-mode-line "#1c1618")
-          (bg-hl-line "#101010")))
-  :config
-  (load-theme 'ef-tritanopia-dark :no-confirm))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Modeline
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Show current line & column in modeline
-(setopt line-number-mode t)
-(setopt column-number-mode t)
-
-;; Minimal modeline config
-(use-package doom-modeline
-  :ensure t
-  :init
-  (setq doom-modeline-icon nil)
-  (setq doom-modeline-buffer-encoding nil)
-  (setq doom-modeline-time-icon nil)
-  (setq doom-modeline-buffer-state-icon t)
-  (setq doom-modeline-buffer-modification-icon nil)
-  (setq doom-modeline-unicode-fallback t)
-  (setq doom-modeline-modal nil)
-  (setq doom-modeline-gnus nil)
-  (setq doom-modeline-modal-modern-icon nil)
-  (setq doom-modeline-percent-position nil)
-  (setq doom-modeline-time t)
-  (setq display-time-format "%T")
-  (doom-modeline-mode 1))
-
-;; Modeline toggle
-(use-package hide-mode-line
-  :ensure t
-  :config
-  ;; No mode line in terminal by default
-  (if (not (window-system))
-    (global-hide-mode-line-mode)))
+;;; init.el ends here

@@ -115,3 +115,5 @@
   (setq hl-block-multi-line t)
   (setq hl-block-style 'color-tint)    ; Highlight only the brackets.
   (setq hl-block-color-tint "#020202"))
+
+;;; dev.el ends here

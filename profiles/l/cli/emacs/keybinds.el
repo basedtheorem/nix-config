@@ -480,3 +480,5 @@
             (shell-command-on-region p m command t t)
           (shell-command-on-region p m command)))))
   )
+
+;;; keybinds.el ends here

@@ -29,7 +29,6 @@
 
 ;; Colorise indentation bars & highlight current indent
 (use-package indent-bars
-  :load-path "@@configHome@@/indent-bars"
   :custom
   (indent-bars-treesit-support t)
   (indent-bars-no-descend-string t)
@@ -92,3 +91,5 @@
 ;; Writable deadgrep buffer that applies the changes to files
 (use-package wgrep-deadgrep
   :ensure t)
+
+;;; editing.el ends here
