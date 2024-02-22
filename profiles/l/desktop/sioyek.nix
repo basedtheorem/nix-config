@@ -3,8 +3,8 @@
   programs.sioyek = {
     enable = true;
 
-    config = {};
+    config = { };
 
-    bindings = {};
+    bindings = { };
   };
 }

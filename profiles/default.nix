@@ -1,10 +1,12 @@
-{ self, inputs, ... }:
+{ self, lib, inputs, ... }:
 let
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
 in
 {
+  _file = ./default.nix;
+
   flake = {
-    homeManagerModules = import ./modules { inherit self; };
+    homeManagerModules = self.lib.readNixFilesRec ./modules;
 
     homeConfigurations = {
       l = homeManagerConfiguration {
@@ -13,9 +15,12 @@ in
           inherit inputs;
           inherit self;
         };
-        modules = [ ./l ./shared ];
+
+        modules = [
+          ./l
+          ./shared
+        ] ++ builtins.attrValues self.homeManagerModules;
       };
     };
   };
-
 }

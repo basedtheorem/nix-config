@@ -1,5 +1,6 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {services.opensnitch-ui = {enable = true;};}
+  services.opensnitch-ui = {
+    enable = true;
+  };
+}

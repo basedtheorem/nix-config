@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   _file = ./hardware.nix;
 
   hardware = {
@@ -11,12 +12,11 @@
     keyboard.uhk.enable = true;
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [amdvlk];
+      extraPackages = with pkgs; [ amdvlk ];
     };
   };
 
-  environment.systemPackages =
-    lib.mkIf config.hardware.keyboard.uhk.enable [pkgs.uhk-agent];
+  environment.systemPackages = lib.mkIf config.hardware.keyboard.uhk.enable [ pkgs.uhk-agent ];
 
   security.rtkit.enable = true;
 

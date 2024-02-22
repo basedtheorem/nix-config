@@ -1,8 +1,5 @@
+{ pkgs, ... }:
 {
-  lib,
-  pkgs,
-  ...
-}: {
   _file = ./desktop.nix;
 
   gnome = {
@@ -15,9 +12,13 @@
     kdeconnect.enable = false;
   };
 
-  environment.shells = [pkgs.fish pkgs.nushell];
+  environment.shells = [
+    pkgs.fish
+    pkgs.nushell
+  ];
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       micro
       git

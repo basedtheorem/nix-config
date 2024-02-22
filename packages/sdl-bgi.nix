@@ -13,7 +13,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256:04ybrz38nq30nh3iyviq1jad8kq8512q2hmxmvrvxc5zy9i0xgad";
   };
 
-  buildInputs = [gcc SDL2 SDL2.dev];
+  buildInputs = [
+    gcc
+    SDL2
+    SDL2.dev
+  ];
 
   buildPhase = ''
     cd src

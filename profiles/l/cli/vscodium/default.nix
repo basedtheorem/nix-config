@@ -1,9 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions;
-      [bbenoist.nix]
+    extensions =
+      with pkgs.vscode-extensions;
+      [ bbenoist.nix ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "rainglow";

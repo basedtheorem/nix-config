@@ -45,9 +45,11 @@
     indent-bars.flake = false;
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
+      debug = true;
 
       imports = [
         ./hosts
@@ -63,16 +65,12 @@
 
           formatter = pkgs.nixfmt-rfc-style;
 
-          packages = builtins.attrValues {
-            inherit (pkgs) nil nixfmt-rfc-style;
-          };
+          packages = builtins.attrValues { inherit (pkgs) nil nixfmt-rfc-style; };
 
           shellHook = ''
             echo
             echo Packages loaded:
-            echo ' -' ${
-              builtins.concatStringsSep "\necho ' - '" (lib.forEach packages lib.getName)
-            }
+            echo ' -' ${builtins.concatStringsSep "\necho ' - '" (lib.forEach packages lib.getName)}
           '';
 
           DIRENV_LOG_FORMAT = "";

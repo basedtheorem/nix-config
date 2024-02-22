@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
 
   services.playerctld.enable = true; # Send keybinds to mpv
 
@@ -13,9 +14,9 @@
       package = mpv-git.override {
         scripts = builtins.attrValues {
           inherit (pkgs.mpvScripts)
-            autoload# Load playlist entries automatically
-            mpris# For use with playerctld
-            thumbfast# Thumbnails on seek
+            autoload # Load playlist entries automatically
+            mpris # For use with playerctld
+            thumbfast # Thumbnails on seek
             ;
         };
       };
@@ -84,7 +85,9 @@
           hidetimeout = 500;
           boxalpha = 25;
         };
-        ytdl_hook = { ytdl_path = "yt-dlp"; };
+        ytdl_hook = {
+          ytdl_path = "yt-dlp";
+        };
       };
     };
 

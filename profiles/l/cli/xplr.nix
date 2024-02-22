@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   #TODO: Module -> if dua installed, enable dua integration, etc.
 
   programs.fish.shellAbbrs.xcd = ''cd "$(xplr --print-pwd-as-result)"'';

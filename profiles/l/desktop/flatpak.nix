@@ -1,5 +1,6 @@
-{inputs, ...}: {
-  imports = [inputs.flatpak.homeManagerModules.default];
+{ inputs, ... }:
+{
+  imports = [ inputs.flatpak.homeManagerModules.default ];
 
   services.flatpak.enableModule = true;
 
@@ -8,5 +9,5 @@
     "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
   };
 
-  services.flatpak.packages = ["flathub:app/it.mijorus.smile//stable"];
+  services.flatpak.packages = [ "flathub:app/it.mijorus.smile//stable" ];
 }

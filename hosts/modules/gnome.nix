@@ -1,11 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.gnome;
-in {
+in
+{
   _file = ./gnome.nix;
 
   # TODO:
@@ -45,7 +42,11 @@ in {
 
     environment.gnome = lib.mkIf cfg.minimal {
       excludePackages =
-        (with pkgs; [gnome-photos gnome-tour gedit])
+        (with pkgs; [
+          gnome-photos
+          gnome-tour
+          gedit
+        ])
         ++ (with pkgs.gnome; [
           cheese # webcam tool
           gnome-music

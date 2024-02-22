@@ -23,6 +23,9 @@
   lib.trace
   (<expression>)
   (<expression>);
+
+  # Or
+  builtins.seq (lib.debug.showVal config)
 ```
 
 ##### Prefetch
@@ -34,7 +37,8 @@
 ```bash
 # Delete all previous generations
 home-manager expire-generations '-1 second'
-sudo nix-collect-garbage -d
+sudo nix-collect-garbage --delete-old
+nix-collect-garbage --delete-old
 ```
 
 ##### Printing in repl

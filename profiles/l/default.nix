@@ -1,14 +1,9 @@
-{ self
-, pkgs
-, inputs
-, lib
-, ...
-}: {
+{ pkgs, inputs, lib, ... }:
+{
   imports = [
     ./cli/mpv # Media player
     ./cli/micro # Text editor
     ./cli/vscodium
-    ./cli/emacs # Operating system
     ./cli/kitty # Terminal emulator
     ./cli/fish.nix # Shell
     ./cli/git.nix
@@ -37,9 +32,7 @@
   config = {
     nixpkgs = {
       config.allowUnfree = true;
-      overlays = [
-        inputs.rust-overlay.overlays.default
-      ];
+      overlays = [ inputs.rust-overlay.overlays.default ];
     };
 
     home = {
@@ -123,7 +116,6 @@
         cachix
         tree-sitter
         gcc
-        python3
         nixfmt-rfc-style
         # `echo "GET <link>" | hurl -o ./out`
         hurl
@@ -134,7 +126,9 @@
         ;
     };
 
-    home.sessionVariables = { EDITOR = "micro"; };
+    home.sessionVariables = {
+      EDITOR = "micro";
+    };
     home.sessionPath = [ "$HOME/.cargo/bin" ];
     home.file = {
       # ".screenrc".source = dotfiles/screenrc;
@@ -142,13 +136,14 @@
 
     programs = {
       home-manager.enable = true;
-      emacs.enable = true;
+      emacs.enable = false;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
+      advancedCpMv.enable = true;
     };
 
     services = {
-      emacs.enable = true;
+      emacs.enable = false;
     };
 
     news.display = lib.mkForce "silent";

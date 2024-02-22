@@ -1,4 +1,5 @@
-{ self, ... }: {
+{ self, ... }:
+{
 
   nixpkgs.overlays = [ self.overlays.micro ];
 

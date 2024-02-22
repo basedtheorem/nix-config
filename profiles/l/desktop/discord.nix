@@ -1,12 +1,9 @@
+{ pkgs, inputs, ... }:
 {
-  pkgs,
-  inputs,
-  ...
-}: {
   config = {
-    home.packages = with pkgs; [
-      betterdiscordctl # run `betterdiscordctl install` then restart dc
-      (discord.override {withOpenASAR = true;})
+    home.packages = [
+      pkgs.betterdiscordctl # run `betterdiscordctl install` then restart dc
+      (pkgs.discord.override { withOpenASAR = true; })
     ];
 
     xdg.configFile = {

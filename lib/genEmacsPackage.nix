@@ -1,14 +1,14 @@
 let
-  genPrelude = { name, tagLine, commentLines }:
+  genPrelude =
+    {
+      name,
+      tagLine,
+      commentLines,
+    }:
     let
-      comments =
-        builtins.concatStringsSep "\n"
-          (builtins.map
-            (l:
-              if l == ""
-              then ""
-              else ";; ${l}")
-            commentLines);
+      comments = builtins.concatStringsSep "\n" (
+        builtins.map (l: if l == "" then "" else ";; ${l}") commentLines
+      );
     in
     ''
       ;;; ${name} --- ${tagLine}
@@ -25,7 +25,8 @@ let
     ;;; ${name}.el ends here
   '';
 
-  genRequires = list:
+  genRequires =
+    list:
     let
       sorted = builtins.sort (l: r: l < r) list;
       required = builtins.map (r: "(require '${r})") sorted;

@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   _file = ./services.nix;
 
   services = {
@@ -28,7 +29,7 @@
 
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
 
       displayManager = {
         sddm = {
