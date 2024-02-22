@@ -49,7 +49,6 @@
     inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      debug = true;
 
       imports = [
         ./hosts

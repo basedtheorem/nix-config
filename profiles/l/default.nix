@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   imports = [
     ./cli/mpv # Media player
@@ -136,14 +136,14 @@
 
     programs = {
       home-manager.enable = true;
-      emacs.enable = false;
+      emacs.enable = true;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
       advancedCpMv.enable = true;
     };
 
     services = {
-      emacs.enable = false;
+      emacs.enable = lib.mkIf config.programs.emacs.enable true;
     };
 
     news.display = lib.mkForce "silent";

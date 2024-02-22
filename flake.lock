@@ -25,11 +25,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1708566204,
-        "narHash": "sha256-U3OC4ObjTzBrGUs8Zx3y/po4q5Cihu7jRzl5brcySFA=",
+        "lastModified": 1708621627,
+        "narHash": "sha256-6S/2dVnZRlygqajnhYZkrDM/WC/aSjO9/u8Ly+p0kNI=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "6e1f5e6da33486d1f56d98f97949f961dd621479",
+        "rev": "ab98cf0c6ddaf60cb1ef95e4e983695c7e8245e7",
         "type": "github"
       },
       "original": {
@@ -135,11 +135,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708558280,
-        "narHash": "sha256-w1ns8evB6N9VTrAojcdXLWenROtd77g3vyClrqeFdG8=",
+        "lastModified": 1708591310,
+        "narHash": "sha256-8mQGVs8JccWTnORgoLOTh9zvf6Np+x2JzhIc+LDcJ9s=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0b69d574162cfa6eb7919d5614a48d0185550891",
+        "rev": "0e0e9669547e45ea6cca2de4044c1a384fd0fe55",
         "type": "github"
       },
       "original": {
@@ -151,11 +151,11 @@
     "indent-bars": {
       "flake": false,
       "locked": {
-        "lastModified": 1708531114,
-        "narHash": "sha256-7uy7F+z1/IZmQ4IoviBE2CW9v+MDbo+GESvcKMzNXI4=",
+        "lastModified": 1708603873,
+        "narHash": "sha256-yi1u1+PZT4RgoSAyoTN2ktIcIjlTEgrGiYRAMDlB8QI=",
         "owner": "jdtsmith",
         "repo": "indent-bars",
-        "rev": "3279f9344940d8e7c031619131c47977a9d0f3be",
+        "rev": "230e3c8377fa6e31de9973aaa2a8d3f9c299a3ac",
         "type": "github"
       },
       "original": {
@@ -182,11 +182,11 @@
     },
     "master": {
       "locked": {
-        "lastModified": 1708587253,
-        "narHash": "sha256-6y4ZkzIAzxTll+24yMsxdp1iRorPPhaeRTBE8EfYxYA=",
+        "lastModified": 1708635294,
+        "narHash": "sha256-wT6K0G+0U7FDqIqmBZJaDk7cDF9IKQ6nuYArxTqD6L8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "38d3fb762da69ba1633591420ba8888011cb3cc8",
+        "rev": "bb84ac6fa3164cc81eef69f0a483086da8d23cf3",
         "type": "github"
       },
       "original": {
@@ -199,11 +199,11 @@
     "mpv": {
       "flake": false,
       "locked": {
-        "lastModified": 1708551568,
-        "narHash": "sha256-QpnzkE++HBGWAJWgquH6jr+OSpMVWy4CpJKdWl/Wfho=",
+        "lastModified": 1708601740,
+        "narHash": "sha256-IqTAxJbHPRQtA484mlCLq3B/Qq3PnzvR2yBQFPwjx3E=",
         "owner": "mpv-player",
         "repo": "mpv",
-        "rev": "531704e35d9a5a4b143072d25657509138b5607c",
+        "rev": "ae1a4ed28a0b10a61bc055b65f1e7aa9a01a074d",
         "type": "github"
       },
       "original": {

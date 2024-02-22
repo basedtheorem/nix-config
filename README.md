@@ -41,6 +41,12 @@ sudo nix-collect-garbage --delete-old
 nix-collect-garbage --delete-old
 ```
 
+##### Finding stray gcroots
+
+[How to get rid of unused home manager packages?](https://discourse.nixos.org/t/how-to-get-rid-of-unused-home-manager-packages/14997/5)
+
+> `sudo -i nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/current-system|/run/booted-system|/proc|{memory|{censored)'`
+
 ##### Printing in repl
 
 ```nix

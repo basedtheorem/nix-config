@@ -1,0 +1,21 @@
+diff --git a/meow-command.el b/meow-command.el
+index ec56b82..3b9ba02 100644
+--- a/meow-command.el
++++ b/meow-command.el
+@@ -1520,9 +1520,13 @@ Argument ARG if not nil, switching in a new window."
+ (defun meow-minibuffer-quit ()
+   "Keyboard escape quit in minibuffer."
+   (interactive)
+-  (if (fboundp 'minibuffer-keyboard-quit)
+-      (call-interactively #'minibuffer-keyboard-quit)
+-    (call-interactively #'abort-recursive-edit)))
++  (defvar ctrlf--active-p nil)
++  (if ctrlf--active-p
++      (call-interactively #'exit-minibuffer)
++    (if (fboundp 'minibuffer-keyboard-quit)
++          (call-interactively #'minibuffer-keyboard-quit)
++        (call-interactively #'abort-recursive-edit))))
++
+ 
+ (defun meow-escape-or-normal-modal ()
+   "Keyboard escape quit or switch to normal state."
