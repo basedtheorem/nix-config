@@ -142,8 +142,13 @@
 
     programs = {
       home-manager.enable = true;
+      emacs.enable = true;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
+    };
+
+    services = {
+      emacs.enable = true;
     };
 
     news.display = lib.mkForce "silent";

@@ -48,22 +48,19 @@
   outputs = inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      debug = true;
-
-      flake = {
-        overlays = import ./overlays inputs;
-      };
 
       imports = [
         ./hosts
         ./profiles
         ./packages
+        ./overlays
         ./lib
       ];
 
       perSystem = { pkgs, system, lib, ... }: {
         devShells.default = pkgs.mkShell rec {
-          name = "dotfiles devenv";
+          name = "Nome Development Environment";
+
           formatter = pkgs.nixfmt-rfc-style;
 
           packages = builtins.attrValues {
@@ -71,8 +68,10 @@
           };
 
           shellHook = ''
-            echo Packages: ${
-              builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
+            echo
+            echo Packages loaded:
+            echo ' -' ${
+              builtins.concatStringsSep "\necho ' - '" (lib.forEach packages lib.getName)
             }
           '';
 
