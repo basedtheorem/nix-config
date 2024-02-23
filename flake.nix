@@ -32,11 +32,10 @@
 
     flatpak.url = "github:GermanBread/declarative-flatpak/stable";
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
     mpv.url = "github:mpv-player/mpv";
     mpv.flake = false;
+    mpv-everforest.url = "github:mltorr/mpv-everforest";
+    mpv-everforest.flake = false;
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";

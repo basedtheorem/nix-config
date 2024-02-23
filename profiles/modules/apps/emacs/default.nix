@@ -70,7 +70,6 @@ in
 
   config = lib.mkIf emacsEnabled {
     programs.emacs.package = emacsPkg;
-    services.emacs.package = emacsPkg;
 
     nixpkgs.overlays = [ inputs.emacs-overlay.overlays.emacs ];
 
@@ -86,11 +85,26 @@ in
     };
 
     programs.fish = {
+      # Create separate emacs daemons for each shell.
+      interactiveShellInit = ''
+        source ${config.xdg.configHome}/fish/functions/__kill_emacs_d__.fish
+        set DAEMON_ID (date +"%N") # Current date in nanoseconds
+        emacs --daemon="$DAEMON_ID" &> /dev/null &; disown
+      '';
+
       functions =
         let
           emacsClientSocket = ''emacsclient --create-frame --tty --socket-name "$DAEMON_ID"'';
         in
         {
+          # Kill emacs daemon on exit.
+          "__kill_emacs_d__" = {
+            onEvent = "fish_exit";
+            body = ''
+              emacsclient -s "$DAEMON_ID" -e "(kill-emacs)"
+            '';
+          };
+
           # Allow emacs to read files from STDIN (e.g. `echo 123 | e -`)
           e = ''
             if test (count $argv) -ge 1 && test $argv[1] = -
@@ -106,22 +120,7 @@ in
           '';
 
           ed = "e $argv";
-
-          # Kill emacs daemon on exit.
-          "__kill_emacs_d__" = {
-            onEvent = "fish_exit";
-            body = ''
-              emacsclient -s "$DAEMON_ID" -e "(kill-emacs)"
-            '';
-          };
         };
-
-      # Create separate emacs daemons for each shell.
-      interactiveShellInit = ''
-        source ${config.xdg.configHome}/fish/functions/__kill_emacs_d__.fish
-        set DAEMON_ID (date +"%N") # Current date in nanoseconds
-        emacs --daemon="$DAEMON_ID" &> /dev/null &; disown
-      '';
     };
   };
 }

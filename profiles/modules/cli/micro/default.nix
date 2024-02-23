@@ -1,9 +1,20 @@
-{ self, ... }:
+{
+  lib,
+  config,
+  self,
+  ...
+}:
+let
+  microEnabled = config.programs.micro.enable;
+in
 {
 
   nixpkgs.overlays = [ self.overlays.micro ];
 
+  home.shellAliases = lib.mkIf microEnabled { mc = "micro"; };
+
   programs.micro = {
+    # Enabled by default to replace nano.
     enable = true;
 
     settings = {
@@ -11,7 +22,6 @@
       tabstospaces = true;
       tabsize = 2;
       colorscheme = "twilight-edit";
-      # colorcolumn = 80;
       statusformatl = "";
       statusformatr = "$(filename) $(modified)| $(line):$(col) $(status.paste)";
       statusline = true;
@@ -32,6 +42,7 @@
       indentchar = "⇥";
       scrollbar = true;
       scrollbarchar = ".";
+      # colorcolumn = 80;
     };
   };
 
