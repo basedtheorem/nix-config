@@ -3,29 +3,26 @@
 #### Useful snippets
 
 ```nix
-  # Avoid dealing with the peculiarities of escaping manually.
-  lib.escapeShellArg
+lib.escapeShellArg
   ```
 
-  ##### Trace
+##### Trace
 
-  ```
-  nix
-  # For use with nix repl after loading the flake.
-  parts.lib.mkFlake { ... }:
-{
+  ```nix
+# For use with nix repl after loading the flake.
+parts.lib.mkFlake { ... }: {
   debug = true;
   /* ... */
 }
 
-  # Can be used like a print statement for debugging,
-  # it will print the first arg then return the second.
-  lib.trace
-  (<expression>)
-  (<expression>);
+# Can be used like a print statement for debugging,
+# it will print the first arg then return the second.
+lib.trace
+(<expression>)
+(<expression>);
 
-  # Or
-  builtins.seq (lib.debug.showVal config)
+# Or
+builtins.seq (lib.debug.showVal config)
 ```
 
 ##### Prefetch
@@ -35,7 +32,7 @@
 ##### Clean house
 
 ```bash
-# Delete all previous generations
+# Delete all previous generations and clear the store.
 home-manager expire-generations '-1 second'
 sudo nix-collect-garbage --delete-old
 nix-collect-garbage --delete-old
@@ -80,11 +77,11 @@ nix-repl> :p output
 
 ##### Inherit
 
-```
+```nix
 inherit (a) x y; # equivalent to: x = a.x; y = a.y;
 ```
 
-```
+```nix
 let
   inherit ({ x = 1; y = 2; }) x y;
 in
@@ -98,7 +95,7 @@ in [ x y ]
 
 #### Module args
 
-```
+```nix
 // mkFlake args:
 [ "config"
   "flake-parts-lib"
@@ -133,12 +130,6 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 - Permit omitting the module arguments
 - Permit omitting the imports, options, or config attributes
 - Avoid eliding the config attribute
-- I.e. if you define any options, always nest them underneath the config attribute.
-
-#### Important keybinds
-
-- kitty
-  - `ctrl+shift+h` (browse scrollback in less)
 
 #### References
 
@@ -149,17 +140,11 @@ Specifically: [nixpkgs/menus.nix](https://github.com/NixOS/nixpkgs/blob/7b2f9d47
 
 #### TODO
 
-- get better history pager
 - modularize profile
   - e.g. fish init is a single script that depends on several pkgs
-- ulauncher
-- gitui
+- nixify:
+  - ulauncher (api keys)
+  - gitui
 - switch from kitty to wezterm for sessions
-- move misc dotfiles to this flake (api keys)
-- resize kitty wins
-- indent lines using tab in vscode ffs why isnt it default
-- ctrl shift pgdown null in micro, selects eof obs vsc
-- shift pgdown null in micro, selects pgdown obs vscode
-- navigate cursor history obs mc vsc
-- ctrl alt down null in all
-- sort uhk delete key
+  - resize wins
+- navigate cursor history obs mc vsc C-{\,,.}
