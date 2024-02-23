@@ -85,20 +85,43 @@ in
       "emacs/init.el".text = mergedConf;
     };
 
-    programs.fish.functions = {
-      e = ''
-        if test (count $argv) -ge 1 && test $argv[1] = -
-           set tempfile "$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)"
-           cat - > "$tempfile"
-           emacsclient -c -t --eval "(find-file \"$tempfile\")" \
-                       --eval '(set-visited-file-name nil)' \
-                       --eval '(rename-buffer "*stdin*" t)' \
-                       --eval "(setq default-directory \"$PWD/\")"
-        else
-           emacsclient -c -t $argv
-        end
+    programs.fish = {
+      functions =
+        let
+          emacsClientSocket = ''emacsclient --create-frame --tty --socket-name "$DAEMON_ID"'';
+        in
+        {
+          # Allow emacs to read files from STDIN (e.g. `echo 123 | e -`)
+          e = ''
+            if test (count $argv) -ge 1 && test $argv[1] = -
+                set tempfile "$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)"
+                cat - > "$tempfile"
+                ${emacsClientSocket} --eval "(find-file \"$tempfile\")" \
+                    --eval '(set-visited-file-name nil)' \
+                    --eval '(rename-buffer "*stdin*" t)' \
+                    --eval "(setq default-directory \"$PWD/\")"
+            else
+                ${emacsClientSocket} $argv
+            end
+          '';
+
+          ed = "e $argv";
+
+          # Kill emacs daemon on exit.
+          "__kill_emacs_d__" = {
+            onEvent = "fish_exit";
+            body = ''
+              emacsclient -s "$DAEMON_ID" -e "(kill-emacs)"
+            '';
+          };
+        };
+
+      # Create separate emacs daemons for each shell.
+      interactiveShellInit = ''
+        source ${config.xdg.configHome}/fish/functions/__kill_emacs_d__.fish
+        set DAEMON_ID (date +"%N") # Current date in nanoseconds
+        emacs --daemon="$DAEMON_ID" &> /dev/null &; disown
       '';
-      ed = "e $argv";
     };
   };
 }

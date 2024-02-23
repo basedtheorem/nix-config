@@ -15,7 +15,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Nix
-
 (use-package nix-mode
   :ensure t
   :init
@@ -30,13 +29,16 @@
   :after (nix-mode)
   :mode "\\.nix\\'"
   :init
+  (defun nix-ts-override-indent ()
+    (local-set-key (kbd "TAB") 'nix-indent-line))
   :hook
   (before-save . nix-ts-format-before-save)
-  (before-save . nix-format-before-save)
-  (nix-ts-mode . eglot-ensure))
+  (nix-ts-mode . eglot-ensure)
+  (nix-ts-mode . nix-ts-override-indent))
 
 ;; Fish shell
 (use-package fish-mode :ensure t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -95,7 +97,8 @@
           (css-mode . css-ts-mode)
           (c++-mode . c++-ts-mode)
           (c-mode . c-ts-mode)
-          (python-mode . python-ts-mode)))
+          (python-mode . python-ts-mode)
+          (nix-mode . nix-ts-mode)))
   :init
   (setopt display-line-numbers-width 3)
   (setq-default electric-indent-inhibit t)    ; Disable auto-indenting current line

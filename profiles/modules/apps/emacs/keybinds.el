@@ -268,7 +268,7 @@
   :custom
   (pixel-scroll-precision-interpolation-factor 1.0)
   :bind
-  ("C-e" . 'lrns/pixel-recenter-top-bottom)
+  ("C-e" . lrns/pixel-recenter-top-bottom)
   ;; I frequently hit this keybind on accident, so make it
   ;; do the same as `<next>`
   ("C-<next>" . 'pixel-scroll-interpolate-down)

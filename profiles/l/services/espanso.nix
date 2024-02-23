@@ -6,6 +6,7 @@
     configs = {
       default = {
         # toggle_key = "RIGHT_CTRL";
+        show_notifications = false;
       };
     };
 
