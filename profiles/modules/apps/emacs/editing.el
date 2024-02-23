@@ -74,7 +74,7 @@
 ;; Clean up whitespace on save
 (use-package ws-butler
   :ensure t
-  :hook ('before-save . ws-butler-global-mode))
+  :hook (before-save . ws-butler-global-mode))
 
 ;; Modify search results en masse
 (use-package wgrep

@@ -77,20 +77,6 @@
     ];
 
     functions = {
-      e = ''
-        if test (count $argv) -ge 1 && test $argv[1] = -
-           set tempfile "$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)"
-           cat - > "$tempfile"
-           emacsclient -c -t --eval "(find-file \"$tempfile\")" \
-                       --eval '(set-visited-file-name nil)' \
-                       --eval '(rename-buffer "*stdin*" t)' \
-                       --eval "(setq default-directory \"$PWD/\")"
-        else
-           emacsclient -c -t $argv
-        end
-      '';
-      ed = "e";
-
       ya = ''
         set tmp (mktemp -t "yazi-cwd.XXXXX")
         yazi $argv --cwd-file="$tmp"

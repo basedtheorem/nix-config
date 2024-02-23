@@ -15,18 +15,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Nix
-(load-file (expand-file-name "nix-ts-mode.el" user-emacs-directory))
-(defun nix-ts-format-before-save ()
-  "Add this to `before-save-hook' to run nixfmt when saving."
-  (when (derived-mode-p 'nix-ts-mode)
-    (nix-format-buffer)))
+
+(use-package nix-mode
+  :ensure t
+  :init
+  (setq-default nix-nixfmt-bin "nixfmt")
+  (defun nix-ts-format-before-save ()
+    "Add this to `before-save-hook' to run nixfmt when saving."
+    (when (derived-mode-p 'nix-ts-mode)
+      (nix-format-buffer))))
 
 (use-package nix-ts-mode
+  :ensure t
+  :after (nix-mode)
   :mode "\\.nix\\'"
   :init
-  (setq
-    nix-nixfmt-bin "nixpkgs-fmt"
-    nix-indent-function 'nix-indent-line)
   :hook
   (before-save . nix-ts-format-before-save)
   (before-save . nix-format-before-save)
@@ -102,10 +105,16 @@
   )
 
 ;; Direnv integration
-(use-package direnv
+(use-package envrc
   :ensure t
-  :custom (direnv-always-show-summary nil)
-  :config (direnv-mode))
+  :config
+  (envrc-global-mode))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (daemonp)
+    (exec-path-from-shell-initialize)))
 
 ;; Highlight current block scope. Disabled by default because
 ;; it's distracting, but its useful in heavily nested structures.
