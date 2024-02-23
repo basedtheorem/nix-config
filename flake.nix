@@ -10,6 +10,7 @@
     nixpkgs.follows = "unstable-small";
 
     parts.url = "github:hercules-ci/flake-parts";
+    parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +19,7 @@
     nur.follows = "nixpkgs";
 
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     chillax-discord-theme.url = "github:warrayquipsome/Chillax";
     chillax-discord-theme.flake = false;
@@ -33,52 +35,49 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    kakoune.url = "github:mawww/kakoune";
-    kakoune.flake = false;
+    mpv.url = "github:mpv-player/mpv";
+    mpv.flake = false;
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    mpv.url = "github:mpv-player/mpv";
-    mpv.flake = false;
+    indent-bars.url = "github:jdtsmith/indent-bars";
+    indent-bars.flake = false;
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       debug = true;
 
-      flake = {
-        nixosModules = import ./modules/nixos inputs;
-        homeManagerModules = import ./modules/home-manager inputs;
-        lib = import ./lib inputs;
-        overlays = import ./overlays inputs;
-      };
-
-      imports = [ ./hosts ./profiles ./packages ];
+      imports = [
+        ./hosts
+        ./profiles
+        ./packages
+        ./overlays
+        ./lib
+      ];
 
       perSystem =
-        { pkgs
-        , system
-        , lib
-        , ...
-        }: {
+        {
+          pkgs,
+          system,
+          lib,
+          ...
+        }:
+        {
           devShells.default = pkgs.mkShell rec {
-            name = "dotfiles devenv";
-            formatter = pkgs.alejandra;
+            name = "Nome Development Environment";
 
-            packages = builtins.attrValues {
-              inherit
-                (pkgs)
-                nixpkgs-fmt
-                nil# langserver
-                ;
-            };
+            formatter = pkgs.nixfmt-rfc-style;
+
+            packages = builtins.attrValues { inherit (pkgs) nil nixfmt-rfc-style; };
 
             shellHook = ''
-              echo Packages: ${
-                builtins.concatStringsSep ", " (lib.forEach packages lib.getName)
-              }
+              echo
+              echo Packages loaded:
+              echo ' -' ${builtins.concatStringsSep "\necho ' - '" (lib.forEach packages lib.getName)}
             '';
 
             DIRENV_LOG_FORMAT = "";

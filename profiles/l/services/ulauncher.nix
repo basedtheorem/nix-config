@@ -21,6 +21,8 @@
       ExecStart = "${pkgs.ulauncher}/bin/ulauncher --hide-window";
     };
 
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
 }

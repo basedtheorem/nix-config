@@ -1,8 +1,4 @@
-{
-  self,
-  pkgs,
-  ...
-}:
+{ self, pkgs, ... }:
 # TODO: move to profiles
 {
   fonts = {
@@ -20,10 +16,10 @@
       };
 
       defaultFonts = {
-        serif = ["EB Garamond"];
-        sansSerif = ["Questrial"];
-        monospace = ["Iosevka Comfy"];
-        emoji = ["Twitter Color Emoji"];
+        serif = [ "EB Garamond" ];
+        sansSerif = [ "Questrial" ];
+        monospace = [ "Iosevka Comfy" ];
+        emoji = [ "Twitter Color Emoji" ];
       };
     };
 
@@ -44,12 +40,14 @@
           fonts = [
             "DM Mono"
             "Noto Sans Mono"
+            "Cardo"
+            "Playfair Display"
+            "Readex Pro"
           ];
         })
       ]
       ++ builtins.attrValues {
-        inherit
-          (pkgs)
+        inherit (pkgs)
           twitter-color-emoji
           roboto
           victor-mono

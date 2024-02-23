@@ -1,12 +1,12 @@
-{ pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   services.espanso = {
     enable = true;
 
     configs = {
       default = {
         # toggle_key = "RIGHT_CTRL";
+        show_notifications = false;
       };
     };
 

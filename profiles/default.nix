@@ -1,18 +1,26 @@
-{
-  self,
-  inputs,
-  ...
-}: let
+{ self, lib, inputs, ... }:
+let
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
-in {
-  flake.homeConfigurations = {
-    l = homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
-      extraSpecialArgs = {
-        inherit inputs;
-        inherit self;
+in
+{
+  _file = ./default.nix;
+
+  flake = {
+    homeManagerModules = self.lib.readNixFilesRec ./modules;
+
+    homeConfigurations = {
+      l = homeManagerConfiguration {
+        pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit self;
+        };
+
+        modules = [
+          ./l
+          ./shared
+        ] ++ builtins.attrValues self.homeManagerModules;
       };
-      modules = [./l ./shared];
     };
   };
 }

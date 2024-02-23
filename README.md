@@ -23,6 +23,9 @@
   lib.trace
   (<expression>)
   (<expression>);
+
+  # Or
+  builtins.seq (lib.debug.showVal config)
 ```
 
 ##### Prefetch
@@ -34,8 +37,15 @@
 ```bash
 # Delete all previous generations
 home-manager expire-generations '-1 second'
-sudo nix-collect-garbage -d
+sudo nix-collect-garbage --delete-old
+nix-collect-garbage --delete-old
 ```
+
+##### Finding stray gcroots
+
+[How to get rid of unused home manager packages?](https://discourse.nixos.org/t/how-to-get-rid-of-unused-home-manager-packages/14997/5)
+
+> `sudo -i nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/current-system|/run/booted-system|/proc|{memory|{censored)'`
 
 ##### Printing in repl
 

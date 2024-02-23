@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # TODO: Put dconf2nix output here, backup gnome keybinds and misc conf.
 
   xdg = {
@@ -11,14 +12,16 @@
     '';
   };
 
-  home.packages = [pkgs.flat-remix-gnome];
+  home.packages = [ pkgs.flat-remix-gnome ];
   home.sessionVariables.GTK_THEME = "Flat-Remix-GTK-Red-Darkest-Solid:dark";
 
   gtk = {
     enable = true;
 
     # ~/.config/gtk{3,4}.0/settings.ini
-    gtk4.extraConfig = {gtk-application-prefer-dark-theme = 1;};
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
     gtk3.extraConfig = {
       gtk-decoration-layout = "menu:";
       gtk-application-prefer-dark-theme = 1;

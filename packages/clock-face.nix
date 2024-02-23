@@ -3,6 +3,7 @@
   stdenvNoCC,
   fetchzip,
 }:
+
 stdenvNoCC.mkDerivation rec {
   pname = "ClockFace-font";
   version = "bad1107";
@@ -31,7 +32,7 @@ stdenvNoCC.mkDerivation rec {
     description = "Icon font for displaying the time";
     homepage = "https://github.com/ocodo/ClockFace-font";
     license = licenses.cc-by-nc-30;
-    maintainers = [maintainers."1rns"];
+    maintainers = [ maintainers."1rns" ];
     platforms = platforms.all;
   };
 }

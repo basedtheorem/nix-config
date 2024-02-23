@@ -1,0 +1,81 @@
+warning: Git tree '/home/l/nome' is dirty
+building '/nix/store/d4f40qmg8nlyspzs95fvvz8n25p2cyjd-config.el.drv'...
+these 16 derivations will be built:
+  /nix/store/hbp4gha720693vz3fs2npb44cq2mf90s-initConf.drv
+  /nix/store/bnlh3djfni0d6axrbndk2cghvy85bpcj-configInitialiser.drv
+  /nix/store/nkv96grm8rskqv0h0g6gff3anp2smqhi-emacs-packages-deps.drv
+  /nix/store/8k39z1y3aga5396iwjvszr6d8wc8lpg3-emacs-git-with-packages-20240222.0.drv
+  /nix/store/4h0qs1n0jqmmi8p3r8xxr6gxlkqw2wjm-emacs-packages-deps.drv
+  /nix/store/r2812wp9x0dmkmvak8nlhy53q3v8q084-emacs-git-with-packages-with-packages-20240222.0.drv
+  /nix/store/lr8m3x9cbfzrg4wfgn3nib1q22bvzqr2-home-manager-path.drv
+  /nix/store/1dmcn3zkms77x69dym6jyw01mi2p6rpj-activation-script.drv
+  /nix/store/bpiwbd5nqhavk6lbmrz46q4n4blyhxys-man-paths.drv
+  /nix/store/yxk2f5s12ywxmxhjbkcq5xi3f9h693lf-man-cache.drv
+  /nix/store/bnp43ajxwkj9nf6k8y5j0nnmrdzv91qr-hm_.manpath.drv
+  /nix/store/lr8zswr89fj1061757wj1j5kivja39cr-emacs-git-with-packages-with-packages-20240222.0-fish-completions.drv
+  /nix/store/k1gvfj9974mfbjy2k9l0dgnzvki3y5g9-l-fish-completions.drv
+  /nix/store/vch93px3x20rc1qnbm88islkg4r9pdaa-emacs.service.drv
+  /nix/store/f4w61jdi7m8k2g3ci19n4v4wgrk6xcxm-home-manager-files.drv
+  /nix/store/76kcp83b9wc1zhh9n3d0wlwqvaswngdb-home-manager-generation.drv
+building '/nix/store/hbp4gha720693vz3fs2npb44cq2mf90s-initConf.drv'...
+building '/nix/store/bnlh3djfni0d6axrbndk2cghvy85bpcj-configInitialiser.drv'...
+building '/nix/store/nkv96grm8rskqv0h0g6gff3anp2smqhi-emacs-packages-deps.drv'...
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/00s240y4k8izwg9gfh0xskv57wr64afx-emacs-packages-deps/share/emacs/site-lisp/site-start.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/00s240y4k8izwg9gfh0xskv57wr64afx-emacs-packages-deps/share/emacs/site-lisp/subdirs.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/00s240y4k8izwg9gfh0xskv57wr64afx-emacs-packages-deps/share/emacs/site-lisp/site-start.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/00s240y4k8izwg9gfh0xskv57wr64afx-emacs-packages-deps/share/emacs/site-lisp/subdirs.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+building '/nix/store/8k39z1y3aga5396iwjvszr6d8wc8lpg3-emacs-git-with-packages-20240222.0.drv'...
+building '/nix/store/4h0qs1n0jqmmi8p3r8xxr6gxlkqw2wjm-emacs-packages-deps.drv'...
+building '/nix/store/vch93px3x20rc1qnbm88islkg4r9pdaa-emacs.service.drv'...
+emacs-packages-deps> Loading /nix/store/pm00zfkbd2akp76j8s4j3c4ds2si7x4i-emacs-git-20240222.0/share/emacs/site-lisp/site-start (native compiled elisp)...
+emacs-packages-deps> Loading /nix/store/pm00zfkbd2akp76j8s4j3c4ds2si7x4i-emacs-git-20240222.0/share/emacs/site-lisp/site-start (native compiled elisp)...
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/71q6qna0sav1wrp2j0a3d7ibdd1lsa8p-emacs-packages-deps/share/emacs/site-lisp/site-start.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+emacs-packages-deps> In toplevel form:
+emacs-packages-deps> /nix/store/71q6qna0sav1wrp2j0a3d7ibdd1lsa8p-emacs-packages-deps/share/emacs/site-lisp/subdirs.el:1:1: Warning: file has no `lexical-binding' directive on its first line
+building '/nix/store/r2812wp9x0dmkmvak8nlhy53q3v8q084-emacs-git-with-packages-with-packages-20240222.0.drv'...
+building '/nix/store/lr8zswr89fj1061757wj1j5kivja39cr-emacs-git-with-packages-with-packages-20240222.0-fish-completions.drv'...
+building '/nix/store/lr8m3x9cbfzrg4wfgn3nib1q22bvzqr2-home-manager-path.drv'...
+building '/nix/store/bpiwbd5nqhavk6lbmrz46q4n4blyhxys-man-paths.drv'...
+building '/nix/store/k1gvfj9974mfbjy2k9l0dgnzvki3y5g9-l-fish-completions.drv'...
+man-paths> created 424 symlinks in user environment
+building '/nix/store/yxk2f5s12ywxmxhjbkcq5xi3f9h693lf-man-cache.drv'...
+home-manager-path> created 2462 symlinks in user environment
+man-cache> Processing manual pages under /nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man...
+building '/nix/store/1dmcn3zkms77x69dym6jyw01mi2p6rpj-activation-script.drv'...
+man-cache> Updating index cache for path `/nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man/man5'. Wait...done.
+man-cache> BDB3028 /nix/store/27ssy640dp7m2zwcnpvj3rgn55gk47sa-man-cache/3: unable to flush: No such file or directory
+man-cache> Processing manual pages under /nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man/it...
+man-cache> Updating index cache for path `/nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man/it/man5'. Wait...done.
+man-cache> BDB3028 /nix/store/27ssy640dp7m2zwcnpvj3rgn55gk47sa-man-cache/it/3: unable to flush: No such file or directory
+man-cache> Processing manual pages under /nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man/fr...
+man-cache> Updating index cache for path `/nix/store/hi6zm5dj9661w8waxqzv77jxgjsjjpfr-man-paths/share/man/fr/man8'. Wait...done.
+man-cache> BDB3028 /nix/store/27ssy640dp7m2zwcnpvj3rgn55gk47sa-man-cache/fr/3: unable to flush: No such file or directory
+man-cache> 10 man subdirectories contained newer manual pages.
+man-cache> 432 manual pages were added.
+building '/nix/store/bnp43ajxwkj9nf6k8y5j0nnmrdzv91qr-hm_.manpath.drv'...
+building '/nix/store/f4w61jdi7m8k2g3ci19n4v4wgrk6xcxm-home-manager-files.drv'...
+building '/nix/store/76kcp83b9wc1zhh9n3d0wlwqvaswngdb-home-manager-generation.drv'...
+Starting Home Manager activation
+Activating checkFilesChanged
+Activating checkLinkTargets
+Activating writeBoundary
+Activating installPackages
+replacing old 'home-manager-path'
+installing 'home-manager-path'
+building '/nix/store/s7v72wv1zsgakj0bark4cqvm4fm6svlj-user-environment.drv'...
+Activating dconfSettings
+Activating linkGeneration
+Cleaning up orphan links from /home/l
+Creating profile generation 41
+Creating home file links in /home/l
+Activating onFilesChange
+Activating reloadSystemd
+Suggested commands:
+systemctl --user restart emacs.service
+Activating start-service
+warning: Git tree '/home/l/nome' is dirty
