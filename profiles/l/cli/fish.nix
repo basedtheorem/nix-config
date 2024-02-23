@@ -51,11 +51,11 @@
       gitc = "git commit -S ";
       gad = "git add .";
       gitst = "git status";
-      
+
       cpcb = {
         setCursor = true;
-        expansion = "% | xclip -selection clipboard"
-      }; 
+        expansion = "% | xclip -selection clipboard";
+      };
 
       jt = {
         setCursor = true;
