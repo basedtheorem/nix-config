@@ -39,7 +39,6 @@
 ;; Fish shell
 (use-package fish-mode :ensure t)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Common file types
@@ -48,7 +47,7 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
+  ;; :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
   :hook ((markdown-mode . visual-line-mode)))
 

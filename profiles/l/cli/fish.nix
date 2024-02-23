@@ -45,13 +45,18 @@
       fonts = "fc-list";
       config = "~/.config";
       cd = "z";
-      lg = "gitui";
-      gui = "gitui";
+      lg = "lazygit";
       code = "codium";
       unset = "set -e ";
-      cpcb = "| xclip -selection clipboard";
       gitc = "git commit -S ";
       gad = "git add .";
+      gitst = "git status";
+      
+      cpcb = {
+        setCursor = true;
+        expansion = "% | xclip -selection clipboard"
+      }; 
+
       jt = {
         setCursor = true;
         expansion = "jot ' - [ ] %'";

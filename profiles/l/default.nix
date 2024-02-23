@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./cli/mpv # Media player
@@ -7,7 +13,7 @@
     ./cli/kitty # Terminal emulator
     ./cli/fish.nix # Shell
     ./cli/git.nix
-    ./cli/gitui.nix
+    ./cli/lazygit.nix
     ./cli/spicetify.nix # Spotify
     ./cli/yazi.nix # File browser
 
@@ -45,36 +51,36 @@
 
       # CLI
       inherit (pkgs)
-        ripgrep# `grep` alt.
-        grex# Generate regex
-        procs# `ps` (process )alt.
-        skim# `fzf` alt.
-        dua# Disk usage
-        tokei# Count lines of code
-        ruplacer# Find & replace
-        sd# Alt. find & replace
-        hyperfine# Benchmarking
-        file# File info
-        fd# Find files
-        onefetch# Fetch for git repos
-        btop# System monitor
-        bandwhich# Network monitor
-        tealdeer# TLDR for commands
-        ttyper# Typing practice
-        bat# `cat` alt.
-        wget# Download files
-        neofetch# System info
-        pipe-rename# `ls | renamer`
-        zoxide# `cd` alt.
-        eza# `ls` alt.
-        glow# Print .md
-        fuc# `rm,cp` -> `rmz,cpz`
-        broot# Interactive file tree
-        kalker# Calculator
-        p7zip# 7z util
-        difftastic# `diff` alt
-        xclip# Clipboard utils
-        cpu-x# Detailed sys info
+        ripgrep # `grep` alt.
+        grex # Generate regex
+        procs # `ps` (process )alt.
+        skim # `fzf` alt.
+        dua # Disk usage
+        tokei # Count lines of code
+        ruplacer # Find & replace
+        sd # Alt. find & replace
+        hyperfine # Benchmarking
+        file # File info
+        fd # Find files
+        onefetch # Fetch for git repos
+        btop # System monitor
+        bandwhich # Network monitor
+        tealdeer # TLDR for commands
+        ttyper # Typing practice
+        bat # `cat` alt.
+        wget # Download files
+        neofetch # System info
+        pipe-rename # `ls | renamer`
+        zoxide # `cd` alt.
+        eza # `ls` alt.
+        glow # Print .md
+        fuc # `rm,cp` -> `rmz,cpz`
+        broot # Interactive file tree
+        kalker # Calculator
+        p7zip # 7z util
+        difftastic # `diff` alt
+        xclip # Clipboard utils
+        cpu-x # Detailed sys info
         ;
       inherit (pkgs.bat-extras) batgrep;
 
@@ -82,17 +88,17 @@
 
       # Desktop
       inherit (pkgs)
-        gcolor3# colour picker
-        freetube# YT client
-        bitwarden# Password manager
-        floorp# Firefox fork
-        onlyoffice-bin_latest# Office suite
+        gcolor3 # colour picker
+        freetube # YT client
+        bitwarden # Password manager
+        floorp # Firefox fork
+        onlyoffice-bin_latest # Office suite
         anki
-        cryptomator# Encryption
+        cryptomator # Encryption
         ;
       inherit (pkgs.xorg)
-        xset# Key delay & repeat rate
-        xev# Print xserver events
+        xset # Key delay & repeat rate
+        xev # Print xserver events
         ;
 
       # ------------------------------------------ #
@@ -100,8 +106,8 @@
       # Media
       inherit (pkgs)
         vivaldi-ffmpeg-codecs
-        ffmpeg-full# Video/audio/etc utils
-        imagemagick# Image utils
+        ffmpeg-full # Video/audio/etc utils
+        imagemagick # Image utils
         yt-dlp
         alsa-utils
 
@@ -110,7 +116,7 @@
         # Dev
         git-filter-repo
         chromium
-        jq# JSON query
+        jq # JSON query
         just
         nixd
         cachix
