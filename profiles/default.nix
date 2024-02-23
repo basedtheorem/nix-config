@@ -1,4 +1,9 @@
-{ self, lib, inputs, ... }:
+{
+  self,
+  lib,
+  inputs,
+  ...
+}:
 let
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
 in
@@ -6,7 +11,7 @@ in
   _file = ./default.nix;
 
   flake = {
-    homeManagerModules = self.lib.readNixFilesRec ./modules;
+    homeManagerModules = self.lib.readNixFilesFrom ./modules;
 
     homeConfigurations = {
       l = homeManagerConfiguration {

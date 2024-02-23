@@ -6,7 +6,7 @@ in
   _file = ./default.nix;
 
   flake = {
-    nixosModules = self.lib.readNixFilesRec ./modules;
+    nixosModules = self.lib.readNixFilesFrom ./modules;
 
     nixosConfigurations = {
       quartz = nixosSystem {
