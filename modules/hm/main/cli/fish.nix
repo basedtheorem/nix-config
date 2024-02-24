@@ -34,6 +34,7 @@
       srm = "sudo rm";
       srmr = "sudo rm -r";
 
+      
       cpcb = {
         setCursor = true;
         expansion = "% | xclip -selection clipboard";
@@ -47,7 +48,9 @@
         setCursor = true;
         expansion = "jot ' - [ ] %'";
       };
-
+      
+      # These depend on other packages.
+      cd = "z";
       unset = "set -e ";
       gitc = "git commit -S ";
       gad = "git add .";

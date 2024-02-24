@@ -1,20 +1,13 @@
-{ self, inputs, ... }:
-let
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-in
+{ self, ... }:
+
 {
   _file = ./default.nix;
 
   flake = {
-    nixosModules = self.lib.readNixFilesFrom ./modules;
-
     nixosConfigurations = {
-      quartz = nixosSystem {
+      quartz = self.lib.mkNixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit self inputs;
-        };
-        modules = [ ./quartz ] ++ builtins.attrValues self.nixosModules;
+        extraModules = [ ./quartz ];
       };
     };
   };

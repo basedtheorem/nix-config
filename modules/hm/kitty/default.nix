@@ -5,10 +5,13 @@
   ...
 }:
 let
-  cfg = config.programs.kitty;
+  cfg = config.terminals.kitty;
 in
 {
-  options.kitty = {
+  _file = ./default.nix;
+
+  options.terminals.kitty = {
+    enable = lib.mkEnableOption "Kitty with my config";
     grab.enable = lib.mkEnableOption "Kitty Grab";
   };
 

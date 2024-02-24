@@ -1,35 +1,63 @@
-{ lib, ... }:
+{
+  self,
+  lib,
+  inputs,
+  withSystem,
+  ...
+}:
 
 {
   _file = ./default.nix;
 
   flake.lib = {
     # Imports every .nix from input path recursively.
-    readNixFilesFrom =
-      path:
+    # Returns a list of nix expressions.
+    readNixExpsFrom =
+      {
+        path,
+        excludes ? [ ],
+      }:
       let
-        lsFilesRec = lib.filesystem.listFilesRecursive;
-        strFiles = lib.forEach (lsFilesRec path) (p: builtins.toString p);
-        strNixFiles = builtins.filter (str: lib.hasSuffix "nix" str) strFiles;
-        modules = lib.genAttrs (strNixFiles) (file: builtins.import file);
+        paths = lib.filesystem.listFilesRecursive path;
+        filteredPaths =
+          builtins.filter
+            (
+              path:
+              lib.hasSuffix ".nix" path
+              &&
+                # Check if path is in excludes list.
+                !lib.lists.any (x: x == path) excludes
+            )
+            paths;
       in
-      # lib.mapAttrs'
-      #   (
-      #     name: value:
-      #     lib.nameValuePair
-      #       (builtins.replaceStrings
-      #         [
-      #           "/"
-      #           ".nix"
-      #         ]
-      #         [
-      #           "-"
-      #           ""
-      #         ]
-      #         name
-      #       )
-      #       value
-      #   )
-      modules;
+      map (file: builtins.import file) filteredPaths;
+
+    # Create home manager config.
+    mkHomeCfg =
+      {
+        system,
+        extraModules ? [ ],
+      }:
+      inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = withSystem system ({ pkgs, ... }: pkgs);
+        modules = (builtins.attrValues self.homeModules) ++ extraModules;
+        extraSpecialArgs = {
+          inherit inputs self;
+        };
+      };
+
+    # Create NixOS system
+    mkNixosSystem =
+      {
+        system,
+        extraModules ? [ ],
+      }:
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs self;
+        };
+
+        modules = (builtins.attrValues self.nixosModules) ++ extraModules;
+      };
   };
 }

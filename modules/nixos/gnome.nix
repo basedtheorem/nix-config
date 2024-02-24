@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.gnome;
+  cfg = config.presets.gnome;
 in
 {
   _file = ./gnome.nix;
@@ -8,7 +8,7 @@ in
   # TODO:
   # https://determinate.systems/posts/declarative-gnome-configuration-with-nixos
 
-  options.gnome = {
+  options.presets.gnome = {
     enable = lib.mkEnableOption "Gnome Desktop Environment";
 
     minimal = lib.mkOption {

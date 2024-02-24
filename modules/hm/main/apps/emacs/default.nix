@@ -6,8 +6,6 @@
   ...
 }:
 let
-  emacsEnabled = config.programs.emacs.enable;
-
   "initConf" = builtins.readFile ./init.el;
   "keybindsConf" = builtins.readFile ./keybinds.el;
   "baseConf" = builtins.readFile ./base.el;
@@ -68,7 +66,7 @@ in
 {
   _file = ./default.nix;
 
-  config = lib.mkIf emacsEnabled {
+  config = {
     programs.emacs.package = emacsPkg;
 
     nixpkgs.overlays = [ inputs.emacs-overlay.overlays.emacs ];

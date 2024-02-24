@@ -13,4 +13,9 @@
     ./vm.nix # windows 11 vm
     ./fonts.nix
   ];
+
+  config.presets = {
+    base.enable = true;
+    dev.enable = true;
+  };
 }

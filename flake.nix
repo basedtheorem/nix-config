@@ -55,6 +55,7 @@
         ./profiles
         ./packages
         ./overlays
+        ./modules
         ./lib
       ];
 

@@ -3,12 +3,14 @@ let
   cfgp = config.programs;
 in
 {
+  _file = ./yazi.nix;
+
+  programs.fish = {
+    shellAbbrs = lib.mkIf cfgp.fish.enable { fm = "ya"; };
+  };
+
   programs.yazi = lib.mkIf cfgp.yazi.enable {
     enableFishIntegration = lib.mkIf cfgp.fish.enable true;
-    fish.shellAbbrs = {
-      fm = "ya";
-    };
-
     keymap = {
       input.keymap = [
         {
