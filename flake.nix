@@ -34,8 +34,6 @@
 
     mpv.url = "github:mpv-player/mpv";
     mpv.flake = false;
-    mpv-everforest.url = "github:mltorr/mpv-everforest";
-    mpv-everforest.flake = false;
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";

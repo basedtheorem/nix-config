@@ -63,7 +63,6 @@ in
         };
 
         # These depend on other packages.
-        cd = "z";
         unset = "set -e ";
         gitc = "git commit -S ";
         gad = "git add .";

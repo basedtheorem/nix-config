@@ -13,8 +13,12 @@ in
       enable = true;
       enableFishIntegration = lib.mkIf fishEnabled true;
     };
-    programs.fish.interactiveShellInit = lib.mkIf fishEnabled ''
-      zoxide init fish | source
-    '';
+
+    programs.fish = lib.mkIf fishEnabled {
+      interactiveShellInit = ''
+        zoxide init fish | source
+      '';
+      shellAbbrs.cd = "z";
+    };
   };
 }

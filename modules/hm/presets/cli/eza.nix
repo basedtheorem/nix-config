@@ -19,8 +19,8 @@ in
         "--git"
         "--icons"
         "--no-user"
-        "--total-size"
         "--smart-group"
+        # "--total-size" # VERY SLOW
       ];
     };
   };

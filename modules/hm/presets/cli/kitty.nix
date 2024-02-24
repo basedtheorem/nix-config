@@ -11,20 +11,22 @@ in
   _file = ./kitty.nix;
 
   options.presets.kitty = {
-    enable = lib.mkEnableOption "Kitty with my config";
+    enable = lib.mkEnableOption "Kitty terminal";
     grab.enable = lib.mkEnableOption "Kitty Grab";
   };
 
-  config = {
-    programs.kitty = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    presets.kitty.grab.enable = lib.mkDefault true;
+
+    programs.kitty = {
+      enable = true;
       shellIntegration.enableFishIntegration = lib.mkIf config.programs.fish.enable true;
 
-      # > kitty +kitten themes
+      # $ kitty +kitten themes
       # theme = "Glacier";
       # theme = "Wizzy Muted";
       # theme = "Wizzy Bright";
       theme = lib.mkDefault "Black Metal";
-
       extraConfig = builtins.readFile ./kitty.conf;
     };
 

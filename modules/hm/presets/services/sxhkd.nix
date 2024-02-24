@@ -18,7 +18,11 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [
       pkgs.socat # pass cmds to mpv socket
+      pkgs.playerctl
     ];
+
+    services.playerctld.enable = true;
+
     services.sxhkd = {
       enable = true;
 

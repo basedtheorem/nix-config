@@ -9,7 +9,7 @@
 
     # Sets `/etc/nix/nix.conf`.
     nix = {
-      extraOptions = lib.mkDefault ''
+      extraOptions = ''
         experimental-features = nix-command flakes
       '';
 
