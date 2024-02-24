@@ -1,8 +1,12 @@
 {
-  presets = {
-    imports = [
-      ./gnome.nix
-      ./base.nix
-    ];
+  _file = ./default.nix;
+
+  flake.nixosModules = {
+    presets = {
+      imports = [
+        ./gnome.nix
+        ./nix.nix
+      ];
+    };
   };
 }

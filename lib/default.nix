@@ -25,7 +25,7 @@
               path:
               lib.hasSuffix ".nix" path
               &&
-                # Check if path is in excludes list.
+                # Checks if path is in excludes list.
                 !lib.lists.any (x: x == path) excludes
             )
             paths;
