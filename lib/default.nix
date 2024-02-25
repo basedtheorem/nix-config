@@ -46,7 +46,7 @@
         };
       };
 
-    # Create NixOS system
+    # Create NixOS system.
     mkNixosSystem =
       {
         system,
@@ -57,7 +57,9 @@
           inherit inputs self;
         };
 
-        modules = (builtins.attrValues self.nixosModules) ++ extraModules;
+        modules = [
+          { nixpkgs.hostPlatform = system; }
+        ] ++ (builtins.attrValues self.nixosModules) ++ extraModules;
       };
   };
 }
