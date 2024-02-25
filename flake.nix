@@ -31,6 +31,7 @@
     kitty-grab.flake = false;
 
     flatpak.url = "github:GermanBread/declarative-flatpak/stable";
+    flatpak.inputs.nixpkgs.follows = "nixpkgs";
 
     mpv.url = "github:mpv-player/mpv";
     mpv.flake = false;
@@ -48,11 +49,10 @@
       systems = [ "x86_64-linux" ];
 
       imports = [
-        ./homes
-        ./devices
+        ./hosts
+        ./users
         ./packages
         ./overlays
-        ./modules
         ./lib
       ];
 
@@ -64,10 +64,11 @@
           ...
         }:
         {
+          # `nix fmt **.nix`
+          formatter = pkgs.nixfmt-rfc-style;
+
           devShells.default = pkgs.mkShell rec {
             name = "Nome Development Environment";
-
-            formatter = pkgs.nixfmt-rfc-style;
 
             packages = builtins.attrValues { inherit (pkgs) nil nixfmt-rfc-style; };
 
