@@ -33,26 +33,28 @@ in
       desktopManager.gnome.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      xdg-desktop-portal # Fixes "No such interface..."
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-      gnome-firmware
-      gnome.gvfs
-      gnome.sushi
-      gnome.file-roller
-      gnome.gnome-session
-      nautilus-open-any-terminal
-    ];
+    environment.systemPackages = builtins.attrValues {
+      inherit (pkgs)
+        xdg-desktop-portal # Fixes "No such interface..."
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+        nautilus-open-any-terminal
+        gnome-firmware
+        ;
+
+      inherit (pkgs.gnome)
+        gnomegvfs
+        gnomesushi
+        gnomefile-roller
+        gnomegnome-session
+        ;
+    };
 
     environment.gnome = lib.mkIf cfg.minimal {
-      excludePackages =
-        (with pkgs; [
-          gnome-photos
-          gnome-tour
-          gedit
-        ])
-        ++ (with pkgs.gnome; [
+      excludePackages = builtins.attrValues {
+        inherit (pkgs) gnome-photos gnome-tour gedit;
+
+        inherit (pkgs.gnome)
           cheese # webcam tool
           gnome-music
           gnome-terminal
@@ -66,7 +68,8 @@ in
           iagno # go game
           hitori # sudoku game
           atomix # puzzle game
-        ]);
+          ;
+      };
     };
   };
 }

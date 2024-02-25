@@ -14,13 +14,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      ulauncher
+    home.packages = builtins.attrValues {
+      inherit (pkgs)
+        ulauncher
 
-      # Extension dependendies.
-      fzf # fzf search
-      libqalculate # qalc
-    ];
+        # Extension dependendies.
+        fzf # fzf search
+        libqalculate # qalc
+        ;
+    };
 
     systemd.user.services.ulauncher = {
       Unit = {

@@ -7,6 +7,13 @@
   boot = {
     initrd.kernelModules = [ "amdgpu" ];
 
+    kernelParams = [
+      # head /sys/class/drm/*/status
+      # Example:
+      # "video=DP-1:2560x1440@74.97"
+      # "video=HDMI-A-1:1920x1080@59.94"
+    ];
+
     kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {

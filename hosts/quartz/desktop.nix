@@ -18,9 +18,8 @@
       pkgs.nushell
     ];
 
-    environment.systemPackages =
-      with pkgs;
-      [
+    environment.systemPackages = builtins.attrValues {
+      inherit (pkgs)
         micro
         git
         firefox
@@ -28,11 +27,11 @@
         nvtop-amd
         woeusb-ng # create bootable USB disks from windows ISO images
         ntfs3g # needed for mkntfs command (woeusb)
+        ;
 
-        # Gnome
-        gnome.gnome-tweaks
-      ]
-      ++ (with pkgs.gnomeExtensions; [
+      # Gnome
+      inherit (pkgs.gnome) gnome-tweaks;
+      inherit (pkgs.gnomeExtensions)
         paperwm # scrolling, tiling wm
         blur-my-shell
         just-perfection # remove annoying notifications!!!! f**k
@@ -40,6 +39,7 @@
         impatience # increase animation speed
         zen # mouse follows focus
         pano # clipboard manager
-      ]);
+        ;
+    };
   };
 }

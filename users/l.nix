@@ -21,7 +21,8 @@
       username = "l";
       homeDirectory = "/home/l";
       stateVersion = "22.11";
-      file.".background-image".source = ./black_iv_wallpaper.jpg;
+
+      file.".background-image".source = ./black_iv.jpg;
 
       #TODO: move some of this to modules
       packages = builtins.attrValues {
@@ -61,7 +62,7 @@
 
         # Desktop
         inherit (pkgs)
-          gcolor3 # colour picker
+          epick # colour picker
           freetube # YT client
           bitwarden # Password manager
           floorp # Firefox fork
@@ -77,7 +78,6 @@
 
         # Media
         inherit (pkgs)
-          vivaldi-ffmpeg-codecs
           ffmpeg-full # Video/audio/etc utils
           imagemagick # Image utils
           yt-dlp

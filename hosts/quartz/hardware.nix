@@ -12,7 +12,7 @@
     keyboard.uhk.enable = true;
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [ amdvlk ];
+      extraPackages = [ pkgs.amdvlk ];
     };
   };
 

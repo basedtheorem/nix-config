@@ -18,6 +18,7 @@ in
     obs.enable = true;
     obsidian.enable = true;
     sioyek.enable = true;
+    spicetify.enable = true;
     vivaldi.enable = true;
     vscodium.enable = true;
 
