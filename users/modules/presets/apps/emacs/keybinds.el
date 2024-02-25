@@ -27,8 +27,8 @@
          ("<backtab>" . 'lrns/untab-region)
          ("C-=" . 'lrns/zoom-in)
          ("C--" . 'lrns/zoom-out)
-         ("C-<up>" . 'ergoemacs-backward-block)
-         ("C-<down>" . 'ergoemacs-forward-block)
+         ("C-<up>" . 'backward-paragraph)
+         ("C-<down>" . 'forward-paragraph)
          ("C-p" . execute-extended-command)
          ("M-p" . eval-expression)
          ("C-<right>" . 'lrns/forward-word)
@@ -55,10 +55,6 @@
   ;; `xterm-paste` does NOT replace region with pasted contents,
   ;; only appends to it, so swap with cua-paste
   (define-key global-map [xterm-paste] #'cua-paste)
-
-  ;; Make forward-word also work with camelCase
-  (setq subword-mode +1)
-
 
   (defvar lrns/keys-keymap (make-keymap)
     "Keymap for lrns/keys-mode")

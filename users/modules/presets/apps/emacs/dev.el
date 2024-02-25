@@ -108,6 +108,7 @@
   (setq-default electric-indent-inhibit t)    ; Disable auto-indenting current line
   :hook
   ;; (prog-mode . display-line-numbers-mode)  ; Line numbers in prog-mode
+  (prog-mode . subword-mode)                  ; Make forward-word also work with camelCase
   (prog-mode . electric-pair-mode)            ; Auto parenthesis matching
   )
 

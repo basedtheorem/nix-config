@@ -68,8 +68,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Wrap lines when working with text
-(add-hook 'text-mode-hook 'visual-line-mode)
+
+(add-hook 'text-mode-hook 'visual-line-mode)  ; Wrap lines when working with text
+(add-hook 'text-mode-hook 'subword-mode)      ; Make forward-word also work with camelCase
 
 ;; Clean up whitespace on save
 (use-package ws-butler
