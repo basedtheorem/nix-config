@@ -19,7 +19,7 @@
       }:
       let
         paths = lib.filesystem.listFilesRecursive path;
-        pathToNixFiles =
+        pathsToNixFiles =
           builtins.filter
             (
               path:
@@ -30,7 +30,7 @@
             )
             paths;
       in
-      map (file: builtins.import file) pathToNixFiles;
+      map (file: builtins.import file) pathsToNixFiles;
 
     # Create home manager config.
     mkHomeCfg =

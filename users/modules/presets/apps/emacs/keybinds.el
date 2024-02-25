@@ -57,7 +57,7 @@
   (define-key global-map [xterm-paste] #'cua-paste)
 
   ;; Make forward-word also work with camelCase
-  (subword-mode +1)
+  (setq subword-mode +1)
 
 
   (defvar lrns/keys-keymap (make-keymap)
