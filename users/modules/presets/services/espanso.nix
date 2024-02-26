@@ -1,4 +1,10 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  self,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.presets.espanso;
 in
@@ -13,6 +19,8 @@ in
 
     services.espanso = {
       enable = true;
+
+      package = self.packages.${pkgs.system}.espanso;
 
       configs = {
         default = {

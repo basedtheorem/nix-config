@@ -1,5 +1,6 @@
 { stdenv, fetchFromGitHub }:
-stdenv.mkDerivation rec {
+
+stdenv.mkDerivation {
   pname = "LentenRose";
   description = "LentenRose SDDM Theme.";
   version = "849a5f4";
