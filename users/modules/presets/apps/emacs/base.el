@@ -42,6 +42,8 @@
   (global-set-key (kbd "C-h x") #'helpful-command)
   )
 
+(autoload 'man-preview "man-preview" nil t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Embark & Consult
@@ -217,6 +219,12 @@
           (bg-hl-line "#101010")))
   :config
   (load-theme 'ef-tritanopia-dark :no-confirm))
+
+;; Disable background if using a terminal
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+(add-hook 'window-setup-hook 'on-after-init)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

@@ -26,7 +26,7 @@ in
     };
 
     home.packages = [ pkgs.flat-remix-gnome ];
-    #home.sessionVariables.GTK_THEME = "Flat-Remix-GTK-Red-Darkest:dark";
+    home.sessionVariables.GTK_THEME = "Orchis-Red-Dark-Compact:dark";
 
     gtk = {
       enable = true;
@@ -41,13 +41,20 @@ in
       };
 
       # ../.gtkrc-2.0
-      cursorTheme.name = "Catppuccin-Latte-Maroon-Cursors";
+      cursorTheme.name = "volantes_cursors";
       cursorTheme.size = 32;
-      cursorTheme.package = pkgs.catppuccin-cursors.latteMaroon;
+      cursorTheme.package = pkgs.volantes-cursors;
       iconTheme.package = pkgs.flat-remix-icon-theme;
       iconTheme.name = "Flat-Remix-Red-Dark";
-      theme.package = pkgs.flat-remix-gtk;
-      theme.name = "Flat-Remix-GTK-Red-Darkest"; # gsettings get org.gnome.desktop.interface gtk-theme
+      theme.package = pkgs.orchis-theme.override {
+        tweaks = [
+          "black"
+          "solid"
+          "compact"
+          "submenu"
+        ];
+      };
+      theme.name = "Orchis-Red-Dark-Compact"; # gsettings get org.gnome.desktop.interface gtk-theme
     };
   };
 }

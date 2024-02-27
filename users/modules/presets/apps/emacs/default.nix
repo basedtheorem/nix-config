@@ -39,6 +39,10 @@ let
       version = inputs.indent-bars.shortRev;
       requiredEmacsPackages = ep: [ ep.compat ];
     };
+    man-preview = {
+      src = pkgs.writeText "man-preview.el" (builtins.readFile ./man-preview.el);
+      version = "0.0.0";
+    };
   };
 
   emacsPkg = pkgs.emacsWithPackagesFromUsePackage {
@@ -59,7 +63,8 @@ let
             ep.trivialBuild {
               inherit pname;
               inherit (val) version src;
-              packageRequires = val.requiredEmacsPackages ep;
+              packageRequires =
+                if builtins.hasAttr "requiredEmacsPackages" val then val.requiredEmacsPackages ep else [ ];
             }
           )
           nonMelpaPackages;
@@ -109,6 +114,13 @@ in
           emacsClientSocket = ''emacsclient --create-frame --tty --socket-name "$DAEMON_ID"'';
         in
         {
+          # View man pages using emacs.
+          nam = ''
+            emacsclient -s $DAEMON_ID --tty --create-frame \
+            --eval \
+               "(progn (man \"$argv\") (switch-to-buffer \"*Man $argv*\" t t) (delete-other-frames))";
+          '';
+
           # Kill emacs daemon on exit.
           "__kill_emacs_d__" = {
             onEvent = "fish_exit";

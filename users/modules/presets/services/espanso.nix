@@ -97,6 +97,14 @@ in
               trigger = "w/o";
               replace = "without ";
             }
+            {
+              trigger = ":lnix";
+              replace = ":l <nixpkgs>";
+            }
+            {
+              trigger = ":lf";
+              replace = ":lf .";
+            }
           ];
         };
 

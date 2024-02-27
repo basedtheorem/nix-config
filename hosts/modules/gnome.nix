@@ -43,10 +43,10 @@ in
         ;
 
       inherit (pkgs.gnome)
-        gnomegvfs
-        gnomesushi
-        gnomefile-roller
-        gnomegnome-session
+        gvfs
+        sushi
+        file-roller
+        gnome-session
         ;
     };
 
@@ -61,7 +61,6 @@ in
           simple-scan
           epiphany # web browser
           geary # email reader
-          geary
           evince # document viewer
           totem # video player
           tali # poker game

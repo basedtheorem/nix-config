@@ -4,7 +4,8 @@ let
 in
 # System agnostic configuration (hopefully)
 {
-  _file = ./default.nix;
+  _file = ./base.nix;
+
 
   options.profiles.base = {
     enable = lib.mkEnableOption "Base configuration";
@@ -12,8 +13,11 @@ in
 
   config = lib.mkIf cfg.enable {
     presets.micro.enable = true; # Replaces nano
+    presets.fzf.enable = true;
 
-    programs.home-manager.enable = true;
+    programs = {
+      home-manager.enable = true;
+    };
 
     news.display = lib.mkForce "silent";
 

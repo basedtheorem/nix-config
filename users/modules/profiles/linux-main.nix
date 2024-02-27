@@ -26,6 +26,7 @@ in
     advcp.enable = true;
     eza.enable = true;
     fish.enable = true;
+    fzf.enable = true;
     kitty.enable = true;
     lazygit.enable = true;
     mpv.enable = true;

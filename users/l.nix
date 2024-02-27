@@ -31,7 +31,6 @@
           ripgrep # `grep` alt.
           grex # Generate regex
           procs # `ps` (process )alt.
-          skim # `fzf` alt.
           dua # Disk usage
           tokei # Count lines of code
           ruplacer # Find & replace
@@ -57,6 +56,7 @@
           xclip # Clipboard utils
           cpu-x # Detailed sys info
           viddy # `watch <cmd>` alt.
+          killall
           ;
         inherit (pkgs.bat-extras) batgrep;
 

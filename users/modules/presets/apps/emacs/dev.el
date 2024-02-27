@@ -7,7 +7,6 @@
 ;;;  - Eglot (built-in LSP client)
 ;;;  - Misc. DX enhancements
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Languages
@@ -17,27 +16,77 @@
 ;; Nix
 (use-package nix-mode
   :ensure t
+  ;; :mode "\\.nix\\'"
   :init
   (setq-default nix-nixfmt-bin "nixfmt")
+  ;; (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
   (defun nix-ts-format-before-save ()
     "Add this to `before-save-hook' to run nixfmt when saving."
     (when (derived-mode-p 'nix-ts-mode)
-      (nix-format-buffer))))
+      (nix-format-buffer)))
+  )
 
 (use-package nix-ts-mode
   :ensure t
+  :hook
+  (before-save . nix-ts-format-before-save)
   :after (nix-mode)
   :mode "\\.nix\\'"
   :init
+  (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
   (defun nix-ts-override-indent ()
     (local-set-key (kbd "TAB") 'nix-indent-line))
-  :hook
-  (before-save . nix-ts-format-before-save)
-  (nix-ts-mode . eglot-ensure)
-  (nix-ts-mode . nix-ts-override-indent))
+  )
 
 ;; Fish shell
 (use-package fish-mode :ensure t)
+
+;; Elisp
+(use-package emacs-lisp-mode
+  :ensure nil
+  :init
+  (defmacro debug/with-advice (adlist &rest body)
+    "Execute BODY with temporary advice in ADLIST.
+
+Each element of ADLIST should be a list of the form
+  (SYMBOL WHERE FUNCTION [PROPS])
+suitable for passing to `advice-add'.  The BODY is wrapped in an
+`unwind-protect' form, so the advice will be removed even in the
+event of an error or nonlocal exit."
+    (declare (debug ((&rest (&rest form)) body))
+             (indent 1))
+    `(progn
+       ,@(mapcar (lambda (adform)
+                   (cons 'advice-add adform))
+                 adlist)
+       (unwind-protect (progn ,@body)
+         ,@(mapcar (lambda (adform)
+                     `(advice-remove ,(car adform) ,(nth 2 adform)))
+                   adlist))))
+
+  (defun debug/call-logging-hooks (command &optional verbose)
+    "Call COMMAND, reporting every hook run in the process.
+Interactively, prompt for a command to execute.
+
+Return a list of the hooks run, in the order they were run.
+Interactively, or with optional argument VERBOSE, also print a
+message listing the hooks."
+    (interactive "CCommand to log hooks: \np")
+    (let* ((log     nil)
+           (logger (lambda (&rest hooks)
+                     (setq log (append log hooks nil)))))
+      (my/with-advice
+          ((#'run-hooks :before logger))
+        (call-interactively command))
+      (when verbose
+        (message
+         (if log "Hooks run during execution of %s:"
+           "No hooks run during execution of %s.")
+         command)
+        (dolist (hook log)
+          (message "> %s" hook)))
+      log))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -50,11 +99,11 @@
   :mode ("README\\.md\\'" . gfm-mode)
   :init
   (setq markdown-command "multimarkdown")
-  ;; :bind(
-        ;; :map markdown-mode-map
-             ;; ("C-<up>" . )
-        ;; )
+  :config
   :hook ((markdown-mode . visual-line-mode)))
+
+(setq markdown-mode-map (make-sparse-keymap))
+(setq gfm-mode-map (make-sparse-keymap))
 
 (use-package yaml-mode :ensure t)
 
@@ -69,14 +118,19 @@
 (use-package eglot
   :ensure nil
   :config
+  (defun check-envrc ()
+    (when (and (
+                string= 'on envrc--status)
+               (string= major-mode 'nix-ts-mode))
+      (eglot-ensure)))
+
   ;; Don't log every event (massive perf boost)
   (fset #'jsonrpc--log-event #'ignore)
 
   ;; Sometimes necessary to tell Eglot where to find the LSP
-  (add-to-list 'eglot-server-programs
-               '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
   (add-to-list 'eglot-server-programs '(nix-ts-mode . ("nil")))
   :hook
+  (envrc-mode-on . check-envrc)
   ((python-mode ruby-mode elixir-mode) . eglot)
   :custom
   (eglot-send-changes-idle-time 0.1)
@@ -102,21 +156,15 @@
           (c++-mode . c++-ts-mode)
           (c-mode . c-ts-mode)
           (python-mode . python-ts-mode)
-          (nix-mode . nix-ts-mode)))
+          (nix-mode . nix-ts-mode)
+          ))
   :init
   (setopt display-line-numbers-width 3)
   (setq-default electric-indent-inhibit t)    ; Disable auto-indenting current line
   :hook
   ;; (prog-mode . display-line-numbers-mode)  ; Line numbers in prog-mode
-  (prog-mode . subword-mode)                  ; Make forward-word also work with camelCase
   (prog-mode . electric-pair-mode)            ; Auto parenthesis matching
   )
-
-;; Direnv integration
-(use-package envrc
-  :ensure t
-  :config
-  (envrc-global-mode))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -135,5 +183,11 @@
   (setq hl-block-multi-line t)
   (setq hl-block-style 'color-tint)    ; Highlight only the brackets.
   (setq hl-block-color-tint "#020202"))
+
+;; Direnv integration
+    (use-package envrc
+      :ensure t
+      :config
+      (envrc-global-mode))
 
 ;;; dev.el ends here

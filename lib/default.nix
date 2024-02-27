@@ -47,7 +47,7 @@
       };
 
     # Create NixOS system.
-    mkNixosSystem =
+    mkNixos =
       {
         system,
         extraModules ? [ ],

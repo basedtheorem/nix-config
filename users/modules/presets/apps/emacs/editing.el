@@ -10,6 +10,9 @@
 (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
   (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
+(global-subword-mode +1)                  ; Make forward-word also work with camelCase
+
+
 ;; Make `([{}])`, etc. easier to distinguish
 (use-package rainbow-delimiters
   :ensure t

@@ -15,9 +15,6 @@ in
     };
 
     programs.fish = lib.mkIf fishEnabled {
-      interactiveShellInit = ''
-        zoxide init fish | source
-      '';
       shellAbbrs.cd = "z";
     };
   };

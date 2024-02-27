@@ -22,8 +22,9 @@
          ("C-S-o" . 'find-file)
          ("C-M-o" . 'lrns/find-file-rec)
          ("C-q" . 'lrns/kill-window-or-quit)
-         ("C-l" . lrns/select-current-line-and-forward-line)
-         ("C-S-l" . lrns/select-current-line-and-backward-line)
+         ("M-l" . 'kill-whole-line)
+         ("C-l" . 'lrns/select-current-line-and-forward-line)
+         ("C-M-l" . 'lrns/select-current-line-and-backward-line)
          ("<backtab>" . 'lrns/untab-region)
          ("C-=" . 'lrns/zoom-in)
          ("C--" . 'lrns/zoom-out)
@@ -41,20 +42,21 @@
          ("M-<left>" . 'previous-buffer)
          ("M-<right>" . 'next-buffer)
          ("M-<return>" . 'default-indent-new-line)       ; New line when inside comments
-         ("S-<return>" . 'electric-indent-just-newline)  ; Force new line w/o indent
          ("M-w" . 'whitespace-mode)
+         ("C-c" . 'cua-copy)
+         ("C-v" . 'cua-paste)
          ("C-|" . 'lrns/shell-command)
          :map emacs-lisp-mode-map
          ("C-r" . 'eval-defun))
+  :config
+  ;; `xterm-paste` does NOT replace region with pasted contents,
+  ;; only appends to it, so swap with cua-paste
+  (define-key global-map [xterm-paste] #'cua-paste)
   :init
   ;; Use common keystrokes by default
   (cua-mode)
   ;; Use C-y as prefix key instead of C-c which is mapped to copy
   (global-set-key (kbd "C-y") nil)
-
-  ;; `xterm-paste` does NOT replace region with pasted contents,
-  ;; only appends to it, so swap with cua-paste
-  (define-key global-map [xterm-paste] #'cua-paste)
 
   (defvar lrns/keys-keymap (make-keymap)
     "Keymap for lrns/keys-mode")
@@ -83,9 +85,21 @@
 
   (defun lrns/kill-window-or-quit ()
     (interactive)
-    (if (>= (count-windows) 2)
-        (delete-window)
-      (save-buffers-kill-terminal)))
+    (let ((file-count (cl-count-if (lambda (b)
+                                     (buffer-file-name b))
+                                   (buffer-list))))
+      (if (minibufferp)
+          (meow-minibuffer-quit)
+        (if (>= (count-windows) 2)
+            (kill-buffer)
+          (if (or (= 0 file-count) (and buffer-file-name (>= 1 file-count)))
+              (save-buffers-kill-terminal)
+            ;; Fallback
+            (if (> (length (visible-frame-list)) 2)
+                ;; Other frames are open, only kill buffer not terminal
+                (save-buffers-kill-terminal)
+              (kill-buffer))))
+        )))
 
   (defun lrns/select-current-line-and-forward-line ()
     "Select the current line and move the cursor by ARG lines IF
@@ -95,15 +109,15 @@
     (interactive)
     (beginning-of-line)
     (setq this-command-keys-shift-translated t)
-    (call-interactively 'end-of-line)
-    (call-interactively 'forward-char))
+    (execute-extended-command nil "end-of-line")
+    (execute-extended-command nil "forward-char"))
 
   (defun lrns/select-current-line-and-backward-line ()
     (interactive)
     (end-of-line)
     (setq this-command-keys-shift-translated t)
-    (call-interactively 'beginning-of-line)
-    (call-interactively 'backward-char))
+    (execute-extended-command nil "end-of-line")
+    (execute-extended-command nil "forward-char"))
 
   (defun lrns/indent-region(numSpaces)
     (progn
@@ -208,13 +222,15 @@
   (defun lrns/backward-kill-word ()
     "Remove all whitespace if the character behind the cursor is whitespace, otherwise remove a word."
     (interactive)
+    (if (use-region-p)
+        (cua-delete-region)
     (cond
      ((looking-back (rx (char word)) 1)
       (lrns/delete-backward-word))
      ((looking-back (rx (char blank)) 1)
       (delete-horizontal-space t))
      (t
-      (backward-delete-char 1))))
+      (backward-delete-char 1)))))
 
   (defun lrns/forward-kill-word ()
     "Remove all whitespace if the character ahead the cursor is whitespace, otherwise remove a word."
@@ -337,9 +353,7 @@
       (and (= oldpos (point))
            (back-to-indentation))))
   :bind
-  ("<home>" . 'lrns/beginning-of-line)
-  ("C-c" . 'ergoemacs-copy)
-  ("C-v" . 'ergoemacs-paste))
+  ("<home>" . 'lrns/beginning-of-line))
 
 ;; Use Kitty terminal key protocol
 (use-package kkp

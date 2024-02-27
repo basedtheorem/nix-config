@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   inputs,
@@ -14,24 +15,32 @@ in
     presets.fish.enable = lib.mkEnableOption "Fish shell";
   };
 
-  config = {
-
+  config = lib.mkIf cfg.enable {
     programs.fish = {
       enable = true;
+
       interactiveShellInit = ''
         set fish_greeting
         procs --gen-completion-out fish | source
-        xset r rate 175 175
+        xset r rate 185 160
         bind \b 'backward-kill-word'
         bind \cg expand-abbr or self-insert
         bind \ea 'prevd-or-backward-word'
         bind \es 'nextd-or-forward-word'
+        bind \cO 'emacsclient --tty --create-frame'
+        bind \ectrlshiftz 'redo'
         bind \e\[1\;5C 'forward-word' 'forward-single-char'
         bind \e\[1\;3C 'forward-word' 'forward-single-char'
         set -x DIRENV_LOG_FORMAT ""
         set -x PAGER "less"
         set -x MICRO_TRUECOLOR 1
         direnv hook fish | source
+        set -l nix_shell_info (
+          if test -n "$IN_NIX_SHELL"
+            echo -n "<nix-shell> "
+          end
+        )
+        clear
         list_dir
       '';
 
@@ -55,20 +64,25 @@ in
 
         jt = {
           setCursor = true;
-          expansion = "jot ' - [ ] %'";
+          expansion = "jot '%'";
         };
         jot = {
           setCursor = true;
-          expansion = "jot ' - [ ] %'";
+          expansion = "jot '%'";
         };
+        ee = "e ~/tmp/todo.md";
 
         # These depend on other packages.
+        cdf = {
+          setCursor = true;
+          expansion = "z (fd --type directory % | fzf)";
+        };
         unset = "set -e ";
         gitc = "git commit -S ";
+        ff = "fzf";
         gad = "git add .";
         gitst = "git status";
         cat = "bat";
-        fzf = "sk";
         ps = "procs --sortd CPU --watch-interval 99";
         sed = "sd --preview";
         rup = "ruplacer";
@@ -87,7 +101,7 @@ in
         };
       };
 
-      plugins = [
+      plugins = with pkgs.fishPlugins; [
         {
           # tide configure --auto --style=Lean --prompt_colors='16 colors' \
           # --show_time='24-hour format' --lean_prompt_height='Two lines' \
@@ -96,10 +110,20 @@ in
           name = "tide";
           src = inputs.fish-tide;
         }
+        {
+          name = "fzf.fish";
+          src = fzf-fish;
+        }
+        {
+          name = "sponge";
+          src = sponge;
+        }
       ];
 
       functions = {
-        jot = "echo $argv >> ~/notes/Scratch.md";
+        jot = ''
+          echo "
+          $argv" >> ~/tmp/todo.md'';
 
         # List files in CWD when changing dirs.
         list_dir = {

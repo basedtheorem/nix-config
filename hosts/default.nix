@@ -7,12 +7,12 @@
 
   flake = {
     nixosConfigurations = {
-      quartz = self.lib.mkNixosSystem {
+      quartz = self.lib.mkNixos {
         system = "x86_64-linux";
         extraModules = [ ./quartz ];
       };
 
-      lapis = self.lib.mkNixosSystem {
+      lapis = self.lib.mkNixos {
         #TODO: https://github.com/nix-community/NixOS-WSL
       };
     };

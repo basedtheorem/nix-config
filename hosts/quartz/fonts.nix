@@ -18,7 +18,7 @@
       defaultFonts = {
         serif = [ "EB Garamond" ];
         sansSerif = [ "Questrial" ];
-        monospace = [ "Iosevka Comfy" ];
+        monospace = [ "Iosevka Comfy Fixed" ];
         emoji = [ "Twitter Color Emoji" ];
       };
     };
@@ -27,8 +27,7 @@
 
     packages =
       [
-        self.packages."${pkgs.system}".clock-face
-        pkgs.iosevka-comfy.comfy
+        pkgs.iosevka-comfy.comfy-fixed
 
         (pkgs.nerdfonts.override {
           fonts = [

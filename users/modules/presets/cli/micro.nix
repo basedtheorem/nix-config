@@ -23,6 +23,8 @@ in
       mc = "micro";
     };
 
+    programs.git.extraConfig.core.editor = lib.mkDefault "micro";
+
     programs.micro = {
       enable = true;
 
