@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 # TODO: move to profiles
 {
   fonts = {

@@ -205,7 +205,7 @@
   :ensure t
   :init
   (set-face-attribute 'default nil :family "Sarasa Mono HC" :height 130);
-  (set-face-attribute 'bold nil :weight 'Semibold)
+  (set-face-attribute 'bold nil :weight 'Regular)
   (setq ef-themes-common-palette-overrides
         '((fg-main "#ffffff")
           (bg-main "#000000")

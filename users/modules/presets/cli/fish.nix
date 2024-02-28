@@ -41,7 +41,7 @@ in
           end
         )
         clear
-        list_dir
+        # list_dir
       '';
 
       shellAbbrs = {
@@ -126,10 +126,10 @@ in
           $argv" >> ~/tmp/todo.md'';
 
         # List files in CWD when changing dirs.
-        list_dir = {
-          body = "if status --is-interactive; echo ''; ls -F; end;";
-          onVariable = "PWD";
-        };
+        # list_dir = {
+        # body = "if status --is-interactive; echo ''; ls -F; end;";
+        # onVariable = "PWD";
+        # };
       };
     };
   };
