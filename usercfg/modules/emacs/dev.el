@@ -22,6 +22,8 @@
   ;; (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
   (defun nix-ts-format-before-save ()
     "Add this to `before-save-hook' to run nixfmt when saving."
+    (when (get-buffer "*nixfmt*")
+      (kill-buffer "*nixfmt*"))
     (when (derived-mode-p 'nix-ts-mode)
       (nix-format-buffer)))
   )

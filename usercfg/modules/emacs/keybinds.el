@@ -96,7 +96,7 @@
               (save-buffers-kill-terminal)
             ;; Fallback
             (if (> (length (visible-frame-list)) 2)
-                ;; Other frames are open, only kill buffer not terminal
+                ;; Other frames are open, only kill terminal not buffer
                 (save-buffers-kill-terminal)
               (kill-buffer))))
         )))

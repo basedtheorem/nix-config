@@ -89,9 +89,12 @@
 (when (not (window-system))
   (xterm-mouse-mode))
 
-; Show current line & column in modeline
+;; Show current line & column in modeline
 (setopt line-number-mode t)
 (setopt column-number-mode t)
+
+;; Make paste actually *overwrite* the selection
+(delete-selection-mode 1)
 
 (setq
  ;; Disable creation of lock-files named .#<filaname>

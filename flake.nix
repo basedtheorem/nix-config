@@ -51,7 +51,7 @@
 
       imports = [
         ./hosts
-        ./users
+        ./usercfg
         ./packages
         ./overlays
         ./lib

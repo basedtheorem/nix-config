@@ -70,6 +70,7 @@
           anki
           planify # Todoist
           cryptomator # Encryption
+          gimp
           ;
         inherit (pkgs.xorg)
           xset # Key delay & repeat rate

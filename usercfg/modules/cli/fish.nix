@@ -35,11 +35,6 @@ in
         set -x PAGER "less"
         set -x MICRO_TRUECOLOR 1
         direnv hook fish | source
-        set -l nix_shell_info (
-          if test -n "$IN_NIX_SHELL"
-            echo -n "<nix-shell> "
-          end
-        )
         clear
         # list_dir
       '';
@@ -121,9 +116,13 @@ in
       ];
 
       functions = {
+        gitz = ''git clone $argv && cd "$(basename "$1" .git)"'';
+        mkz = "mkdir $argv && cd $argv";
+
         jot = ''
           echo "
-          $argv" >> ~/tmp/todo.md'';
+          $argv" >> ~/tmp/todo.md
+        '';
 
         # List files in CWD when changing dirs.
         # list_dir = {

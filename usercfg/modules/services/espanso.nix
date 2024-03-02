@@ -31,7 +31,7 @@ in
 
       matches = {
         base = {
-          backend = "Clipboard"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
+          backend = "Inject"; # "Inject" (for simulating key presses) | "Clipboard" | "Auto"
           matches = [
             {
               trigger = ":now";
@@ -96,14 +96,6 @@ in
             {
               trigger = "w/o";
               replace = "without ";
-            }
-            {
-              trigger = ":lnix";
-              replace = ":l <nixpkgs>";
-            }
-            {
-              trigger = ":lf";
-              replace = ":lf .";
             }
           ];
         };
