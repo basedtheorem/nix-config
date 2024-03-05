@@ -18,7 +18,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.mpv =
       let
-        mpv-git-unwrapped = pkgs.mpv-unwrapped.overrideAttrs (_: { src = inputs.mpv; });
+        mpv-git-unwrapped = pkgs.mpv-unwrapped.overrideAttrs (_: {
+          src = inputs.mpv;
+        });
         mpv-git = pkgs.wrapMpv mpv-git-unwrapped { };
       in
       {

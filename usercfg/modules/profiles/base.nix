@@ -6,7 +6,6 @@ in
 {
   _file = ./base.nix;
 
-
   options.profiles.base = {
     enable = lib.mkEnableOption "Base configuration";
   };
@@ -24,5 +23,6 @@ in
     nixpkgs.config = {
       allowUnfree = true;
     };
+    xsession.enable = true;
   };
 }
