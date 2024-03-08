@@ -18,6 +18,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.mpv =
       let
+        #TODO: currently broken on unstable
         mpv-git-unwrapped = pkgs.mpv-unwrapped.overrideAttrs (_: {
           src = inputs.mpv;
         });
@@ -26,7 +27,7 @@ in
       {
         enable = true;
 
-        package = mpv-git.override {
+        package = pkgs.mpv.override {
           scripts = (
             builtins.attrValues {
               inherit (pkgs.mpvScripts)
