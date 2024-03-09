@@ -57,6 +57,7 @@
           cpu-x # Detailed sys info
           viddy # `watch <cmd>` alt.
           killall
+          sherlock
           ;
         inherit (pkgs.bat-extras) batgrep;
 
