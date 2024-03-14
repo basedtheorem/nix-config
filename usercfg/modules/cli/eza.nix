@@ -12,7 +12,7 @@ in
   config = {
     programs.eza = lib.mkIf cfg.enable {
       enable = true;
-      enableAliases = true;
+      enableFishIntegration = true;
       extraOptions = [
         "--group-directories-first"
         "--hyperlink"

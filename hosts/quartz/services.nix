@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 {
   _file = ./services.nix;
 
@@ -18,7 +13,6 @@
     hardware.openrgb.motherboard = "amd";
     mullvad-vpn.enable = true;
     mullvad-vpn.package = pkgs.mullvad-vpn;
-    resolved.enable = true;
 
     pipewire = {
       enable = true;

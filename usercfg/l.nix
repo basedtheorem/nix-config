@@ -58,6 +58,7 @@
           viddy # `watch <cmd>` alt.
           killall
           sherlock
+          dnsutils
           ;
         inherit (pkgs.bat-extras) batgrep;
 

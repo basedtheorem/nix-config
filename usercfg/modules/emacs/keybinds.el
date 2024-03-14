@@ -394,8 +394,8 @@
 (use-package goto-chg
   :ensure t
   :bind
-  ("C-," . 'goto-last-change)
-  ("C-." . 'goto-last-change-reverse))
+  ("M-," . 'goto-last-change)
+  ("M-." . 'goto-last-change-reverse))
 
 ;; Show recent files
 (use-package recentf

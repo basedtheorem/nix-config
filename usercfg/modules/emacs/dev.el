@@ -40,6 +40,12 @@
     (local-set-key (kbd "TAB") 'nix-indent-line))
   )
 
+(use-package typescript-ts-mode
+  :ensure nil
+  :init
+  (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
+  )
+
 ;; Fish shell
 (use-package fish-mode :ensure t)
 
