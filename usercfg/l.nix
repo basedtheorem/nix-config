@@ -22,7 +22,7 @@
       homeDirectory = "/home/l";
       stateVersion = "22.11";
 
-      file.".background-image".source = ./black_iv.jpg;
+      file.".background-image".source = ./nord-red.jpg;
 
       #TODO: move some of this to modules
       packages = builtins.attrValues {
@@ -73,6 +73,7 @@
           planify # Todoist
           cryptomator # Encryption
           gimp
+          okular
           ;
         inherit (pkgs.xorg)
           xset # Key delay & repeat rate

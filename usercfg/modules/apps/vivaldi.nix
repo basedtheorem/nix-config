@@ -16,12 +16,12 @@ in
     programs.vivaldi = {
       enable = true;
 
-      package = pkgs.vivaldi.override {
-        proprietaryCodecs = true;
-        vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
-        enableWidevine = true;
-        widevine-cdm = pkgs.widevine-cdm;
-      };
+      # package = pkgs.vivaldi.override {
+      # proprietaryCodecs = true;
+      # vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
+      # enableWidevine = true;
+      # widevine-cdm = pkgs.widevine-cdm;
+      # };
 
       commandLineArgs = [
         "--enable-gpu-rasterization"

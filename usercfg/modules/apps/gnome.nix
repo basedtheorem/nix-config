@@ -20,7 +20,8 @@ in
       configFile."gtk-3.0/gtk.css".text = builtins.readFile ./gtk3.css;
       configFile."paperwm/user.css".text = ''
         .paperwm-selection {
-          border: 2px solid #7c2c2c !important;
+          border: 20px solid #7c2c2c !important;
+          opacity: 100;
         }
       '';
     };
