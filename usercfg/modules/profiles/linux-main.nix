@@ -36,7 +36,6 @@ in
     # Services
     espanso.enable = true;
     flameshot.enable = true;
-    opensnitch.enable = true;
     sxhkd.enable = true;
     syncthing.enable = true;
     ulauncher.enable = true;

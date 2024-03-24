@@ -19,16 +19,13 @@
       }:
       let
         paths = lib.filesystem.listFilesRecursive path;
-        pathsToNixFiles =
-          builtins.filter
-            (
-              path:
-              lib.hasSuffix ".nix" path
-              &&
-                # Checks if path is in excludes list.
-                !lib.lists.any (x: x == path) excludes
-            )
-            paths;
+        pathsToNixFiles = builtins.filter (
+          path:
+          lib.hasSuffix ".nix" path
+          &&
+            # Checks if path is in excludes list.
+            !lib.lists.any (x: x == path) excludes
+        ) paths;
       in
       map (file: builtins.import file) pathsToNixFiles;
 
@@ -46,7 +43,6 @@
         };
       };
 
-    # Create NixOS system.
     mkNixos =
       {
         system,

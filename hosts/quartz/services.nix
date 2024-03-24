@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   _file = ./services.nix;
 
@@ -7,10 +7,12 @@
     thermald.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
-    opensnitch.enable = true;
     flatpak.enable = true;
     hardware.openrgb.enable = true;
     hardware.openrgb.motherboard = "amd";
+    portmaster.enable = true;
+    portmaster.devmode.enable = true;
+    portmaster.dataDir = "${config.users.users.l.home}/.local/share/portmaster";
 
     pipewire = {
       enable = true;

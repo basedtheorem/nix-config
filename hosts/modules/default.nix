@@ -4,6 +4,7 @@
       imports = [
         ./gnome.nix
         ./nix.nix
+        ./portmaster.nix
       ];
     };
   };
