@@ -1,0 +1,1 @@
+- nixify local gnome shell extensions

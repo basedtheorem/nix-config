@@ -1,5 +1,4 @@
 {
-  pkgs,
   self,
   config,
   lib,
@@ -19,8 +18,6 @@ in
 
     services.espanso = {
       enable = true;
-
-      package = self.packages.${pkgs.system}.espanso;
 
       configs = {
         default = {

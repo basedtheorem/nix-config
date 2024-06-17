@@ -21,28 +21,31 @@
       pulse.enable = true;
     };
 
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+    };
+
+    displayManager = {
+      sddm = {
+        enable = true;
+        theme = "where_is_my_sddm_theme";
+        package = pkgs.kdePackages.sddm;
+        extraPackages = [ pkgs.qt6.qt5compat ];
+        settings = {
+          Wayland.SessionDir = ""; # Prevents auto-selecting wayland
+        };
+      };
+      defaultSession = "gnome-xorg";
+    };
+
     xserver = {
       enable = true;
-
-      displayManager = {
-        sddm = {
-          enable = true;
-          theme = "where_is_my_sddm_theme";
-          settings = {
-            Wayland.SessionDir = ""; # Prevents auto-selecting wayland
-          };
-        };
-        defaultSession = "gnome";
-        gdm.enable = false;
-      };
-
       xkb.layout = "us";
-      libinput = {
-        enable = true;
-        mouse.accelProfile = "flat";
-      };
+      displayManager.gdm.enable = false;
     };
   };
+
   environment.systemPackages = [
     (pkgs.where-is-my-sddm-theme.override {
       themeConfig.General = {

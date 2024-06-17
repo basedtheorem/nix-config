@@ -23,7 +23,6 @@ in
     vscodium.enable = true;
 
     # CLI
-    advcp.enable = true;
     eza.enable = true;
     fish.enable = true;
     fzf.enable = true;

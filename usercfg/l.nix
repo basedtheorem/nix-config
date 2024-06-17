@@ -67,7 +67,7 @@
           epick # colour picker
           freetube # YT client
           bitwarden # Password manager
-          floorp # Firefox fork
+          # floorp # Firefox fork
           onlyoffice-bin_latest # Office suite
           anki
           planify # Todoist

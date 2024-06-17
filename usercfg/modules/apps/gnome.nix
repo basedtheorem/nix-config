@@ -21,6 +21,7 @@ in
       configFile."paperwm/user.css".text = ''
         .paperwm-selection {
           border: 20px solid #7c2c2c !important;
+          /* border-color: 20px solid #7c2c2c !important; */
           opacity: 100;
         }
       '';
