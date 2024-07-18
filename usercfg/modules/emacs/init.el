@@ -82,12 +82,10 @@
       kept-new-versions 5
       kept-old-versions 2)
 
-;; Disable `xterm-paste` since it doesn't replace region with pasted contents, only appends to it
-(define-key global-map [xterm-paste] #'cua-paste)
-
 ;; Allow mouse clicks when running in the terminal
-(when (not (window-system))
-  (xterm-mouse-mode))
+;; DISABLED because it interferes with (delete-selection-mode t)
+;(when (not (window-system))
+;  (xterm-mouse-mode))
 
 ;; Show current line & column in modeline
 (setopt line-number-mode t)

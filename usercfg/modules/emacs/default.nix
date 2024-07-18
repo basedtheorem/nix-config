@@ -50,24 +50,23 @@ let
     package = pkgs.emacs-unstable;
 
     override = _: prev: {
-      meow = prev.melpaPackages.meow.overrideAttrs (_: { patches = [ ./meow-ctrlf.patch ]; });
+      meow = prev.melpaPackages.meow.overrideAttrs (_: {
+        patches = [ ./meow-ctrlf.patch ];
+      });
     };
 
     extraEmacsPackages =
       ep:
       [ ep.treesit-grammars.with-all-grammars ]
-      ++
-        lib.attrsets.mapAttrsToList
-          (
-            pname: val:
-            ep.trivialBuild {
-              inherit pname;
-              inherit (val) version src;
-              packageRequires =
-                if builtins.hasAttr "requiredEmacsPackages" val then val.requiredEmacsPackages ep else [ ];
-            }
-          )
-          nonMelpaPackages;
+      ++ lib.attrsets.mapAttrsToList (
+        pname: val:
+        ep.trivialBuild {
+          inherit pname;
+          inherit (val) version src;
+          packageRequires =
+            if builtins.hasAttr "requiredEmacsPackages" val then val.requiredEmacsPackages ep else [ ];
+        }
+      ) nonMelpaPackages;
   };
 in
 {
@@ -91,7 +90,7 @@ in
     # Emacs packages' individual dependencies.
     home.packages = [
       pkgs.ripgrep # Deadgrep
-      pkgs.python312 # Ctrlf
+      pkgs.python313 # Ctrlf
       pkgs.ispell # Flyspell mode
       pkgs.multimarkdown # Markdown-mode
     ];

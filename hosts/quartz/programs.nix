@@ -19,7 +19,7 @@
       git
       firefox
       openrgb-with-all-plugins
-      woeusb-ng # create bootable USB disks from windows ISO images
+      # woeusb-ng # create bootable USB disks from windows ISO images
       ntfs3g # needed for mkntfs command (woeusb)
       ;
     inherit (pkgs.nvtopPackages) amd;

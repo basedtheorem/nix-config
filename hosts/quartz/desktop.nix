@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
   _file = ./desktop.nix;
 
@@ -9,8 +9,8 @@
     };
 
     environment.systemPackages = builtins.attrValues {
-      # Gnome
-      inherit (pkgs.gnome) gnome-tweaks;
+      # Gnome.
+      inherit (pkgs) gnome-tweaks;
       inherit (pkgs.gnomeExtensions)
         paperwm # scrolling, tiling wm
         blur-my-shell

@@ -11,12 +11,6 @@
         system = "x86_64-linux";
         extraModules = [ ./l.nix ];
       };
-
-      ih8windows = self.lib.mkHomeCfg {
-        #TODO
-        system = "x86_64-linux";
-        extraModules = [ ];
-      };
     };
   };
 }

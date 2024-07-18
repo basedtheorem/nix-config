@@ -43,16 +43,17 @@
         };
       };
 
+    # Create NixOS system.
     mkNixos =
       {
         system,
         extraModules ? [ ],
       }:
+
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs self;
         };
-
         modules = [
           { nixpkgs.hostPlatform = system; }
         ] ++ (builtins.attrValues self.nixosModules) ++ extraModules;

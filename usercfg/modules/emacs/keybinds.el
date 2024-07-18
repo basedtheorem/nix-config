@@ -376,7 +376,10 @@
   :config
   (global-unset-key (kbd "C-z"))
   (global-set-key (kbd "C-z")   'undo-fu-only-undo)
-  (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
+  (global-set-key (kbd "C-S-z") 'undo-fu-only-redo)
+  :bind (
+         :map cua-global-keymap
+              ("C-z" . 'undo-fu-only-undo)))
 
 ;; Persistent undo history
 (use-package undo-fu-session

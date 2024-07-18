@@ -10,7 +10,7 @@
   hardware = {
     pulseaudio.enable = false;
     keyboard.uhk.enable = true;
-    opengl = {
+    graphics = {
       enable = true;
       extraPackages = [ pkgs.amdvlk ];
     };

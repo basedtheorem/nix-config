@@ -39,30 +39,33 @@ in
         xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
         nautilus-open-any-terminal
-        gnome-firmware
-        ;
 
-      inherit (pkgs.gnome)
-        gvfs
+        # Gnome
+        gnome-firmware
         sushi
         file-roller
-        gnome-session
         ;
+
+      inherit (pkgs.gnome) gvfs gnome-session;
     };
 
     environment.gnome = lib.mkIf cfg.minimal {
       excludePackages = builtins.attrValues {
-        inherit (pkgs) gnome-photos gnome-tour gedit;
-
-        inherit (pkgs.gnome)
+        inherit (pkgs)
+          gnome-photos
+          gnome-tour
+          gedit
           cheese # webcam tool
-          gnome-music
           gnome-terminal
           simple-scan
           epiphany # web browser
           geary # email reader
-          evince # document viewer
           totem # video player
+          evince # document viewer
+          ;
+
+        inherit (pkgs.gnome)
+          gnome-music
           tali # poker game
           iagno # go game
           hitori # sudoku game

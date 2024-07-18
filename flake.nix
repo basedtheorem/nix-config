@@ -2,12 +2,12 @@
   description = "?";
 
   inputs = {
-    stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     unstable-small.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     master.url = "github:nixos/nixpkgs/master";
 
-    nixpkgs.follows = "unstable-small";
+    nixpkgs.follows = "unstable";
 
     parts.url = "github:hercules-ci/flake-parts";
     parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -18,7 +18,7 @@
     nur.url = "github:nix-community/NUR";
     nur.follows = "nixpkgs";
 
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.url = "github:the-argus/spicetify-nix/aa0ee1f130914978a79411760b72ad51abba4745";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     chillax-discord-theme.url = "github:warrayquipsome/Chillax";
